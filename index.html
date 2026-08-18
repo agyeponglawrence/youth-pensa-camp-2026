@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Youth &amp; Pensa Camp 2026 — Recap</title>
+<meta name="description" content="Key lessons, quotes, scriptures and action steps from Youth &amp; Pensa Camp 2026 — Gospel, Power, Impact. Regina, Saskatchewan.">
+
+<!-- Social share preview -->
+<meta property="og:title" content="Youth &amp; Pensa Camp 2026 — Recap">
+<meta property="og:description" content="Five sessions. Key lessons, quotes, scriptures and action steps you can actually work through.">
+<meta property="og:type" content="website">
+<!-- og:image MUST be a full web address, not a relative path, or WhatsApp and
+     Facebook will ignore it. Generate the file by opening this page with #og
+     on the end of the address, saving it as og.jpg beside index.html, then
+     replacing the domain below with wherever this page is published. -->
+<meta property="og:image" content="https://REPLACE-WITH-YOUR-DOMAIN/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Youth &amp; Pensa Camp 2026 — session recap and study guide">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --navy:#0B0C42;       /* deepest brand blue — hero base */
+  --royal:#141571;      /* primary brand blue */
+  --royal-2:#3A3180;
+  --royal-3:#474B92;
+  --violet:#7B3FE4;     /* swoosh violet, darkened for text contrast */
+  --violet-mid:#AA70FA; /* swoosh violet as-is */
+  --violet-light:#BDA4FE;
+  --violet-tint:#EDE7FD;
+  --red:#DA171B;        /* badge red */
+  --red-tint:#FCEDEE;
+
+  --paper:#F8F8FC;
+  --paper-alt:#EFF0F8;
+  --rule:#DBDDEC;
+  --ink:#15163A;
+  --ink-soft:#54567C;
+
+  --wrap:min(1080px, 92vw);
+  --read:68ch;
+
+  --display:"Fraunces",Georgia,serif;
+  --body:"Karla",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+/* class-based display rules would otherwise beat the browser's own
+   [hidden] rule, so state it explicitly */
+[hidden]{display:none !important}
+
+html{scroll-behavior:smooth; scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{font-family:var(--display); font-weight:600; line-height:1.15; margin:0}
+
+a{color:var(--royal)}
+
+.wrap{width:var(--wrap); margin-inline:auto}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  background:
+    radial-gradient(120% 90% at 12% 0%, #1D1E7A 0%, transparent 60%),
+    radial-gradient(90% 80% at 95% 20%, #4A2A9E 0%, transparent 55%),
+    var(--navy);
+  color:#F4F5FF;
+  padding:clamp(3.5rem,9vw,7rem) 0 clamp(2.5rem,5vw,4rem);
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute; inset:auto 0 0 0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--violet-mid),transparent);
+  opacity:.55;
+}
+
+.hero-logo{
+  display:block; width:clamp(178px,25vw,268px); height:auto;
+  margin:0 0 2.1rem -6px;
+}
+
+.hero .eyebrow{color:var(--violet-mid); margin-bottom:1.4rem; display:block}
+
+.hero h1{
+  font-size:clamp(2.6rem,7.5vw,5.1rem);
+  letter-spacing:-.02em;
+  margin-bottom:.4rem;
+  font-weight:700;
+}
+.hero h1 em{
+  font-style:normal;
+  display:block;
+  color:#BDA4FE;
+  font-weight:400;
+  font-size:.42em;
+  letter-spacing:.01em;
+  margin-top:.7rem;
+}
+
+.hero-lede{
+  max-width:56ch;
+  margin:1.6rem 0 0;
+  font-size:clamp(1rem,2.1vw,1.18rem);
+  color:#C9CBEA;
+}
+
+.hero-meta{
+  margin-top:2.4rem;
+  display:flex; flex-wrap:wrap; gap:.6rem 1.8rem;
+  font-family:var(--mono); font-size:.76rem;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:#8E92C4;
+}
+
+/* ============================================================
+   STICKY NAV + PROGRESS
+   ============================================================ */
+.bar{
+  position:sticky; top:0; z-index:50;
+  background:rgba(251,248,243,.93);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.bar-track{height:3px; background:var(--paper-alt)}
+.bar-fill{
+  height:100%; width:0%;
+  background:linear-gradient(90deg,var(--violet),var(--violet-mid));
+  transition:width .45s cubic-bezier(.4,0,.2,1);
+}
+.bar-inner{
+  display:flex; align-items:center; gap:1rem;
+  padding:.62rem 0;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.bar-inner::-webkit-scrollbar{display:none}
+
+.bar-count{
+  font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.06em; color:var(--ink-soft);
+  white-space:nowrap; flex-shrink:0;
+}
+.bar-count b{color:var(--royal)}
+
+.chips{display:flex; gap:.4rem; flex-shrink:0}
+.chip{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.05em;
+  padding:.34rem .68rem; border-radius:100px;
+  border:1px solid var(--rule); background:#fff;
+  color:var(--ink-soft); text-decoration:none; white-space:nowrap;
+  transition:.18s;
+}
+.chip:hover,.chip:focus-visible{border-color:var(--violet); color:var(--royal); background:var(--violet-tint)}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+.intro{padding:clamp(2.8rem,6vw,4.5rem) 0}
+.intro-grid{display:grid; grid-template-columns:1fr; gap:2rem}
+@media(min-width:820px){ .intro-grid{grid-template-columns:1.15fr .85fr; gap:3.5rem} }
+
+.intro h2{font-size:clamp(1.6rem,3.4vw,2.2rem); margin-bottom:1rem}
+.intro p{max-width:var(--read); color:var(--ink-soft)}
+.intro p strong{color:var(--ink)}
+
+.howto{
+  background:#fff; border:1px solid var(--rule);
+  border-radius:var(--r-lg); padding:1.5rem 1.6rem;
+}
+.howto h3{font-size:1.05rem; margin-bottom:.9rem}
+.howto ul{margin:0; padding-left:1.1rem; font-size:.94rem; color:var(--ink-soft)}
+.howto li{margin-bottom:.6rem}
+.howto li strong{color:var(--ink)}
+
+/* ============================================================
+   SESSION
+   ============================================================ */
+.session{border-top:1px solid var(--rule); padding:clamp(3rem,6vw,4.8rem) 0}
+.session:nth-child(even){background:var(--paper-alt)}
+
+.s-head{margin-bottom:2.2rem}
+.s-num{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.16em;
+  color:var(--royal); display:block; margin-bottom:.7rem;
+}
+.s-num span{color:var(--ink-soft); opacity:.65}
+
+.s-title{font-size:clamp(1.85rem,4.6vw,3rem); letter-spacing:-.015em; margin-bottom:.7rem}
+
+.s-by{font-size:.98rem; color:var(--ink-soft); margin:0 0 .35rem}
+.s-by b{color:var(--ink); font-weight:600}
+.s-flag{
+  display:inline-block; font-size:.76rem; color:var(--red);
+  background:var(--red-tint); border:1px solid #F3D2D4;
+  padding:.08rem .45rem; border-radius:var(--r-sm); margin-left:.3rem;
+}
+.s-ref{font-family:var(--mono); font-size:.78rem; color:var(--ink-soft); letter-spacing:.04em}
+
+/* media buttons */
+.media{display:flex; flex-wrap:wrap; gap:.7rem; margin:1.5rem 0 0}
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--body); font-size:.88rem; font-weight:600;
+  padding:.6rem 1.05rem; border-radius:100px;
+  text-decoration:none; border:1px solid transparent; cursor:pointer;
+  transition:.18s;
+}
+.btn svg{width:15px; height:15px; flex-shrink:0}
+.btn-yt{background:var(--navy); color:#F4F5FF}
+.btn-yt:hover,.btn-yt:focus-visible{background:var(--royal-2)}
+.btn-audio{background:#fff; color:var(--royal); border-color:var(--violet)}
+.btn-audio:hover,.btn-audio:focus-visible{background:var(--violet-tint)}
+.btn[aria-disabled="true"]{
+  background:#fff; color:var(--ink-soft); border-color:var(--rule);
+  cursor:default; opacity:.75;
+}
+
+.player{margin-top:1rem; display:none}
+.player.open{display:block}
+.player audio{width:100%; max-width:520px}
+
+.s-body{
+  max-width:var(--read); margin-top:1.8rem;
+  font-size:1.04rem;
+}
+
+/* blocks */
+.block{margin-top:2.6rem}
+.block > h3{
+  font-family:var(--mono); font-size:.73rem; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--royal);
+  padding-bottom:.55rem; margin-bottom:1.15rem;
+  border-bottom:1px solid var(--rule);
+}
+
+.lessons{list-style:none; margin:0; padding:0; max-width:var(--read)}
+.lessons li{
+  position:relative; padding-left:1.5rem; margin-bottom:1rem;
+}
+.lessons li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:7px; height:7px; border-radius:50%;
+  background:var(--violet); opacity:.55;
+}
+
+/* go deeper */
+.deep{
+  margin-top:1.6rem; max-width:var(--read);
+  border:1px solid var(--rule); border-radius:var(--r-lg);
+  background:#fff; overflow:hidden;
+}
+.session:nth-child(even) .deep{background:#FCFCFF}
+.deep summary{
+  list-style:none; cursor:pointer;
+  padding:.95rem 1.2rem;
+  display:flex; align-items:center; gap:.75rem;
+  font-family:var(--mono); font-size:.73rem;
+  letter-spacing:.13em; text-transform:uppercase;
+  color:var(--royal);
+  transition:background .18s;
+}
+.deep summary::-webkit-details-marker{display:none}
+.deep summary::marker{content:""}
+.deep summary:hover{background:var(--violet-tint)}
+.deep summary:focus-visible{outline:2px solid var(--violet); outline-offset:-2px}
+.deep .tog{
+  width:20px; height:20px; flex-shrink:0; position:relative;
+  border:1px solid var(--violet); border-radius:50%;
+}
+.deep .tog::before,.deep .tog::after{
+  content:""; position:absolute; left:50%; top:50%;
+  background:var(--royal); transform:translate(-50%,-50%);
+  transition:transform .22s ease, opacity .22s ease;
+}
+.deep .tog::before{width:9px; height:1.5px}
+.deep .tog::after{width:1.5px; height:9px}
+.deep[open] .tog::after{transform:translate(-50%,-50%) rotate(90deg); opacity:0}
+.deep summary .hint{
+  margin-left:auto; color:var(--ink-soft); letter-spacing:.06em;
+  font-size:.68rem; text-transform:none;
+}
+.deep[open] summary{border-bottom:1px solid var(--rule)}
+@media(max-width:520px){
+  .deep summary{font-size:.68rem; letter-spacing:.1em; gap:.6rem; padding:.85rem 1rem}
+  .deep summary .hint{display:none}
+  .deep-body{padding:.3rem 1.05rem 1.3rem}
+}
+.deep-body{padding:.3rem 1.35rem 1.5rem}
+.deep-item{margin-top:1.6rem}
+.deep-item:first-child{margin-top:1.2rem}
+.deep-item h4{
+  font-family:var(--display); font-size:1.1rem; font-weight:600;
+  margin:0 0 .55rem; color:var(--ink);
+}
+.deep-item p{margin:0 0 .75rem; color:var(--ink-soft); font-size:.97rem}
+.deep-item p:last-child{margin-bottom:0}
+.deep-item ul{margin:.2rem 0 .75rem; padding-left:1.1rem; color:var(--ink-soft); font-size:.97rem}
+.deep-item li{margin-bottom:.4rem}
+.deep-item em{color:var(--ink)}
+.deep-note{
+  margin-top:1.7rem; padding:.95rem 1.1rem;
+  border-radius:var(--r-md);
+  background:var(--red-tint); border:1px solid #F3D2D4;
+  font-size:.9rem; color:#8A2F33;
+}
+.deep-note b{display:block; font-family:var(--mono); font-size:.68rem;
+  letter-spacing:.12em; text-transform:uppercase; margin-bottom:.4rem; color:var(--red)}
+
+/* big idea */
+.bigidea{
+  max-width:var(--read); margin:1.7rem 0 0;
+  padding:1.15rem 1.35rem;
+  border-radius:var(--r-md);
+  background:var(--violet-tint);
+  border:1px solid #DACCFA;
+  border-left:4px solid var(--violet);
+}
+.bigidea span{
+  display:block; font-family:var(--mono); font-size:.66rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--violet); margin-bottom:.45rem;
+}
+.bigidea p{
+  margin:0; font-family:var(--display); font-size:1.16rem;
+  line-height:1.42; color:var(--ink);
+}
+
+/* start here */
+.start{padding:0 0 clamp(2.5rem,5vw,3.6rem)}
+.start-card{
+  border:1px solid var(--rule); border-radius:var(--r-lg);
+  background:#fff; padding:1.7rem 1.8rem;
+}
+.start-card > .eyebrow{color:var(--violet); display:block; margin-bottom:.5rem}
+.start-card h2{font-size:clamp(1.35rem,2.8vw,1.75rem); margin-bottom:.5rem}
+.start-card .sub{color:var(--ink-soft); font-size:.96rem; margin:0 0 1.4rem; max-width:60ch}
+.start-list{list-style:none; margin:0; padding:0; counter-reset:bi}
+.start-list li{counter-increment:bi; border-top:1px solid var(--rule)}
+.start-list a{
+  display:flex; gap:1rem; align-items:flex-start;
+  padding:.95rem .3rem; text-decoration:none; color:inherit;
+  transition:background .16s, padding .16s;
+}
+.start-list a:hover,.start-list a:focus-visible{background:var(--violet-tint); padding-inline:.7rem}
+.start-list .n{
+  font-family:var(--mono); font-size:.72rem; color:var(--violet);
+  padding-top:.28rem; flex-shrink:0;
+}
+.start-list .t{font-family:var(--display); font-size:1.02rem; line-height:1.4; color:var(--ink)}
+.start-list .s{display:block; font-family:var(--body); font-size:.78rem; color:var(--ink-soft); margin-top:.22rem}
+
+/* quiz */
+.quiz{max-width:var(--read)}
+.q{
+  border:1px solid var(--rule); border-radius:var(--r-md);
+  background:#fff; padding:1.15rem 1.3rem; margin-bottom:.85rem;
+}
+.session:nth-child(even) .q{background:#FCFCFF}
+.q-p{margin:0 0 .9rem; font-weight:600; font-size:1rem; display:flex; gap:.7rem}
+.q-p .qn{font-family:var(--mono); font-size:.72rem; color:var(--violet); font-weight:500; padding-top:.22rem; flex-shrink:0}
+.q-opts{display:grid; gap:.45rem}
+.q-opt{
+  text-align:left; font:inherit; font-size:.95rem;
+  padding:.62rem .85rem; border-radius:var(--r-sm);
+  border:1px solid var(--rule); background:var(--paper);
+  color:var(--ink); cursor:pointer; transition:.15s;
+}
+.q-opt:hover:not(:disabled){border-color:var(--violet); background:var(--violet-tint)}
+.q-opt:focus-visible{outline:2px solid var(--violet); outline-offset:2px}
+.q-opt:disabled{cursor:default}
+.q-opt.right{background:#E7F6EE; border-color:#8FCBAA; color:#1C6640; font-weight:600}
+.q-opt.wrong{background:var(--red-tint); border-color:#F3D2D4; color:#8A2F33}
+.q-why{
+  margin:.85rem 0 0; font-size:.92rem; color:var(--ink-soft);
+  padding-top:.8rem; border-top:1px dashed var(--rule); display:none;
+}
+.q.done .q-why{display:block}
+.q-why b{color:var(--ink)}
+
+/* pick-one note */
+.pick-note{
+  max-width:var(--read); margin:0 0 1.1rem;
+  font-size:.93rem; color:var(--ink-soft);
+}
+
+.quotes{display:grid; gap:1rem; max-width:var(--read)}.quote{
+  font-family:var(--display); font-size:1.14rem; line-height:1.45;
+  padding:1.05rem 1.3rem; border-radius:var(--r-md);
+  background:#fff; border:1px solid var(--rule);
+  border-left:3px solid var(--violet-mid);
+  color:var(--ink);
+}
+.session:nth-child(even) .quote{background:#FCFCFF}
+
+.refs{display:flex; flex-wrap:wrap; gap:.55rem; max-width:var(--read)}
+.ref{
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.02em;
+  background:var(--violet-tint); color:var(--royal);
+  border:1px solid #DACCFA;
+  padding:.36rem .7rem; border-radius:var(--r-sm);
+}
+.ref-note{
+  display:block; flex:1 0 100%; width:100%;
+  max-width:var(--read);
+  font-size:.88rem; color:var(--ink-soft); margin-top:.5rem;
+}
+
+.reflect{list-style:none; counter-reset:q; margin:0; padding:0; max-width:var(--read)}
+.reflect li{
+  counter-increment:q; position:relative;
+  padding-left:2.4rem; margin-bottom:1.05rem;
+}
+.reflect li::before{
+  content:counter(q,decimal-leading-zero);
+  position:absolute; left:0; top:.05em;
+  font-family:var(--mono); font-size:.78rem; font-weight:500;
+  color:var(--violet-mid); letter-spacing:.04em;
+}
+
+/* action checkboxes */
+.acts{list-style:none; margin:0; padding:0; max-width:var(--read)}
+.act{margin-bottom:.55rem}
+.act label{
+  display:flex; gap:.85rem; align-items:flex-start;
+  padding:.8rem .95rem; border-radius:var(--r-md);
+  background:#fff; border:1px solid var(--rule);
+  cursor:pointer; transition:.18s;
+}
+.session:nth-child(even) .act label{background:#FCFCFF}
+.act label:hover{border-color:var(--violet); background:var(--violet-tint)}
+.act input{
+  appearance:none; -webkit-appearance:none;
+  width:19px; height:19px; margin:.18rem 0 0; flex-shrink:0;
+  border:1.5px solid #B9BCD4; border-radius:5px; background:#fff;
+  cursor:pointer; position:relative; transition:.18s;
+}
+.act input:checked{background:var(--violet); border-color:var(--violet)}
+.act input:checked::after{
+  content:""; position:absolute; left:5.5px; top:2px;
+  width:5px; height:9px;
+  border:solid #fff; border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+.act input:focus-visible{outline:2px solid var(--violet); outline-offset:2px}
+.act span{font-size:.98rem}
+.act input:checked + span{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:#B9BCD4}
+
+/* ============================================================
+   CLOSING
+   ============================================================ */
+.closing{
+  background:
+    radial-gradient(100% 80% at 80% 10%, #3B2494 0%, transparent 58%),
+    var(--navy);
+  color:#F4F5FF;
+  padding:clamp(3.5rem,8vw,6rem) 0;
+}
+.closing .eyebrow{color:var(--violet-mid); display:block; margin-bottom:1.2rem}
+.closing h2{font-size:clamp(1.9rem,4.6vw,3rem); max-width:20ch; margin-bottom:1.4rem}
+.closing p{max-width:58ch; color:#C9CBEA; margin:0 0 1.1rem}
+.closing p.pull{
+  font-family:var(--display); font-size:1.2rem; color:#F4F5FF;
+  border-left:3px solid var(--violet-mid); padding-left:1.1rem; margin-top:1.8rem;
+}
+
+.tally{
+  margin-top:2.6rem; padding:1.4rem 1.6rem;
+  border:1px solid rgba(255,255,255,.16); border-radius:var(--r-lg);
+  background:rgba(255,255,255,.04);
+  max-width:460px;
+}
+.tally-top{display:flex; justify-content:space-between; align-items:baseline; gap:1rem}
+.tally-lab{font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#9DA1D0}
+.tally-num{font-family:var(--display); font-size:1.7rem; color:var(--violet-mid)}
+.tally-track{height:6px; border-radius:100px; background:rgba(255,255,255,.12); margin-top:.9rem; overflow:hidden}
+.tally-fill{height:100%; width:0%; border-radius:100px; background:linear-gradient(90deg,var(--violet),var(--violet-mid)); transition:width .5s cubic-bezier(.4,0,.2,1)}
+.tally-msg{margin:.9rem 0 0; font-size:.9rem; color:#9DA1D0}
+
+.reset{
+  margin-top:1.4rem; background:none; border:none;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
+  color:#8085BC; cursor:pointer; text-decoration:underline; padding:0;
+}
+.reset:hover{color:#BDA4FE}
+
+footer{background:var(--navy); color:#7A7FB8; padding:0 0 3rem}
+footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font-size:.84rem}
+
+/* ============================================================
+   WELCOME BACK  (returning visitors only)
+   ============================================================ */
+.back{display:none; background:var(--violet-tint); border-bottom:1px solid #DACCFA}
+.back.show{display:block}
+.back .wrap{
+  display:flex; align-items:center; gap:.4rem 1rem; flex-wrap:wrap;
+  padding:.7rem 0; font-size:.9rem; color:var(--royal);
+}
+.back b{font-weight:600}
+.back a{color:var(--royal); text-decoration-color:var(--violet-light); text-underline-offset:3px}
+.back .x{
+  margin-left:auto; background:none; border:none; cursor:pointer; padding:.1rem .3rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.back .x:hover{color:var(--royal)}
+
+/* ============================================================
+   TODAY  —  daily line + retrieval question
+   ============================================================ */
+.today{padding:0 0 clamp(2.2rem,4.5vw,3.2rem)}
+.today-grid{display:grid; gap:1.1rem; grid-template-columns:1fr; align-items:stretch}
+@media(min-width:900px){ .today-grid{grid-template-columns:1.08fr .92fr; gap:1.3rem} }
+
+.card-today{
+  position:relative; overflow:hidden;
+  border-radius:var(--r-lg);
+  padding:clamp(1.5rem,3.6vw,2.1rem);
+  background:
+    radial-gradient(110% 90% at 8% 0%, #24237F 0%, transparent 62%),
+    radial-gradient(90% 85% at 96% 100%, #4A2A9E 0%, transparent 58%),
+    var(--navy);
+  color:#F4F5FF;
+  display:flex; flex-direction:column;
+}
+.card-today .eyebrow{color:var(--violet-mid); display:block; margin-bottom:1.1rem}
+.card-today .eyebrow .dot{opacity:.5; margin:0 .45rem}
+.card-today .eyebrow .date{color:#8E92C4; letter-spacing:.1em}
+.today-q{
+  font-family:var(--display); font-weight:400;
+  font-size:clamp(1.22rem,2.5vw,1.62rem); line-height:1.38;
+  margin:0 0 1.15rem; color:#F4F5FF;
+}
+.today-src{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.06em;
+  color:#9DA1D0; margin:0 0 1.5rem; line-height:1.6;
+}
+.today-src a{color:#BDA4FE; text-decoration-color:rgba(189,164,254,.45); text-underline-offset:3px}
+.today-src a:hover{color:#fff}
+.today-acts{display:flex; flex-wrap:wrap; gap:.55rem; margin-top:auto}
+.mini{
+  display:inline-flex; align-items:center; gap:.42rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:.52rem .85rem; border-radius:100px; cursor:pointer;
+  border:1px solid rgba(255,255,255,.24); background:rgba(255,255,255,.06);
+  color:#E7E8FA; text-decoration:none; transition:.18s;
+}
+.mini:hover,.mini:focus-visible{background:var(--violet); border-color:var(--violet); color:#fff}
+.mini svg{width:13px; height:13px; flex-shrink:0}
+
+.card-recall{
+  border:1px solid var(--rule); border-radius:var(--r-lg);
+  background:#fff; padding:clamp(1.4rem,3.2vw,1.8rem);
+  display:flex; flex-direction:column;
+}
+.card-recall > .eyebrow{color:var(--violet); display:block; margin-bottom:.55rem}
+.card-recall .sub{
+  color:var(--ink-soft); font-size:.9rem; margin:0 0 1.15rem; max-width:52ch;
+}
+.card-recall .q{margin-bottom:0; border:none; padding:0; background:none !important}
+.card-recall .q-p{font-family:var(--display); font-weight:600; font-size:1.04rem}
+.recall-after{
+  margin:1.1rem 0 0; font-size:.86rem; font-family:var(--mono);
+  letter-spacing:.06em; display:none;
+}
+.q.done ~ .recall-after{display:block}
+.recall-after a{color:var(--royal); text-underline-offset:3px}
+
+/* surprise-me highlight */
+@keyframes flashring{
+  0%{box-shadow:0 0 0 3px var(--violet), 0 0 0 10px rgba(123,63,228,.28)}
+  100%{box-shadow:0 0 0 3px rgba(123,63,228,0), 0 0 0 22px rgba(123,63,228,0)}
+}
+.flash{border-radius:var(--r-md); animation:flashring 1.5s ease-out 2}
+@media (prefers-reduced-motion:reduce){
+  .flash{animation:none; box-shadow:0 0 0 3px var(--violet)}
+}
+
+/* ============================================================
+   SESSION MARK  —  oversized numeral + theme word
+   ============================================================ */
+.s-mark{display:flex; align-items:center; gap:.9rem; margin-bottom:.9rem}
+.s-figure{
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(2.5rem,6.5vw,3.9rem); line-height:.85;
+  letter-spacing:-.03em; color:var(--violet-light);
+  flex-shrink:0;
+}
+.session:nth-child(even) .s-figure{color:#C9B6FC}
+.s-marktxt{display:flex; flex-direction:column; gap:.25rem; min-width:0}
+.s-theme{
+  font-family:var(--mono); font-size:.76rem; font-weight:500;
+  letter-spacing:.24em; text-transform:uppercase; color:var(--royal);
+}
+.s-day{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em;
+  color:var(--ink-soft); text-transform:uppercase;
+}
+@media(max-width:520px){
+  .s-mark{gap:.75rem}
+  .s-theme{font-size:.7rem; letter-spacing:.18em}
+  .s-day{font-size:.62rem}
+}
+
+/* ============================================================
+   SHARE  —  quote card generator
+   ============================================================ */
+.quotes{gap:1rem}
+.quote-row{display:flex; flex-direction:column; align-items:flex-start}
+.qshare{
+  background:none; border:none; cursor:pointer;
+  margin:.45rem 0 0 .2rem; padding:.2rem 0;
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-soft); transition:color .16s;
+  display:inline-flex; align-items:center; gap:.4rem;
+}
+.qshare:hover,.qshare:focus-visible{color:var(--violet)}
+.qshare svg{width:12px; height:12px}
+.bigidea .qshare{margin-top:.75rem}
+
+.sheet{position:fixed; inset:0; z-index:200; display:none}
+.sheet.open{display:block}
+.sheet-back{position:absolute; inset:0; background:rgba(11,12,66,.74); backdrop-filter:blur(5px)}
+.sheet-panel{
+  position:relative; margin:auto;
+  top:50%; transform:translateY(-50%);
+  width:min(430px,92vw); max-height:94vh; overflow-y:auto;
+  background:var(--paper); border-radius:var(--r-lg);
+  padding:1.3rem 1.35rem 1.45rem;
+  box-shadow:0 24px 60px rgba(11,12,66,.4);
+}
+.sheet-top{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:1rem}
+.sheet-top .eyebrow{color:var(--violet)}
+.sheet-x{
+  background:none; border:none; cursor:pointer; padding:.1rem .25rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+.sheet-x:hover{color:var(--royal)}
+.sizes{display:flex; gap:.4rem; margin-bottom:.95rem}
+.size{
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:.36rem .7rem; border-radius:100px; cursor:pointer;
+  border:1px solid var(--rule); background:#fff; color:var(--ink-soft); transition:.16s;
+}
+.size[aria-pressed="true"]{background:var(--violet-tint); border-color:var(--violet); color:var(--royal)}
+.shot{
+  display:block; width:100%; max-height:52vh; object-fit:contain;
+  border-radius:var(--r-md); background:var(--navy);
+}
+.sheet-acts{display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.1rem}
+.sheet-acts .btn{font-size:.82rem; padding:.55rem .95rem}
+.btn-solid{background:var(--violet); color:#fff}
+.btn-solid:hover,.btn-solid:focus-visible{background:var(--royal-2)}
+.btn-line{background:#fff; color:var(--royal); border-color:var(--violet)}
+.btn-line:hover,.btn-line:focus-visible{background:var(--violet-tint)}
+.sheet-note{
+  margin:.95rem 0 0; font-size:.78rem; color:var(--ink-soft); line-height:1.55;
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.rv{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){ .rv{opacity:1; transform:none; transition:none} }
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print{
+  .bar,.media,.player,.tally,.reset,.hero::after{display:none !important}
+  .back,.today,.sheet,.qshare{display:none !important}
+  .s-figure{color:#666}
+  body{background:#fff; font-size:11pt}
+  .hero,.closing{background:#fff !important; color:#000; padding:1.5rem 0}
+  .hero h1,.closing h2{color:#000}
+  .hero-lede,.closing p,.hero h1 em,.hero-meta{color:#333}
+  .session{page-break-inside:avoid; border-top:1px solid #ccc}
+  .session:nth-child(even){background:#fff}
+  .rv{opacity:1 !important; transform:none !important}
+  .q-why{display:block !important}
+  .q-opt{border:none; padding:.2rem 0}
+  .act input{-webkit-appearance:checkbox; appearance:checkbox}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="wrap">
+    <img class="hero-logo" alt="Youth &amp; Pensa Camp 2026" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAc4AAAFMCAMAAAB1QKxRAAAB/lBMVEXhXF2jHCEeEzeZbt43J1grIUTeICRDMWFEDg7r2+72mp9XCg2emqhbVWcoEDB2bZJBQUEdHCOyqdObYWPYOEjvtszvhHtBQD7PQjzseoSCc51XO4SqNUiBgH7Bwb47RD9AP0N+g3m0Qzy+wrk/QEJ+goEAAAD8/PqsdvmobPL2CRCxhve3lvbw6evsExXW1ta6o/PHxsjRGCXEp/nUFhm4uLdWVlbNt/mIiIhoaGmoqKmWd83NJSt2d3eWlpbsFSQiIiLXxfr919SzJClZAwQKAiIoKChHRkbs2Pf45dupltZKN27+yMq5Gyajhtf9t7TRSEwPAykxMTCbhM04ODdqV5GIdrLVChOSChT7p6sTBTBMTE1TRnFxZZGxFhjPNTb0h4spAAA3AACFabPvdnZlBw/2lpEtLS56ZaikettRUVDb1usxAQHBnPvsDCJ3WqYeHh4hAADqZ2kcGyGTh7MnF0c8PD1cWWkrF043J1lXEg5aRYWxpNXRVlRjSo78wrkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgFSl8AAAAgHRSTlP//2v/66H/+qL//93//Ib/mBv//////5X/////////o53///+Z/wD////////////////////x////////////Ev////cRMLH///////////8vUv9w//////9Pyv//////L23/////Sf//2f9R////BA7/Df+vhv/N9vH//////0K7JPYAACy3SURBVHja7Z2JQ9pI28BREavW3t233d33/e5AJUMIl9wgLiJH8QTX263Wo7a169rDVeu//s1MDpIwuSjUknemVYGEoPPL88xzzYyLge0DQ5szmgt9W6H94CCcsxO0HxyEc/Az7QcH4fyUoP3gIJwTGdoPTsJ5n/aDg3D+THE6CedditNBOB9SnE7CeS8Zp/3gHJwjyXPaD87BuXl1l/aDY3AWGxSng3CubwXvFmlHOAbnUfCc4nQOziaVTkfhfPToIe0Ip+AcXA5W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">
+    <span class="eyebrow">Gospel · Power · Impact</span>
+    <h1>Youth &amp; Pensa<br>Camp 2026
+      <em>Session recap &amp; study guide</em>
+    </h1>
+    <p class="hero-lede">
+      Five sessions, condensed to what's worth keeping: the lessons, the lines people
+      wrote down, the scriptures, and the steps to actually work through — not just read once.
+    </p>
+    <div class="hero-meta">
+      <span>Regina, Saskatchewan</span>
+      <span>5 sessions</span>
+      <span>Pick one step per session</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     WELCOME BACK  (shown only to returning visitors, via JS)
+     ============================================================ -->
+<div class="back" id="backBar" hidden>
+  <div class="wrap">
+    <span id="backTxt"></span>
+    <a href="#today">Here's today's line &rarr;</a>
+    <button class="x" type="button" id="backX">Dismiss</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     STICKY BAR
+     ============================================================ -->
+<nav class="bar" aria-label="Session navigation">
+  <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+  <div class="wrap bar-inner">
+    <div class="bar-count"><b id="barCount">0</b> / 5 sessions acted on</div>
+    <div class="chips">
+      <a class="chip" href="#s1">01 · Message of the Gospel</a>
+      <a class="chip" href="#s2">02 · Powerful Transformation</a>
+      <a class="chip" href="#s3">03 · Holy Spirit at Work</a>
+      <a class="chip" href="#s4">04 · Our Identity</a>
+      <a class="chip" href="#s5">05 · Making Godly Impact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     INTRO
+     ============================================================ -->
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div class="rv">
+      <h2>Conference wisdom has a short shelf life.</h2>
+      <p>
+        You leave a camp full of fire, and three weeks later you'd struggle to name one thing
+        that was preached. <strong>This page exists to stop that.</strong> Everything below came
+        out of the actual sessions — the teaching, the quotes, the texts that were opened, and
+        the specific things the speakers asked people to go and do.
+      </p>
+      <p style="margin-top:1rem">
+        Work through it slowly. Tick things off as you do them. Come back to it.
+      </p>
+    </div>
+    <aside class="howto rv">
+      <h3>How to use this</h3>
+      <ul>
+        <li><strong>In a hurry?</strong> Read the five big ideas below — that's the whole camp in about a minute.</li>
+        <li><strong>If you were there</strong> — revisit what hit you, and follow through on a step long before next year's camp comes around.</li>
+        <li><strong>If you missed it</strong> — this won't replace the room, but it gives you the substance.</li>
+        <li><strong>For small groups</strong> — the reflection questions and action steps work as a ready-made discussion guide.</li>
+        <li><strong>Your ticks are saved</strong> on this device, so you can close the page and pick up where you left off.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     TODAY — daily line + one retrieval question (rendered by JS)
+     ============================================================ -->
+<section class="today" id="today">
+  <div class="wrap today-grid">
+    <div class="card-today rv" id="todayCard"></div>
+    <div class="card-recall rv" id="recallCard"></div>
+  </div>
+</section>
+
+<section class="start"><div class="wrap"><div class="start-card rv" id="startCard"></div></div></section>
+
+<main id="sessions"></main>
+
+<!-- ============================================================
+     CLOSING
+     ============================================================ -->
+<section class="closing">
+  <div class="wrap">
+    <span class="eyebrow">Carrying it forward</span>
+    <h2>Consistency, not intensity.</h2>
+    <p>
+      Across all five sessions the same thread keeps surfacing: the gospel isn't meant to stay
+      in a conference room. It's meant to be carried — into your local church, your relationships,
+      your workplace, your habits, your city.
+    </p>
+    <p>
+      And the charge wasn't to have one dramatic moment. It was Daniel's word:
+      <em>continually</em>. An ordinary walk with God that holds up long after the conference
+      feeling wears off.
+    </p>
+    <p class="pull">
+      Don't let this page become another thing you read once and close.
+      Pick one step — just one — and do it this week.
+    </p>
+
+    <div class="tally">
+      <div class="tally-top">
+        <span class="tally-lab">Sessions acted on</span>
+        <span class="tally-num"><span id="tallyNum">0</span> / 5</span>
+      </div>
+      <div class="tally-track"><div class="tally-fill" id="tallyFill"></div></div>
+      <p class="tally-msg" id="tallyMsg">Nothing ticked yet. One step from one session is a real start.</p>
+      <p class="tally-msg" id="tallySteps" style="margin-top:.25rem;opacity:.75">0 steps ticked</p>
+      <button class="reset" id="resetBtn" type="button">Reset my progress</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Youth &amp; Pensa Camp 2026 · Regina, Saskatchewan · Compiled from the conference session recordings.
+  </div>
+</footer>
+
+<!-- ============================================================
+     SHARE SHEET — quote card generator (populated by JS)
+     ============================================================ -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet-back" data-close></div>
+  <div class="sheet-panel">
+    <div class="sheet-top">
+      <span class="eyebrow" id="sheetTitle">Shareable card</span>
+      <button class="sheet-x" type="button" data-close>Close</button>
+    </div>
+    <div class="sizes" role="group" aria-label="Card size">
+      <button class="size" type="button" data-size="story" aria-pressed="true">Status / Story</button>
+      <button class="size" type="button" data-size="square" aria-pressed="false">Square</button>
+    </div>
+    <img class="shot" id="shot" alt="Preview of the shareable card">
+    <div class="sheet-acts">
+      <button class="btn btn-solid" type="button" id="shareBtn" hidden>Share</button>
+      <a class="btn btn-line" id="saveBtn" download="ypc2026-card.jpg">Save image</a>
+      <button class="btn btn-line" type="button" id="copyBtn">Copy the words</button>
+    </div>
+    <p class="sheet-note" id="sheetNote">On a phone you can also press and hold the image to save it.</p>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   ✏️  EDIT HERE — media links for each session
+   ----------------------------------------------------------------
+   youtube : paste the full YouTube URL for that session.
+             Leave as "" and the button shows as unavailable.
+   audio   : path to the audio summary file, relative to this page.
+             Put your files in an "audio" folder beside index.html,
+             e.g.  audio/session-1.mp3
+             Leave as "" until the file exists.
+   ================================================================ */
+/* Your published web address, e.g. "youthpensacamp.ca".
+   Used only on the shareable cards, so people who see a card can find the page.
+   Leave as "" and the cards simply omit it. */
+const SITE_URL = "";
+
+const MEDIA = {
+  s1:{ youtube:"", audio:"" },
+  s2:{ youtube:"", audio:"" },
+  s3:{ youtube:"", audio:"" },
+  s4:{ youtube:"", audio:"" },
+  s5:{ youtube:"", audio:"" }
+};
+
+/* ================================================================
+   SESSION CONTENT
+   ================================================================ */
+const SESSIONS = [
+{
+  id:"s1", theme:"Gospel", day:"Day 1 — Opening Night",
+  title:"The Message of the Gospel",
+  speaker:"Overseer Dr. Razak Odro", role:"Alberta Area Youth Pastor",
+  flag:"", anchor:"1 Corinthians 1:18–31",
+  overview:"Opening the conference, Dr. Odro grounded the whole theme in Paul's letter to Corinth — a vibrant, morally compromised city not unlike the world young people navigate now. He built the message in three movements: what the gospel <em>is</em>, what the gospel <em>does</em>, and the character required to carry it.",
+  lessons:[
+    "The gospel isn't just information to agree with. Paul calls it <em>dunamis</em> — the power of God, meaning mighty strength and miraculous ability actually at work in a believer's life.",
+    "Paul frames it three ways at once: the message of the cross, the power of God, and the wisdom of God. All three matter, not just the one you find easiest.",
+    "Once received, the gospel does four things in sequence — repentance, redemption, restoration, and finally resurrection.",
+    "A 2026 study on Gen Z and Gen Alpha was cited: young people are unsure whether they have a future, whether truth is knowable, whether anyone genuinely cares, and whether God is real. The gospel was presented as the direct answer to all four.",
+    "God sends ordinary young people into difficult, compromised places — Timothy was sent by Paul into Corinth, and camp attendees from across Alberta, BC and Saskatchewan were framed exactly the same way.",
+    "Carrying the gospel takes character, not just conviction: holiness, a pure heart, a contrite heart, the fear of God, faithfulness, obedience, love for God, and a servant's heart."
+  ],
+  quotes:[
+    "The message of the cross is foolishness to those who are perishing, but to us who are being saved, it is the power of God.",
+    "The message of the gospel dethrones sin and enthrones God.",
+    "God is seeking faithful young people like you and me to rise up and carry this message.",
+    "Take up opportunities in the church — don't let anyone despise your youth.",
+    "You are marked for God's greatest cause, to bring a change into our world."
+  ],
+  refs:["1 Corinthians 1:18–31","1 Corinthians 4:17","1 Peter 2:24","Proverbs 4:14–15","1 Corinthians 15:52–55","Isaiah 35:8–10"],
+  refNote:"Anchor text is 1 Corinthians 1:18–31. The eight character qualities were drawn from <em>The Man God Uses</em> by Henry and Tom Blackaby.",
+  reflect:[
+    "Which of the four movements — repentance, redemption, restoration, resurrection — do you most need to experience right now?",
+    "Of the four things troubling Gen Z (future, truth, belonging, whether God is real), which is most alive in you? How does this message speak to it?",
+    "Of the eight character qualities named, which is your growth edge?",
+    "Like Timothy sent into Corinth — where has God placed you that feels compromised or difficult, and what would carrying the gospel there look like?"
+  ],
+  acts:[
+    "Name one specific area of compromise in your life and take one concrete step to repent this week.",
+    "Say yes to one opportunity to serve at your local church that you've been avoiding.",
+    "Memorise 1 Corinthians 1:18 as your anchor verse for the month.",
+    "Read one book on Christian character this year — start it this month."
+  ],
+  big:"The gospel isn't information to agree with — it's power that changes you, and God is handing it to young people to carry.",
+  quiz:[
+    {q:"Paul calls the gospel <em>dunamis</em>. What does the word mean?",
+     a:["Mighty strength and miraculous ability","Gentle persuasion","Hidden knowledge for the mature","Human wisdom and argument"],
+     c:0, why:"Dunamis is the power of God — mighty strength, miraculous ability actually at work in a believer's life."},
+    {q:"What four things does the gospel do, in order?",
+     a:["Repentance, redemption, restoration, resurrection","Faith, hope, love, joy","Hearing, believing, serving, resting","Conviction, baptism, giving, growth"],
+     c:0, why:"Dr. Odro built the middle of his message on exactly this sequence."},
+    {q:"Who did Paul send into Corinth — the model for sending young people into hard places?",
+     a:["Timothy","Titus","Silas","Barnabas"],
+     c:0, why:"1 Corinthians 4:17. Timothy was young, and Corinth was compromised — which was the whole point."}
+  ],
+  deeper:[
+    {h:"Why Corinth — and why it sounded familiar",
+     p:["Corinth was a strategic, prosperous city under Roman rule, built on trade and commerce, and the administrative centre of the province of Achaia. Dr. Odro drew the parallel deliberately: Corinth was to Achaia roughly what Regina is to Saskatchewan.",
+        "It was also morally saturated — sorcery, idolatry, sexual immorality, incest, greed and drunkenness, in a culture with no regard for God. The problem wasn't just the city. Believers inside the church had started quietly trading Christian values for the surrounding ones.",
+        "Into that, Paul sent Timothy — a young man — to remind the church of the way of life he taught everywhere (1 Corinthians 4:17). That was the frame for the whole conference: young people sent back into their own cities carrying the same reminder."]},
+
+    {h:"The research he opened with",
+     p:["He cited a study released in June 2026 on the big questions occupying Gen Z and Gen Alpha in the United States, and said reading it troubled him. Four questions kept surfacing: whether their generation has a future, whether truth can be known, whether anyone genuinely cares about them, and whether God is real.",
+        "He grouped those as four hungers — stability, truth, belonging and faith — and noted a striking finding: a large majority of teens were unsure whether their own parents would back them in what they chose to do.",
+        "His response to the room was direct rather than statistical: you are cared for, you are God's special treasure to the church, and you were never meant to carry this alone — that's what ministers, leaders and parents are for."],
+     note:"The figures were quoted quickly in the recording and are hard to transcribe precisely. Worth checking against the original study before repeating specific percentages."},
+
+    {h:"Dunamis — what kind of power",
+     p:["The Greek word behind \"power of God\" is <em>dunamis</em>: ability, might, miraculous strength. He unpacked it as administrative power over all things, miraculous power to bring change, and the capacity to transform.",
+        "His working example was Ephesus — when the word of God grew mightily there, people brought out and burned their sorcery books. Not because they were argued out of it, but because something stronger had arrived."]},
+
+    {h:"The four things the gospel does, in full",
+     p:["<em>Repentance</em> — turning off the path. He anchored it in Proverbs 4:14–15: don't set foot on the path of the wicked, avoid it, turn from it, go your way. His summary line: the gospel dethrones sin and enthrones God, and sets you instead on the highway of holiness.",
+        "<em>Redemption</em> — someone deserves judgment, and another steps in and pays. Jesus settled the debt of our sin, and those who receive Him are given the right to become children of God. His application: you weren't born because your parents wanted a child, but because God had an assignment for you.",
+        "<em>Restoration</em> — being returned to your original position. Adam and Eve lost the garden; God's stated intent was always to bring people back to a place of honour. Christ is seated at the right hand of God, and believers share in that inheritance.",
+        "<em>Resurrection</em> — the gospel isn't only for the living. Drawing on 1 Corinthians 15:52–55, he pointed to the trumpet, the perishable clothed with the imperishable, and death swallowed up in victory. Hence, he said, we fear no death."]},
+
+    {h:"The eight qualities, unpacked",
+     p:["Taken from <em>The Man God Uses</em> by Henry and Tom Blackaby: holiness, a pure heart, a contrite heart, the fear of God, faithfulness, obedience, seeking and loving God, and becoming a servant.",
+        "On holiness he was careful: it means being set apart, and no one manages it on their own — it takes the Spirit's power, which is why the conference existed. He read Isaiah 35:8–10 on the highway of holiness, the road the unclean don't travel and the redeemed walk home on, and illustrated it with the open highway he'd driven in from Edmonton.",
+        "A contrite heart he defined simply as humble and repentant — and told the young people that the single thing most likely to change their lives is to humble themselves before God and let Him do the lifting."]},
+
+    {h:"On saying yes before you feel ready",
+     p:["He closed on a frustration: leaders quote \"let no one despise your youth,\" then hand young people an opportunity and watch them run from it.",
+        "His counter-charge was to take the role, and to make your mistakes on the pulpit — go home, study the passage again, come back better. He pointed out that for many now in ministry, even closing a service in prayer was once difficult. The message you carry isn't yours anyway; it's the gospel, and the power belongs to it."]}
+  ]
+},
+{
+  id:"s2", theme:"Transformation", day:"Day 2 — Morning Session",
+  title:"The Gospel: The Powerful Transformation",
+  speaker:"Guest Speaker", role:"",
+  flag:"name not stated in the recording — confirm before sharing",
+  anchor:"Acts 8:4–8 · Colossians 1:3–8",
+  overview:"This session traced how the Holy Spirit turned one deacon's obedience — Philip preaching in Samaria — into citywide transformation. It moved from the source of power (the Spirit, not status) to the visible evidence of it, and closed with practical steps for receiving it.",
+  lessons:[
+    "Philip was a <em>deacon</em>, not an apostle, when God used him to bring revival to Samaria. Spirit-empowered impact doesn't require a title or an office.",
+    "The Spirit's work shows up in two categories: character change (the fruit of the Spirit) and charismatic works (the gifts, 1 Corinthians 12). Neither one alone is the whole picture.",
+    "Deliverance is treated as a normal, expected part of ministry — not spectacle, and not something to get curious about or entertained by.",
+    "Faith and love aren't purely internal. Paul says he <em>heard</em> of the Colossians' faith, meaning it was visible in what they actually did.",
+    "The impact wasn't only individual — the text says there was great joy <em>in that city</em>. Community-wide, not just personal.",
+    "A long list of paired transformations pictured what the Spirit does: thief to accountant, addict to counsellor, liar to trustworthy leader, drunkard to responsible adult, angry person to peacemaker, persecutor to preacher.",
+    "Four practical steps to receive this power: follow the Spirit, seek His guidance, ask with desperation, and don't grieve Him by living in sin."
+  ],
+  quotes:[
+    "You don't need a title to do the works of the Holy Spirit.",
+    "The Holy Spirit is for everybody — you don't need money. If you are ready to receive, God will pour upon you.",
+    "A persecutor becoming a preacher — the person who once destroyed lives becomes someone who builds.",
+    "The Holy Spirit is the difference maker."
+  ],
+  refs:["Acts 8:4–8","Acts 8:16–17","Colossians 1:3–8","1 Thessalonians 1:4–5","1 Corinthians 12","Ephesians 4:30","Acts 2"],
+  refNote:"",
+  reflect:[
+    "Where have you assumed you need a title, platform or position before God can use you?",
+    "Which of the transformation pairs describes a change you need — or one you've already lived?",
+    "Is there anything in your life right now that could be grieving the Holy Spirit?",
+    "What would it take for your faith to become as visible in action as the Colossians' was?"
+  ],
+  acts:[
+    "Identify one person who needs to hear the gospel, and take one concrete step toward telling them this month.",
+    "Actively listen for the Spirit's guidance on one specific decision you're facing right now.",
+    "Name and let go of one habitual sin that has been dulling your sensitivity to the Spirit.",
+    "Find one visible way to put your faith into action this week — a step, not just a belief."
+  ],
+  big:"You don't need a title for God to use you — one deacon's obedience turned a whole city around.",
+  quiz:[
+    {q:"What position did Philip hold when revival broke out in Samaria?",
+     a:["He was a deacon","He was an apostle","He was the high priest","He held no role in the church"],
+     c:0, why:"He wasn't chosen as an apostle. He was made a deacon — which is exactly why the story matters."},
+    {q:"How did Paul know about the Colossians' faith?",
+     a:["He heard of it — it was visible in what they did","They wrote to him about it","An angel told him","He assumed it"],
+     c:0, why:"Paul says he <em>heard</em> of their faith. You can't hear something that stays inside a heart — it had become visible."},
+    {q:"According to the session, what should you avoid doing during deliverance?",
+     a:["Interrogating or conversing with the demon","Praying out loud","Using the name of Jesus","Laying on hands"],
+     c:0, why:"His strongest practical warning: demons lie, so don't get drawn into conversation. The job is to cast it out, not to hold an interview."}
+  ],
+  deeper:[
+    {h:"Philip's résumé problem",
+     p:["The detail that carried the message: when appointments were being made in the early church, Philip wasn't chosen as an apostle. He was made a deacon. Then persecution scattered the believers and he ended up in Samaria — the same region Jesus had passed through.",
+        "He preached Christ crucified there, and crowds gathered. But the speaker drew a sharper distinction than the crowds: it's easier to gather people than to hold their attention. Luke's text says the Samaritans listened <em>intently</em>, because they were eager."]},
+
+    {h:"What real attention looks like",
+     p:["He described it concretely: people queuing long before the preacher arrives, sleeping in tents where the meetings are held, still praying at the altar after the service has closed, a room so quiet that anyone whose phone makes a noise feels guilty.",
+        "His live example was Pentecost 2026 in Germany, where he watched young people from Switzerland holding hands and praying with an intensity that couldn't be stopped — nobody had called them to the altar. He said it gave him goosebumps, and that watching them made you want to pray whether you'd planned to or not.",
+        "His charge to Regina followed from it: come with intent and eagerness, not to see what the city looks like, but determined not to leave the way you came."]},
+
+    {h:"Deliverance, taught carefully",
+     p:["This was the most technical section. His position: Jesus gave authority to cast out demons to the disciples and to us, and there are occasions where it simply needs to be done — in believers or unbelievers.",
+        "He noted that demons are described as residing in various places — locations, objects, animals (the pigs of Luke 8:33), and in human bodies in the form of sickness (Luke 11:14). On the disputed question of believers, his answer was that the born-again spirit is eternally saved, while the soul and body are still being saved — and those parts can be influenced or harassed.",
+        "The strongest practical warning was against spectacle. Don't interrogate a demon, don't get drawn into conversation with it — they lie, and if you get interested in the exchange instead of finishing the job, you'll be deceived. The manifestations people find dramatic aren't the point; casting it out is.",
+        "He added a note for ministers: a pattern of only preaching and dismissing, with no time given to praying for people, isn't good enough."]},
+
+    {h:"Faith you can hear",
+     p:["His hook in Colossians was a small word: Paul says he <em>heard</em> of their faith. How do you hear something that lives only in a heart? Because it had become visible in what they did.",
+        "He listed what that looked like in practice — someone believing God for a child doing what was needed; someone wanting a job putting in applications; someone wanting admission preparing a good one; someone believing for a financial breakthrough giving and trusting God. Faith that motivates you to move, not just to agree.",
+        "The love side was equally concrete: they encouraged each other, refused discrimination, listened, prayed for one another, showed up in good seasons and bad. And the motivation underneath both was hope of what God had reserved for them — because there is no hatred, no discrimination and no division in heaven, they lived that way ahead of time."]},
+
+    {h:"When one conversion changes a city",
+     p:["Simon the sorcerer was locally famous — people called him the great power of God. His conversion is what moved the whole city.",
+        "The speaker translated it: imagine the mayor of this city converted. Imagine the prominent atheist professor everyone on campus knows walking into PENSA. The campus would be on fire. He prayed specifically for key figures in workplaces, campuses and communities.",
+        "Then the second effect — there was joy in the city. He set that against what actually sits over cities now: clouds of depression and suicidal thoughts among young people, widespread fear and anxiety about the future, occult activity on university campuses. He named cities one by one — Regina, Saskatoon, Edmonton, Calgary, Lethbridge, Vancouver, Nanaimo, Victoria — asking for joy over each, drawing on Isaiah's promise of beauty instead of ashes."]},
+
+    {h:"The full transformation list",
+     p:["He ran a long list of before-and-afters as a picture of what the Spirit does with a life:"],
+     list:["the thief who becomes an accountant","the addict who counsels others out of addiction",
+           "the prostitute who becomes a mentor","the bully who becomes a protector",
+           "the liar who becomes a trustworthy leader","the drunkard who becomes a responsible parent",
+           "the angry person who becomes a peacemaker","the gambler who becomes disciplined with money",
+           "the criminal who becomes a community leader","the hopeless student who becomes a professor",
+           "the selfish businessman who becomes a philanthropist","the persecutor who becomes a preacher — Saul becoming Paul",
+           "the tax collector who becomes a disciple","the doubter who becomes a witness",
+           "the prodigal who comes home","the captive who is set free","the sinner who becomes a saint"],
+     p2:["On anger he borrowed a line from Spurgeon: when a man said he had lost his temper, the reply was that he hoped he'd lose it permanently.",
+         "He also told a university story behind the gambling entry — a student sent with his school fees got drawn into all-night card games, lost everything, then told people on campus he'd misplaced the money, and others went looking for what he had already gambled away."]},
+
+    {h:"How to actually receive this",
+     p:["<em>Follow the Spirit.</em> Those led by the Spirit are the sons of God; even Jesus, full of the Spirit, was led by Him. His aside: plenty of people follow celebrities on TikTok, Facebook and Instagram — follow the Spirit instead.",
+        "<em>Seek His guidance and listen.</em> Jesus said the Spirit of truth guides into all truth and tells of things to come. His pointed application: everyone wants to know the future, but you don't need to go enquiring from a medium the way Saul did.",
+        "<em>Ask desperately.</em> On the last day of the feast, Jesus stood and shouted the invitation. Be serious when you pray; don't spend the time watching other people.",
+        "<em>Remember it's a gift.</em> Repent, be baptised, receive the gift of the Spirit — the promise is to you, your children, and those far off. If someone charges you for a gift, it stops being one. All that's required is readiness.",
+        "<em>Don't grieve Him.</em> Ephesians 4:30. He tied it to Ezekiel's picture of the heart of stone being replaced with a heart of flesh — let go of the sin, and God pours out."]}
+  ]
+},
+{
+  id:"s3", theme:"Power", day:"Day 2 — Night of Power",
+  title:"The Holy Spirit at Work in You",
+  speaker:"Apostle George Amoah", role:"",
+  flag:"confirm spelling of name",
+  anchor:"1 Thessalonians 5:23",
+  overview:"The evening session was built around the believer as a three-part being — spirit, soul and body — and worked through how the Spirit operates in each. Apostle Amoah separated divine enablement, empowerment and deliverance, then walked all twelve components with practical application, closing on strongholds and deliverance.",
+  lessons:[
+    "Enablement, empowerment and deliverance are related but distinct: enablement is supernatural strength to do the work, empowerment adds God-given authority to act, deliverance is rescue from bondage.",
+    "Power and authority are not the same thing. You can have the ability without having the God-given right to use it.",
+    "You are a tripartite being — body (five senses), soul (mind, will, intellect, emotions) and spirit (conscience, fellowship, intuition).",
+    "What you let into your senses — what you watch, listen to and touch — directly shapes your spiritual life and either opens or closes doors.",
+    "Deliverance starts with you: you cannot go and deliver someone else unless you have been delivered yourself.",
+    "Specific doors were named as points of access for the enemy — pornography, occult involvement, unforgiveness, worldly entertainment, and sexual sin outside marriage.",
+    "Believers hold real weapons: the name of Jesus, His blood, the word of their testimony, an obedient life, praise and worship, and prayer in the Spirit.",
+    "You can tell the two voices apart by their fruit. God reassures, leads, forgives, calms, comforts. The enemy torments, threatens, confuses, condemns, stresses."
+  ],
+  quotes:[
+    "You can have power and not have authority.",
+    "A dead man cannot wake up another dead man.",
+    "The voice of God reassures you; the devil's voice threatens you. The voice of God enlightens you; the devil's voice confuses you.",
+    "Satan's favourite game is identity theft — he wants you not to believe who you are in Christ.",
+    "How bad do you want your freedom, and how bad do you want to stay free?"
+  ],
+  refs:["1 Thessalonians 5:23","Acts 1:8","Philippians 4:13","Zechariah 4:6","Job 31:1","Romans 12","Ephesians 4:30"],
+  refNote:"",
+  reflect:[
+    "Where do you have ability or desire — \"power\" — but lack God-given authority or right timing?",
+    "Of the five senses, which is currently the most open door in your life?",
+    "Which voice have you been listening to more this year, in one specific area of decision-making?",
+    "What would it mean for you, like Job, to make a deliberate covenant about something you watch, hear or do?"
+  ],
+  acts:[
+    "Make one specific, written commitment about something you watch, listen to, or scroll.",
+    "Shut one door from the strongholds list this week — delete an app, end a habit, ask someone for accountability.",
+    "Start or restart a daily practice of prayer or worship as a deliberate weapon against discouragement.",
+    "Write down one area where you've confused ability with authority, and pray about God's timing."
+  ],
+  big:"You are spirit, soul and body — and whichever one you let rule decides whether you walk in power or in bondage.",
+  quiz:[
+    {q:"What's the difference between power and authority?",
+     a:["Power is the ability to act; authority is the God-given right to","They mean the same thing","Authority is physical, power is spiritual","Power is for leaders, authority for members"],
+     c:0, why:"His illustration: a strong man still can't enter a house he hasn't been given the keys to."},
+    {q:"What are the three parts of the human spirit?",
+     a:["Conscience, fellowship, intuition","Mind, will, emotions","Faith, hope, love","Sight, hearing, touch"],
+     c:0, why:"Mind, will, intellect and emotions belong to the soul. The spirit holds conscience, fellowship and intuition."},
+    {q:"How can you tell God's voice from the enemy's?",
+     a:["God reassures and leads; the enemy threatens and confuses","God is always loud","God only speaks through leaders","The enemy never speaks to believers"],
+     c:0, why:"He closed on a paired list: God reassures, enlightens, forgives and comforts. The enemy threatens, confuses, condemns and worries."}
+  ],
+  deeper:[
+    {h:"Three words, carefully separated",
+     p:["<em>Divine enablement</em> — God granting supernatural strength, wisdom and power to carry out His specific purposes: overcoming obstacles, living righteously, doing things beyond ordinary human limits. He included what he called active grace: not only saved by grace, but living the Christian life by grace. His illustration was Paul's own arc, from the wretched man of Romans 7 who couldn't do the good he wanted, to \"I can do all things through Christ who strengthens me.\"",
+        "<em>Divine empowerment</em> — the same strength, plus <em>authority</em>. This was his sharpest distinction. A physically powerful man still can't enter a house he hasn't been given the keys to. Power is the ability to act; authority is the right to. As an ambassador of Christ, he said, you carry heaven's badge.",
+        "<em>Deliverance</em> — rescue and liberation from bondage, and the one that requires something of you first. A dead man can't wake another dead man; if you're still entangled yourself, you can't pray anyone else free. He tied it to Jesus in Luke 4 proclaiming liberty and the acceptable year of the Lord — the jubilee. You don't count off forty-nine years and wait. Today is the jubilee."]},
+
+    {h:"Why twelve parts, and why that number",
+     p:["Twelve, in his reading, stands for government — twelve gates, twelve tribes, twelve apostles, twelve foundations, twelve kinds of fruit on the tree of life. Man was made to establish God's government on earth, which he broke down as administration, authority, jurisdiction, dominion, supremacy and command.",
+        "The piece he pressed hardest was sovereignty — freedom from external control. His application: no demon and no witch should be operating your life by remote control from somewhere else."]},
+
+    {h:"The body: five senses, five open doors",
+     p:["The body is what makes contact with the physical realm — a shell the spirit lives in, and the instrument the spirit finds expression through."],
+     list:["<em>Sight</em> — physical vision and spiritual understanding. He used Elisha's servant, panicking at the surrounding army until his eyes were opened to see who was actually with them. His question to the room: what have you been looking at on your phone lately?",
+           "<em>Hearing</em> — bound up with obedience; \"he who has ears, let him hear.\" What you listen to invites influence. He was specific about music that isn't scriptural, about what you watch before bed and the dreams that follow, and about Elijah hearing the sound of rain before there was a cloud and sending his servant back seven times.",
+           "<em>Smell</em> — fragrance and character. Prayer as incense, the scent of Jesus surrounding you. His question: when God looks at you, what does He smell?",
+           "<em>Taste</em> — experiencing and discerning. Taste and see that the Lord is good — set against people tasting what belongs to marriage before they're married.",
+           "<em>Touch</em> — connection, healing and compassion. Jesus touched people; God wants to use your hands. He was blunt about the inverse: touch that belongs to a marriage you're not in undercuts the power you're asking for."],
+     p2:["He also applied hearing to marriage decisions, and told the room about roughly seventeen marriages among young people he knew in Toronto between 2010 and 2012 — more than half of which collapsed. His conclusion was that failing to hear from God is how people marry the wrong person and then blame the church for who they met there."]},
+
+    {h:"The soul: mind, will, intellect, emotions",
+     p:["<em>The mind</em> is what scripture often calls the heart — the seat of thought, feeling and choice. His key point: your spirit is born again, your mind is not. It has to be renewed daily through scripture and meditation, or you're left with a carnal mind. He named the camp version of the problem directly: arriving at a conference with the mindset of finding a boyfriend or girlfriend.",
+        "<em>The will</em> is moral choice. God reveals His will in His written word; where it isn't spelled out, the recreated spirit connected to the Spirit gets the guidance. He used the example of choosing between two people and waiting for confirmation.",
+        "<em>The intellect</em> is the capacity to reason — a sacred gift, and the thing that separates us from animals operating on instinct. He wants it engaged, not bypassed: love God with all your mind.",
+        "<em>The emotions</em> exist because God has them — He laughs, He grows angry, and Jesus wept. Before the fall there was no fear, hatred, regret, guilt, shame, sadness or anger; those arrived with sin. When the Spirit comes, the positive ones resurface — joy with nothing in the bank, joy after a layoff. His illustration: two students, one with a B+ who was miserable because he wanted an A, and one with a D who was whistling because he'd already decided to resit. Hope was the difference."]},
+
+    {h:"The spirit: conscience, fellowship, intuition",
+     p:["<em>Conscience</em> — the voice of your own spirit, the internal sense of right and wrong God placed in every person. He offered it as the answer to a common question about those who lived before the law: conscience is what they were measured by.",
+        "<em>Fellowship</em> — the capacity to worship. God is spirit, and those who worship Him must worship in spirit and truth. Sin severed that connection; the new birth restores it.",
+        "<em>Intuition</em> — discernment. Even people who aren't born again have a version of it: the sense that told them not to take a trip. When the Spirit comes, he said, that faculty is upgraded and refined, and what surfaces is the word of knowledge, the word of wisdom and the discerning of spirits."]},
+
+    {h:"The order that decides everything",
+     p:["This was the structural payoff of the whole message. Let the body rule and you end up a slave — to sin, and to whoever is behind it. Let the spirit take precedence and it influences the soul, and the two together bring the body along. That, he said, is when power is generated.",
+        "He listed what the Spirit then does in a believer: indwells and seals permanently, regenerates, baptises into the body of Christ, gives assurance, teaches and guides into truth, produces fruit, empowers witness, helps in prayer when we don't know what to ask, sheds God's love abroad in our hearts, strengthens the inner man, confirms adoption, gives liberty rather than bondage, distributes gifts, forms Christlike character, comforts and intercedes."]},
+
+    {h:"The young lion",
+     p:["Reading Psalm 91, he drew attention to the lion, the <em>young</em> lion, the viper and the dragon — noting that the serpent of Genesis has become the dragon of Revelation, and is still working.",
+        "The young lion was his image for the small thing you're confident you can stop whenever you choose: the relationship, the weed, the vaping, the quiet rebellion. Left alone, it grows.",
+        "His warnings came from three men who should have been safe: Cain, told plainly that sin was crouching at his door and still going through with it; Saul, on whom the Spirit came and who ended by taking his own life; and Judas, an apostle who walked with Jesus for three and a half years and was still entered by Satan. If it could reach an apostle, he said, don't take your Christianity lightly."]},
+
+    {h:"Shutting the doors",
+     p:["He treated the eye as a gate into the soul rather than just an organ — what you watch gets in and works on you. Job's covenant with his eyes was the model, and his question back was simply: what covenant have you made?",
+        "The doors he named: internet pornography, pornographic films, temptations entertained in the mind, drinking, drug use, fornication, adultery, and premeditated sin — the kind you arrange in advance and then describe as an accident. He also included words: curses spoken over you by others, and the ones you speak over yourself.",
+        "The strongholds list he closed on: personal and generational sin, curses, occult involvement and witchcraft, false religion, alcohol, smoking, marijuana, pornography, worldly music, sex outside marriage, incest, rape, unforgiveness and anger.",
+        "And the weapons on the other side: the name of Jesus, the word of God, the blood of Jesus, the word of your testimony, an obedient life, praise and worship, prayer in the Spirit, fasting, intercession and perseverance."]},
+
+    {h:"Telling the two voices apart",
+     p:["He ended with a paired list that's worth keeping somewhere you'll see it. God's voice reassures, leads you beside still waters, enlightens, forgives, calms, encourages and comforts. The enemy's voice torments, pushes you toward danger, confuses, condemns, stresses, discourages and worries you.",
+        "His closing framing: life is beautiful but it ends, you have a purpose to finish, and whatever you're carrying, the Spirit is the helper. The question he left the room with was whether people had come for an outing or for an encounter."]}
+  ]
+},
+{
+  id:"s4", theme:"Identity", day:"Panel Discussion",
+  title:"Navigating Our Identity as Christians",
+  speaker:"Panel discussion", role:"Five panelists — pastors, a pastor's wife, a deacon and a music director",
+  flag:"",
+  anchor:"Identity · relationships · boundaries",
+  overview:"Unlike the sermons, this was a moderated Q&amp;A on how young Christians hold onto identity while dating, forming friendships and living online — including live audience questions on boundaries, money in relationships, parental pressure, and how to handle harm caused by church leaders.",
+  lessons:[
+    "Primary identity comes before every other label: child of God first, then gender as created, then family. Not career, not relationship status, not what others say.",
+    "You can engage people who don't share your faith — at work, in friendship — without being judgmental, as long as you don't quietly lose your own values doing it.",
+    "There's a gap between <em>knowing</em> who you are and being <em>convinced</em> of it. Conviction is what holds under pressure.",
+    "Weigh character above charisma. Someone spiritually impressive in public but lacking obedience and self-control in private is a warning sign, not a green flag.",
+    "Boundaries — physical, emotional and time-based — get set <em>before</em> temptation arrives, not negotiated in the moment. Joseph was the model.",
+    "The framework taught is courtship, not open-ended dating: deliberate, purposeful, and aimed at marriage.",
+    "Social media constantly resets expectations of what a relationship should look like. The panel's answer was for healthy couples to visibly model the alternative rather than leave that space empty.",
+    "Harassment or emotional harm caused by a church or youth leader should be reported to pastoral leadership immediately — never normalised, minimised or hidden.",
+    "Where parents haven't modelled affection, spiritual mentors can serve as the example — with the goal of breaking the cycle for the next generation."
+  ],
+  quotes:[
+    "Identity in Christ is not fluid — it doesn't change with the wind or with the generations.",
+    "I see boundaries as guards, not walls.",
+    "You don't set boundaries when you find yourself in the temptation — you set them before the temptation comes.",
+    "If this person loves God and not you, you should go and marry God.",
+    "Courtship is a deliberate, controlled step towards marriage.",
+    "Any person who tries to do that to you is not interested in your future — they just want to taste the fruit before harvest time."
+  ],
+  refs:["Genesis 1:27","2 Corinthians 6:14","Colossians 4:6","Genesis 39","Proverbs 18:22","Romans 8:38–39"],
+  refNote:"This session had several speakers with overlapping turns in the recording, so quotes are attributed to the panel as a whole rather than to individuals.",
+  reflect:[
+    "What labels do you lead with when you describe yourself — and where does \"child of God\" actually rank?",
+    "Do you know what you believe, or are you convinced of it? What situation would reveal the difference?",
+    "What boundary do you need to set now, before the situation that tests it arrives?",
+    "If you're in — or hoping for — a relationship, are you weighing character or charisma more heavily?"
+  ],
+  acts:[
+    "Write down two or three concrete boundaries — physical, emotional, time — before you need them.",
+    "If you're in courtship, have the explicit conversation about whether it's oriented toward marriage.",
+    "If you or someone you know has experienced harm from a church leader, take the step of reporting it rather than carrying it alone.",
+    "Identify one couple or mentor whose relationship models what you want, and ask them how they built it."
+  ],
+  big:"Know who you are before you try to build with someone else — and set your boundaries before you need them.",
+  quiz:[
+    {q:"How did the panel describe boundaries?",
+     a:["Guards, not walls","Walls that keep everyone out","Rules only for young people","Optional if you're serious about God"],
+     c:0, why:"Walls say no to everything. Guards protect something worth protecting."},
+    {q:"When should boundaries be set?",
+     a:["Before the temptation comes","Once you feel tempted","After the first mistake","When your pastor tells you to"],
+     c:0, why:"Joseph had already decided before the moment arrived — which is why he had an answer ready."},
+    {q:"Character or charisma — which did the panel say sustains a relationship?",
+     a:["Character","Charisma","Both equally","Neither — only prayer does"],
+     c:0, why:"Someone can pray for hours in public and still fold in private. Character is what holds."}
+  ],
+  deeper:[
+    {h:"How to actually name yourself",
+     p:["One panelist's answer worked outward in order. First, child of God — because Christ died, was buried and rose for your sake, that's the identity everything else hangs off. Then as a man or a woman, as created. Then family: the parents you come from.",
+        "He added the version he teaches his own children, framed around walking past homeless people and those struggling with addiction in the community. Three things: love Jesus Christ, love and obey your parents, and take your studies seriously. Simple enough for a child, and enough to build a life on."]},
+
+    {h:"Being among people who don't believe what you believe",
+     p:["One panelist's answer avoided both extremes. You engage — at work, in your social circle, among friends. You ask questions. You build trust and share the gospel gradually rather than slamming the door, because a shut door ends any chance of influence.",
+        "But he attached a hard caution: don't lose your own values or fundamental principles in the process of getting close to people. Lose those, and you haven't reached them — you've simply become one of them."]},
+
+    {h:"Knowing versus being convinced",
+     p:["One panelist built this on Paul's line that he was <em>convinced</em> nothing could separate him from the love of God. Knowing something because your pastor said it, or because you read it, is not the same as conviction. When you're convinced, it's in your heart and it's part of you — and it doesn't shift easily under pressure.",
+        "Her practical extension: identity in Christ isn't fluid, so if I know I represent God, I represent Him inside the relationship too. That shows up in how I speak to friends — words seasoned with salt — and it shows up the same way at work. She tied the benefits to obedience: being willing and obedient is what makes the good of relationships, marriage and friendship actually reachable."]},
+
+    {h:"Looking outside the faith",
+     p:["One panelist gave the bluntest answer of the session. Relationships are a lot of work and they demand a lot. Starting with someone who doesn't see things the way you see them, doesn't reason the way you reason and doesn't believe what you believe is, in her words, setting up failure you'll understand later.",
+        "Her conclusion: as a child of God you have no business going outside your faith to find someone to build with. Do not be unequally yoked."]},
+
+    {h:"\"Mr Believer\" versus \"Mr Good\" — the most useful exchange",
+     p:["Someone asked anonymously about being torn between a man who is caring and attentive but not obviously devout, and a man who is spiritually serious but has no idea how to be in a relationship.",
+        "The response was more nuanced than a simple rule. Yes, your first filter is a committed, identifiable, serious believer — not just someone who calls themselves Christian. But then he turned it: if this person loves God and doesn't love you, you should go and marry God. You are entering a relationship to be loved, so you want someone who loves Christ <em>and</em> has an eye for you. If the person is genuinely a believer but not yet committed, and it looks like they'd come along with you, there's nothing wrong with that.",
+        "Another panelist added the practical side: it's easier to teach a believer how to love than to bring an unbeliever to Christ and then up to your spiritual level. But she warned women against making men their projects — trying to date someone into salvation. Christ has already done that job; you don't need to carry it. And the person has to actually be willing to learn."]},
+
+    {h:"Charisma versus character",
+     p:["This was one panelist's sharpest contribution, and she aimed it inward at her own church culture. There is charisma, and there is character. Many can pray at length and still fold the moment pornography is in front of them — she named it directly, and named it as widespread among young people.",
+        "Her reframing of prayer: what prayer does is give you the capacity to be obedient to the word. So if you lead praises, you're involved in everything at church, and you still can't obey the plain instructions — don't be rude, let your words be seasoned with salt, be slow to speak — then being charismatic forfeits the point. We're called to be like Christ in character, not only in demonstration.",
+        "Her conclusion for anyone choosing a partner: take character over demonstration, because character is what sustains the relationship."]},
+
+    {h:"Boundaries, in practice",
+     p:["The framing offered — guards, not walls — came with three categories. <em>Emotional</em>: people so dependent that they can't believe their own prayers count unless their partner prays too. <em>Time</em>: talking six hours a day from the start sets a standard you can't sustain, and quietly eats the hours you'd have prayed in. <em>Physical</em>: the obvious one.",
+        "His governing principle: you don't set boundaries once you're in the temptation. Joseph had already decided before the moment arrived — that's why he had an answer ready.",
+        "The practical examples were unusually specific. Of all the films to watch together alone, not the romantic one. Not sitting on someone's bed. Not sharing a blanket. Instead: watch it in the living room, invite a roommate, pick an action film.",
+        "A panelist added accountability from his own courtship. He and his wife had an accountability partner checking in on them, and a friend who would come along as a third person to the cinema — a favour he later returned when that friend met someone. They didn't go places alone at night, and they agreed explicitly on what wouldn't happen. His summary: hormones are not friendly, and your teenage years are when they're loudest."]},
+
+    {h:"Affection that isn't physical",
+     p:["One panelist's answer to the worry that boundaried relationships are cold: affection is something built in the heart, not only through touch. Words spoken to someone can settle them even when you're nowhere near them — a restless heart can be brought to rest by what you say. His conclusion was that couples need to work on how they use words.",
+        "He also warned about imagination — that rehearsing something mentally makes acting it out far more likely — and suggested words of affirmation as the deliberate alternative."]},
+
+    {h:"The fear underneath the question",
+     p:["One panelist identified what was really being asked: if we hold these lines now, will we be able to enjoy marriage later?",
+        "She named the fear as the same lie told in the garden. Everything was permitted except one thing, and the enemy's work was to present that single restriction as though something wonderful was being withheld. The modern version is: drop the boundaries, or you'll miss out.",
+        "Her correction on status was firm — engagement changes nothing. Fiancé, boyfriend, girlfriend: in the eyes of God you are still single. Marriage is the only line that actually moves.",
+        "Then her own testimony, which landed the point better than the argument. On her wedding night someone called her by her married name and she corrected them out of pure habit. It took time before she was even comfortable getting dressed with her husband in the room — because that was the standard they had built. Eleven years on, she said, it isn't like that at all. Her closing thought: if you experiment beforehand while leaving God out, and then want His presence in your marriage, you left Him a long way back."]},
+
+    {h:"Social media and where influence now comes from",
+     p:["Another panelist's starting point: everyone here is being influenced, right now, whether they notice or not. Her own shoes or hair might be doing it in this room. The difference from previous generations is reach — they were shaped by their immediate community, and you can be shaped by someone in Bangladesh or Ghana you'll never meet.",
+        "What that's shifting is expectation: what a relationship should look like, what marriage should look like, even what your identity should be. When couples your age are posting getaways and you're being asked to wait, the pressure to push your own relationship somewhere it isn't ready to go is real.",
+        "Her charge went to the leaders rather than the teenagers. It's far easier to absorb something from a person in close proximity than from a screen — so if there are no visible, admirable Christian relationships nearby, the internet fills the gap by default. She pointed out a couple in the room holding hands the previous day as exactly the kind of thing young people need to see.",
+        "Her warning about role models: once you make someone a role model you can't pick and choose which parts of them influence you. It arrives as a package.",
+        "A further challenge to the room: the \"day in my life\" format only shows one kind of life because Christians aren't posting theirs. If you have a platform and followers, show the mornings, the devotions, the praying. Make it visible."]},
+
+    {h:"Money in relationships",
+     p:["Someone asked how much you should invest in a person financially before moving to the next stage. The answer was zero — and the reasoning was in the word. Investment implies you expect a return.",
+        "The reframe: the question should be how much you can <em>give</em>. God so loved that He gave; love gives. He described saving small amounts as a student at Legon so he could buy things for the woman he was courting — done out of an abundance of love, with no ledger.",
+        "The specific danger he flagged was paying for someone's education on the understanding they'll marry you afterwards. He called that arrangement dangerous outright. His summary: we don't invest, we give."]},
+
+    {h:"Parents, timing, and the sudden switch",
+     p:["The question named a real pattern: parents forbid dating entirely, then somewhere around twenty-five start asking why you're not married.",
+        "One panelist refused a universal age, because it depends on maturity — mental, spiritual and physical. She married younger than most people would now advise and doesn't regret it, because she was ready to settle down, not because she knew everything about marriage.",
+        "Her clarifying rule is the most quotable thing in the session: the only reason a Christian dates is with a view to marriage. She'd ask young people whether they were ready to marry, they'd say no, and her follow-up was simply — then why are you dating?",
+        "She was sympathetic about the double standard, noting that young women get far more pressure toward abstinence and then far more pressure toward marriage than young men do. Her advice to parents and leaders was to have real conversations and educate young people rather than only prohibit. And if you're not ready, the instruction was constructive rather than restrictive: build yourself as a single person until you are."]},
+
+    {h:"What the church does and doesn't do for single people",
+     p:["Someone asked, essentially, whether the church helps single people meet each other.",
+        "One panelist answered with a laugh — the church doesn't run matchmaking shows. But it does create the settings. He cited an overseer who met his wife through an online Bible study run by the Red Deer area, and people who met at the previous national youth camp and are now married. Conferences like this one are legitimate places to meet people and have open conversations.",
+        "Another panelist disagreed in part, and her objection was practical: walking up to someone and asking whether they're single is genuinely strange, and some people's answer depends on who's doing the asking."]},
+
+    {h:"The case for understanding over spirituality alone",
+     p:["A panelist offered his own marriage as a counterweight to the assumption that the most spiritual candidate is automatically the right one.",
+        "He had known a woman who was a formidable prayer warrior — he mentioned forty days and nights of prayer — and said that if he'd been choosing purely on spiritual credentials, knowing he was heading into ministry, he'd have chosen her.",
+        "But what he came to value most in his wife was that she <em>understands</em> him. She can predict his answer to a question before he gives it. His phrase: she may not always be in the pulpit, but she is his prophetess, because God made her to understand who he is, and she has shaped who he became.",
+        "His advice: don't decide on the spiritual dimension alone. Look for the understanding that will actually shape your life."]},
+
+    {h:"When your parents never modelled affection",
+     p:["The final audience question asked how you're supposed to know what a godly marriage looks like when your parents barely show affection to each other — and why African parents so rarely hug or kiss in front of their children.",
+        "One panelist: don't build your thinking around what you didn't get. Find couples who do model it and study those. Our parents were raised that way and there's limited value in trying to relitigate it.",
+        "Another panelist: parents do what they saw, so this may just be a conversation nobody has had. Tell them plainly it would be good to see them hold hands. He believes we model what the people closest to us do.",
+        "Another panelist: the responsibility sits with the older ones in the room to be intentional models, so younger people aren't learning it from strangers online.",
+        "Another panelist: what your biological father doesn't give you, God often supplies through a spiritual father — which is why so many people cite their pastor's marriage as the example they're working from.",
+        "A panelist closed it generously: some of that restraint was protective, an attempt to keep children from becoming promiscuous. But he turned it forward — the real question is whether your own children will be asking this same question in twenty years. He kisses his wife when he leaves for work, and his eleven-month-old has started asking for one too."]},
+
+    {h:"The closing teaching on courtship",
+     p:["The senior minister closed the session with the church's formal position. Dating is a westernised word that doesn't appear in scripture; what the church holds to is courtship.",
+        "He defined dating literally — a time set aside to go somewhere for a purpose — and then pressed the purpose. What is the purpose of sitting in a dark cinema with someone you aren't married to? As a father of daughters, he said, that's the question he'd ask.",
+        "Courtship he defined as a deliberate, controlled step toward marriage between a mature man and a mature woman, entered with marriage as the intended end. If you have no idea it's heading there, you're doing it wrong. Within it, there are still boundaries — and he named locations and late hours specifically.",
+        "On sex before marriage he was serious rather than scolding: joining yourself to someone creates a tie, and if that person doesn't marry you, you carry the baggage and the emotional trauma into the marriage you eventually have. He attributed some marriage failures directly to that.",
+        "On due diligence: back home the church requires medical tests before marriage — HIV, and sickle cell status, because two carriers are advised not to marry for the children's sake. Privacy laws prevent the church from requiring it here, so his instruction was to go and get checked yourself and not bring him the results. He told a cautionary story about a woman who married quickly, without checks, and was infected.",
+        "His memorable image was the restaurant menu: you order the fish, they take the menu away, and you can't change your mind to the meat. Choose carefully, then commit.",
+        "The structure he gave for courtship: prayer, planning, preparation, purpose alignment — is this person going to help you where you're going? — and accountability. He recommended group dating, describing how his married daughters' younger sisters would go along on outings, sitting at a separate table but present.",
+        "And a warning to men: don't be alone in a room with a woman who isn't your wife. Run, as Joseph did, rather than standing there declaring that the devil is a liar."]},
+
+    {h:"On harassment by someone in leadership",
+     p:["An anonymous question asked how to deal with church trauma — a leader or youth leader causing emotional damage through dating and sexual harassment.",
+        "The senior minister on the panel answered directly and without hedging: what are you waiting for? You have a pastor. Report it immediately, because this is not something the church does or tolerates. That behaviour has crossed a clear line, and letting it continue only allows it to become something worse.",
+        "His characterisation of anyone doing this was unambiguous — they are not interested in your future. They want to taste the fruit before harvest."],
+     note:"This session also included teaching on responsibility within courtship and on women's dress that isn't reproduced here. It sat close to the harassment question in the recording, and how the two are placed next to each other matters for a document going to teenagers. That's a call for your leadership to make deliberately, not an oversight — the material is in the transcript if you decide it belongs."}
+  ]
+},
+{
+  id:"s5", theme:"Impact", day:"Day 4 — Closing Session",
+  title:"Making Godly Impact",
+  speaker:"Guest Speaker", role:"referred to as \"Bishop\" in the recording",
+  flag:"name not stated — confirm before sharing",
+  anchor:"Daniel 6:20",
+  overview:"The closing message was less one topic than a series of direct charges: guard your time with God, don't let familiarity dull your attention, make your life count, carry the fire back to your local church, examine what competes for your heart — all anchored in Daniel and the word <em>continually</em>.",
+  lessons:[
+    "Time spent on outward appearance was set against time spent on spiritual life. The challenge: give at least as much attention to decorating your spirit as your appearance.",
+    "Don't tune out a preacher because you know their style or think you can predict them. Familiarity quietly costs you what you could have received.",
+    "Life is short and easily lost to distraction. Screen time and gaming addiction were named directly as ways people lose years without noticing.",
+    "Believers are meant to bear fruit <em>in and out of season</em> — the tree planted by the river. There's no circumstantial excuse for failing to make an impact.",
+    "Don't just enjoy the conference and go home unchanged. Build up your local church — serve, teach what you learned, fill a gap — rather than critique it from the sidelines.",
+    "Money and the things you love can compete with God the way they did for the rich young ruler. Name specifically what competes in your case.",
+    "Daniel's defining trait under threat of death was consistency — he served God <em>continually</em>. That's the word the whole message hangs on."
+  ],
+  quotes:[
+    "The time we spend on the external — if we could even spend half in decorating our spirits, the impact we would make will be far greater.",
+    "The greatest calamity that's befalling us is the fact that we are preoccupied with the resources instead of the source.",
+    "Let not the fire die here — go and effect changes in your churches.",
+    "Consistency is missing in our walk with God. Consistency is missing in our generation.",
+    "Be sure that your life counts and your life matters."
+  ],
+  refs:["Daniel 6:20","Matthew 5:13–14","Psalm 1","Matthew 6:24","Matthew 19:16–22","Genesis 22","John 7:38"],
+  refNote:"",
+  reflect:[
+    "Where does more of your energy go right now — your outward appearance or your inward life?",
+    "What currently competes for your heart the way money competed for the rich young ruler's?",
+    "What would carrying the fire back to your local church actually look like, concretely?",
+    "Daniel's defining trait was consistency. Where is your walk with God most inconsistent?"
+  ],
+  acts:[
+    "Set a specific weekly time for prayer and Bible study — and put it in your calendar, not just your intentions.",
+    "Find one gap in your local church's youth ministry you can help fill: media, worship, teaching, hospitality.",
+    "Name the \"Isaac\" in your life — the hardest thing to surrender — and take one step of surrender this month.",
+    "Pick one spiritual practice and do it every day for 30 days. Your own Daniel challenge."
+  ],
+  big:"Consistency, not intensity — Daniel's life turned on one word: he served God <em>continually</em>.",
+  quiz:[
+    {q:"Which single word does the closing message hang on?",
+     a:["Continually","Boldly","Faithfully","Quietly"],
+     c:0, why:"Daniel 6:20 — \"thy God whom thou servest continually.\" His charge: if you forget everything else, keep that word."},
+    {q:"Why couldn't the king rescue Daniel from the lions' den?",
+     a:["His own decree couldn't be reversed","He had forgotten about Daniel","He was away from the palace","He didn't believe in Daniel's God"],
+     c:0, why:"His point for anyone relying on a well-connected patron: a season comes when no big man can save you."},
+    {q:"What did the rich young ruler's choice reveal?",
+     a:["Money had already taken hold of his heart","He didn't know the commandments","He was too young to follow","He wanted to be a disciple secretly"],
+     c:0, why:"He was confident he'd kept the commandments — but forgot the first one. Handed a choice, he chose the money."}
+  ],
+  deeper:[
+    {h:"The hair, the foundation, and the maths",
+     p:["The illustration everyone remembers. He asked a young woman how long her braids had taken — a full shift, sometimes with overtime — then set that against a thirty-minute prayer meeting people complain is too long.",
+        "His question wasn't about vanity. It was about proportion: the fathers who built this church and saw the miracles that followed didn't get there by decorating their faces. If half the hours spent on the outside went into the inside, he said, the impact would be far greater. Four hours a week with God — imagine the fruit.",
+        "He walked through the routine deliberately — foundation, concealer, then blush or contour — and turned it: may somebody foundation their spirit.",
+        "His observation about people who are genuinely fulfilled: they spend far less on externals, because the inner life is settled. He named Ronaldo and various billionaires who dress plainly, against young people chasing a particular pair of shoes so people can see that they've arrived — when they know they haven't. His anchor was that there is a spirit in man, and the breath of the Almighty gives him understanding."]},
+
+    {h:"What we've done to our own services",
+     p:["He was willing to indict the organisers, himself included. Service starts at nine with dancing and singing, sometimes two hours of it — and then the preacher is handed fifty minutes and asked to wrap up.",
+        "His diagnosis: our appetite for God's word has dropped. He quoted an apostle's line from the previous day — because we can't go to the nightclub, we've found a way to bring the nightclub to church. He was careful to say he isn't against praise. But some of the dancing, he said plainly, isn't directed at God.",
+        "He had the credibility to say it because he told on himself. As a young man at youth camp he was taken with a light-skinned girl, ended up sharing a lift with her when his presiding elder gave them both a ride, and found himself dancing at the conference — something he never normally did — because the girls were paying attention to the boys who danced. His warning followed from his own case: if you're dancing to be seen, be careful."]},
+
+    {h:"Give the word room to land",
+     p:["His structural complaint about this generation is that we're in a hurry with everything.",
+        "What he wanted instead: enough time for the word to actually be ministered, and then enough time to pray into it, so that the Spirit breathes on those words and you leave with understanding rather than notes. That's when you catch rhema — something specific to you, that you didn't walk in with.",
+        "He acknowledged the counter-argument young people make, that preachers fail to engage them, and accepted part of the responsibility. But the other part he handed back: if you sit there treating the person on the platform as God's vessel for that day, you'll catch something."]},
+
+    {h:"The elder they nicknamed \"Thousand\"",
+     p:["There was an elder in his church who quoted scripture after nearly every sentence. The young people, him included, would tune out the moment the man stood up, and privately nicknamed him Thousand — as in a thousand scriptures.",
+        "The elder found out. He mounted the platform one day and said he'd heard what they called him, and that at least he was giving them scripture. He took it as a compliment.",
+        "One day the speaker decided to actually listen. The delivery still wasn't engaging — he's honest about that — but he caught something anyway.",
+        "The lesson he drew: don't switch off a preacher because you can predict his opening verse and where he'll end. And don't let familiarity with the ministers in your own church make you disregard the anointing on their lives. The same words your pastor says get shouted at when a visitor says them. Honour the oil on the people God gave you."]},
+
+    {h:"The arithmetic of a wasted life",
+     p:["He asked people to open their weekly screen time reports right there. Eleven hours in a week is common. Then look at the breakdown — five hours on one app. Some of you, he said, don't even post; you just read comments.",
+        "His point was about irrecoverability. Time spent is time you cannot get back, and when you're young you don't feel the loss. Turn seventy and look back and you may find you spent ten years scrolling.",
+        "He described a young man he'd encountered whose mother was in tears — locked in his room around the clock gaming, refusing school and refusing work, on the logic that his mother owns a house. If you asked him to define a wasted life, he said, that's the picture.",
+        "He included himself in the vulnerability: he periodically deletes the apps, then reinstalls them because he wants to see what his church members are posting before the fathers ring him about it."]},
+
+    {h:"Players and spectators",
+     p:["His frame for impact: at any match, there are those who play and those who watch. The players make the impact, and the reward is directly proportional. Nobody knows the names of the spectators.",
+        "Impact requires giving something out — dedicating your life to a cause to the point that it costs you. He reached for Paul's image of being poured out like a drink offering.",
+        "Salt and light were his scriptural anchors, on the grounds that neither can be present without being noticed. And then the fig tree Jesus cursed out of season, which he admitted he'd wrestled with — why be angry at a tree for not bearing fruit when it wasn't the season? His resolution: because the righteous are like a tree planted by the river, bearing fruit <em>in and out of season</em>. Jesus leaves no room for the excuse.",
+        "He noted that very few names survive from past centuries, and that even the terrible ones teach something — Hitler at least demonstrates how not to live."]},
+
+    {h:"What happens when you get home",
+     p:["This was his most practical section. At conference the talents are everywhere, everyone is praying, everyone wants to serve. Back at the local church, it's the same people — and nothing.",
+        "He told the story of young women from his area who came back from a conference in Peterborough and told his wife they were giving her three weeks to reproduce what they'd seen. His answer: we all went to that conference together. Let's hold hands and build it.",
+        "He explained the gap honestly. Conference atmosphere is different because everyone prays at once, including the people you'd never expect to. Most of the Holy Spirit baptisms in his church come out of youth conferences for exactly that reason. Locally, two people turn up to pray and are discouraged before they've started, because there's nothing to catch.",
+        "His charge was specific and unusually actionable. If the media is weak, do media. If the drumming is weak, learn to drum. Prepare yourself so you can teach in youth meetings when there's a vacuum. Take the topic your pastor preached, meditate on it in advance, and bring it to your peers' level with examples — not in a way that belittles the pastor, but so people appreciate what he was saying.",
+        "And the line he was most animated about: don't sit there complaining that the pastor doesn't preach well. What are you doing about it? He described being genuinely angered by a young man spreading a \"we're not growing\" narrative while attending church roughly once every three months. The church, he said, has been given to us to build."]},
+
+    {h:"Cocoa trees and 210 nations",
+     p:["The section I most regret having cut the first time, because it's identity-forming rather than instructional.",
+        "He recounted the church's origins: a small group meeting under cocoa trees in a village, and a prophet declaring that from them God would raise a mighty army who would carry the gospel to the rest of the world — at a time when most of them had never held a passport.",
+        "His point was about plausibility. Nobody in that clearing could have believed it. To make the room feel it, he offered a modern parallel: imagine standing here today and announcing that a time is coming when this congregation will deliberately designate seating sections for Asians, Europeans, First Nations. The amens, he noted drily, didn't come.",
+        "But the church is now in 210 nations. So the people who wrote that prophecy down for us to read had less evidence than we do. We have more reason to believe what God intends than to doubt it.",
+        "He also made a point about covenant that matters for young people watching leaders closely: the covenant this church has with God transcends any individual. Someone may do something you dislike; the covenant is not theirs to break."]},
+
+    {h:"Signs as the universal language",
+     p:["His practical concern about evangelism: when you go out and say Jesus died and rose, you'll be met with argument, and if you're not equipped you may lose the exchange on debating terms alone.",
+        "His conviction was that regardless of what someone believes — atheist or otherwise — a genuine manifestation of the Spirit through your life gets their attention in a way argument doesn't.",
+        "The example was a deaconess he knows. She noticed a manager at her workplace who was withdrawn and sad, married a long time without a child. She prayed with her and told her she'd have a child within the year. God answered. The result, years on: through restructuring and layoffs, she stays — because she's been a blessing to that workplace in a way nobody can deny. And when she talks about Christ, they listen."]},
+
+    {h:"Giving, and what competes for your heart",
+     p:["He opened by naming the resistance in the room: raise the subject of giving and people put their defences up.",
+        "His starting position was that God wants to prosper you. But money is powerful — scripture says it answers all things, and Jesus set it directly opposite God, saying you cannot serve both. He drew the inference carefully: money is placed at par with God in that verse, which tells you it's capable of taking hold of a heart. And God doesn't share glory.",
+        "Then the turn that made it land. Often the thing God asks you to release is precisely the thing with the power to capture you — and it isn't always money. For many in that room it's the job they prayed for, which now supplies the reason there's no time for God. The promotion you asked for now schedules over your prayer meeting. He asked them to consider what they'd do if they were God, and observed how often people lose the job and then pray for another one.",
+        "His scriptural case was the rich young ruler, who was confident he'd kept the commandments since childhood — but had forgotten the first one, that there be no other gods. Handed a choice, he chose the money. He was already worshipping it.",
+        "Then Abraham, and the precision of the instruction. God didn't say give me one of your sons; He said your son whom you love. Given a blanket request, Abraham might have offered Ishmael and moved on. He noted how mothers who wait a long time for children hold them tightly — and suggested Abraham's heart had quietly divided the same way. What restored God's confidence was the willingness.",
+        "His challenge: circumcise your heart concerning money. If God requires you to give and you clutch it, He may withhold financial blessing precisely because it would become a god to you. And a provocation, which got the reaction he wanted: it should be possible for a young person to leave a conference like this and give ten thousand dollars — meanwhile you want to be a millionaire. Faithfulness in little comes first."]},
+
+    {h:"Daniel: the case study the whole message hangs on",
+     p:["He'd been studying Daniel in the days before the conference and said what struck him was how many people would have taken the deal.",
+        "Consider the offer. Captured into slavery, where most faced hard labour — but selected for the king's palace, and given the king's own food and wine. Who would turn that down? Yet they purposed in their hearts not to defile themselves. Even their names were changed in an effort to change who they were, and they knew who they were anyway. His application: you have to know your identity in Christ.",
+        "He noticed that every promotion Daniel received came after solving something no one else could — an interpretation, a problem — and that Daniel consistently gave the credit to God. Which is how the testimony about him got phrased: there is a man in your kingdom in whom is the spirit of a holy God. His question to the room: what have you used the Holy Spirit in you to achieve, even at work?",
+        "Then Daniel 6:20, and the word he built everything on. The king comes to the den and calls out to Daniel, servant of the living God, whom you serve <em>continually</em>. Go back and you find why the king could say it: after the decree was signed, Daniel opened his window three times a day, as he had always done. The king had noticed the pattern.",
+        "He also drew out what the king couldn't do. He wanted to save Daniel and had no mechanism — the decree couldn't be reversed. His application, aimed at anyone relying on a well-connected relative or patron: a season comes when no big man can save you.",
+        "And his honest caveat: consistency didn't prevent the scheme. They still plotted, and he still went into the den. What consistency secured was that God came through. Though you walk through the valley of the shadow of death, you fear no evil — because He is with you.",
+        "His actionable item, if the room forgot everything else: the word <em>continually</em>."]},
+
+    {h:"The closing appeal",
+     p:["In the prayer time he returned to a line from one of his mentors — that the great calamity of our moment is being preoccupied with the resources rather than the source. God made the universe and supplies everything, and the supplies are what excite us and take our time, while we've left the source somewhere else.",
+        "He was firm that corporate prayer cannot substitute for a private one. If you don't have a secret place, forget the rest. Everyone should have a personal history with God — revelation He gave you while you were studying, not something you heard someone else report. His phrase: you are the prophet of your own life.",
+        "And the question he left hanging over the room: why are we scrolling all night when the Holy Spirit is knocking?"]}
+  ]
+}
+];
+
+/* ================================================================
+   RENDER
+   ================================================================ */
+const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16 4 12 4 12 4s-4 0-6.8.3c-.4 0-1.2 0-2 .9-.6.6-.8 2-.8 2S2.2 8.8 2.2 10.4v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.9 1.6.1 6.6.2 6.6.2s4 0 6.8-.3c.4 0 1.2 0 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5c0-1.6-.2-3.2-.2-3.2zM9.9 14.1V8.6l5.2 2.8-5.2 2.7z"/></svg>';
+const ICON_AUDIO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 14v-4M7.5 17V7M12 20V4M16.5 17V7M21 14v-4"/></svg>';
+
+const ICON_DICE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor" stroke="none"/></svg>';
+const ICON_SHARE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 13l2.5 3 2-2.5L16 18H8z"/><circle cx="14.5" cy="8.5" r="1.5"/></svg>';
+
+function esc(s){return String(s).replace(/&(?![a-z#]+;)/g,"&amp;")}
+
+/* strip authored markup down to plain text, for canvas + clipboard */
+function plain(html){
+  const d = document.createElement("div");
+  d.innerHTML = String(html);
+  return (d.textContent || "").replace(/\s+/g," ").trim();
+}
+
+function deeperHTML(s){
+  if(!s.deeper || !s.deeper.length) return "";
+  const items = s.deeper.map(d=>{
+    let out = `<div class="deep-item"><h4>${d.h}</h4>`;
+    if(d.p) out += d.p.map(x=>`<p>${x}</p>`).join("");
+    if(d.list) out += `<ul>${d.list.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+    if(d.p2) out += d.p2.map(x=>`<p>${x}</p>`).join("");
+    if(d.note) out += `<div class="deep-note"><b>Editor's note</b>${d.note}</div>`;
+    out += `</div>`;
+    return out;
+  }).join("");
+
+  return `
+  <details class="deep">
+    <summary><span class="tog" aria-hidden="true"></span>Go deeper into this session<span class="hint">${s.deeper.length} sections</span></summary>
+    <div class="deep-body">${items}</div>
+  </details>`;
+}
+
+function quizHTML(s){
+  if(!s.quiz || !s.quiz.length) return "";
+  const qs = s.quiz.map((q,qi)=>`
+    <div class="q" data-q="${s.id}-${qi}" data-correct="${q.c}">
+      <p class="q-p"><span class="qn">${String(qi+1).padStart(2,"0")}</span><span>${q.q}</span></p>
+      <div class="q-opts">
+        ${q.a.map((a,ai)=>`<button class="q-opt" type="button" data-i="${ai}">${a}</button>`).join("")}
+      </div>
+      <p class="q-why"><b class="verdict"></b> ${q.why}</p>
+    </div>`).join("");
+  return `
+    <div class="block rv">
+      <h3>Check what stuck</h3>
+      <p class="pick-note">Not a test — answering from memory is one of the best ways to make something stay.</p>
+      <div class="quiz">${qs}</div>
+    </div>`;
+}
+
+function sessionHTML(s, i){
+  const m = MEDIA[s.id] || {};
+  const n = String(i+1).padStart(2,"0");
+
+  const ytBtn = m.youtube
+    ? `<a class="btn btn-yt" href="${m.youtube}" target="_blank" rel="noopener">${ICON_PLAY} Watch the session</a>`
+    : `<span class="btn" aria-disabled="true">${ICON_PLAY} Video link coming soon</span>`;
+
+  const audBtn = m.audio
+    ? `<button class="btn btn-audio" type="button" data-audio="${s.id}">${ICON_AUDIO} Play audio summary</button>`
+    : `<span class="btn" aria-disabled="true">${ICON_AUDIO} Audio summary coming soon</span>`;
+
+  const player = m.audio
+    ? `<div class="player" id="p-${s.id}"><audio controls preload="none" src="${m.audio}"></audio></div>`
+    : "";
+
+  return `
+  <article class="session" id="${s.id}">
+    <div class="wrap">
+      <div class="s-head rv">
+        <div class="s-mark">
+          <span class="s-figure" aria-hidden="true">${n}</span>
+          <span class="s-marktxt">
+            <span class="s-theme">${esc(s.theme || "")}</span>
+            <span class="s-day">Session ${n} · ${esc(s.day)}</span>
+          </span>
+        </div>
+        <h2 class="s-title">${esc(s.title)}</h2>
+        <p class="s-by"><b>${esc(s.speaker)}</b>${s.role ? " · " + esc(s.role) : ""}${
+          s.flag ? `<span class="s-flag">${esc(s.flag)}</span>` : ""}</p>
+        <p class="s-ref">${esc(s.anchor)}</p>
+        <div class="media">${ytBtn}${audBtn}</div>
+        ${player}
+        <div class="s-body">${s.overview}</div>
+        ${s.big ? `<div class="bigidea"><span>The big idea</span><p>${s.big}</p>
+          <button class="qshare" type="button" data-card="idea" data-s="${s.id}">${ICON_SHARE}Make a card</button>
+        </div>` : ""}
+      </div>
+
+      <div class="block rv">
+        <h3>Key lessons</h3>
+        <ul class="lessons">${s.lessons.map(l=>`<li>${l}</li>`).join("")}</ul>
+        ${deeperHTML(s)}
+      </div>
+
+      <div class="block rv">
+        <h3>Lines worth keeping</h3>
+        <div class="quotes">${s.quotes.map((q,qi)=>`
+          <div class="quote-row">
+            <blockquote class="quote">“${esc(q)}”</blockquote>
+            <button class="qshare" type="button" data-card="quote" data-s="${s.id}" data-i="${qi}">${ICON_SHARE}Make a card</button>
+          </div>`).join("")}</div>
+      </div>
+
+      <div class="block rv">
+        <h3>Scriptures opened</h3>
+        <div class="refs">
+          ${s.refs.map(r=>`<span class="ref">${esc(r)}</span>`).join("")}
+          ${s.refNote ? `<span class="ref-note">${s.refNote}</span>` : ""}
+        </div>
+      </div>
+
+      <div class="block rv">
+        <h3>Sit with this</h3>
+        <ol class="reflect">${s.reflect.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>
+      </div>
+
+      <div class="block rv">
+        <h3>Then go do one of these</h3>
+        <p class="pick-note">Pick <strong>one</strong> to actually do. If you get to more, good — but one done beats four intended.</p>
+        <ul class="acts">${s.acts.map((a,j)=>`
+          <li class="act">
+            <label>
+              <input type="checkbox" data-key="${s.id}-${j}" data-sess="${s.id}">
+              <span>${esc(a)}</span>
+            </label>
+          </li>`).join("")}
+        </ul>
+      </div>
+
+      ${quizHTML(s)}
+    </div>
+  </article>`;
+}
+
+document.getElementById("sessions").innerHTML = SESSIONS.map(sessionHTML).join("");
+
+/* ================================================================
+   START HERE — the five big ideas, doubling as a quick path in
+   ================================================================ */
+document.getElementById("startCard").innerHTML = `
+  <span class="eyebrow">Start here</span>
+  <h2>Only got five minutes?</h2>
+  <p class="sub">Read these five lines. That's the whole camp in about a minute — then open whichever one you needed to hear.</p>
+  <ul class="start-list">
+    ${SESSIONS.map((s,i)=>`
+      <li>
+        <a href="#${s.id}">
+          <span class="n">${String(i+1).padStart(2,"0")}</span>
+          <span class="t">${s.big}<span class="s">${esc(s.title)}</span></span>
+        </a>
+      </li>`).join("")}
+  </ul>`;
+
+/* ================================================================
+   QUIZ
+   ================================================================ */
+document.addEventListener("click", e=>{
+  const opt = e.target.closest(".q-opt");
+  if(!opt) return;
+  const card = opt.closest(".q");
+  if(card.classList.contains("done")) return;
+
+  const correct = Number(card.dataset.correct);
+  const picked  = Number(opt.dataset.i);
+  card.classList.add("done");
+
+  card.querySelectorAll(".q-opt").forEach((b,i)=>{
+    b.disabled = true;
+    if(i === correct) b.classList.add("right");
+    else if(i === picked) b.classList.add("wrong");
+  });
+  card.querySelector(".verdict").textContent =
+    picked === correct ? "That's it." : "Not quite —";
+});
+
+/* ================================================================
+   AUDIO TOGGLE
+   ================================================================ */
+document.addEventListener("click", e=>{
+  const btn = e.target.closest("[data-audio]");
+  if(!btn) return;
+  const box = document.getElementById("p-" + btn.dataset.audio);
+  if(!box) return;
+  const open = box.classList.toggle("open");
+  if(open) box.querySelector("audio").play().catch(()=>{});
+  else box.querySelector("audio").pause();
+});
+
+/* ================================================================
+   PROGRESS  (saved locally; degrades quietly if storage is blocked)
+   ================================================================ */
+const KEY = "ypc2026-progress";
+const boxes = [...document.querySelectorAll(".act input")];
+const TOTAL = boxes.length;
+
+const store = {
+  read(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch{ return {}; } },
+  write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch{} }
+};
+
+const barFill = document.getElementById("barFill");
+const barCount = document.getElementById("barCount");
+const tallyNum = document.getElementById("tallyNum");
+const tallyFill = document.getElementById("tallyFill");
+const tallyMsg = document.getElementById("tallyMsg");
+const tallySteps = document.getElementById("tallySteps");
+
+function message(sess, steps){
+  if(sess === 0) return "Nothing ticked yet. One step from one session is a real start.";
+  if(sess === 5) return "One step from every session. Now the harder part — keep going when nobody's watching.";
+  if(sess === 1) return "One session down. Consistency beats intensity.";
+  if(sess < 4)  return `${sess} sessions acted on. Keep it steady.`;
+  return "One session left. Don't coast now.";
+}
+
+function paint(){
+  const done = boxes.filter(b=>b.checked);
+  const steps = done.length;
+  const sess = new Set(done.map(b=>b.dataset.sess)).size;
+  const pct = (sess/5)*100;
+  barFill.style.width = pct + "%";
+  tallyFill.style.width = pct + "%";
+  barCount.textContent = sess;
+  tallyNum.textContent = sess;
+  tallySteps.textContent = steps === 1 ? "1 step ticked" : steps + " steps ticked";
+  tallyMsg.textContent = message(sess, steps);
+}
+
+const saved = store.read();
+boxes.forEach(b=>{
+  if(saved[b.dataset.key]) b.checked = true;
+  b.addEventListener("change", ()=>{
+    const s = store.read();
+    if(b.checked) s[b.dataset.key] = 1; else delete s[b.dataset.key];
+    store.write(s);
+    paint();
+  });
+});
+paint();
+
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(!confirm("Clear all your ticked steps?")) return;
+  store.write({});
+  boxes.forEach(b=>b.checked=false);
+  paint();
+});
+
+/* open all deeper panels for printing */
+window.addEventListener("beforeprint", ()=>{
+  document.querySelectorAll("details.deep").forEach(d=>{
+    if(!d.open){ d.open = true; d.dataset.wasClosed = "1"; }
+  });
+});
+window.addEventListener("afterprint", ()=>{
+  document.querySelectorAll('details.deep[data-was-closed="1"]').forEach(d=>{
+    d.open = false; delete d.dataset.wasClosed;
+  });
+});
+
+/* ================================================================
+   TODAY  —  a different line, and a different question, every day
+   ----------------------------------------------------------------
+   Deterministic, not random: everyone opening the page on the same
+   day sees the same line, so it can be talked about. The stride is
+   coprime with the pool size, so every item comes up once before
+   any of them repeats.
+   ================================================================ */
+const byId = Object.fromEntries(SESSIONS.map((s,i)=>[s.id,{s,i}]));
+
+function sessionNo(id){ return String(byId[id].i + 1).padStart(2,"0"); }
+
+/* speaker name only where we actually have one */
+function namedSpeaker(s){
+  const n = s.speaker || "";
+  return (/guest speaker|panel discussion/i.test(n)) ? "" : n;
+}
+
+const QUOTE_POOL = [];
+SESSIONS.forEach(s => s.quotes.forEach((q,qi)=> QUOTE_POOL.push({sid:s.id, qi, text:q})));
+
+const QUIZ_POOL = [];
+SESSIONS.forEach(s => (s.quiz||[]).forEach((q,qi)=> QUIZ_POOL.push({sid:s.id, qi, q})));
+
+/* days since epoch in the reader's own timezone */
+function dayNumber(){
+  const d = new Date();
+  return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
+}
+
+const DAY = dayNumber();
+const todayQuote = QUOTE_POOL[(DAY * 7) % QUOTE_POOL.length];
+const todayQuiz  = QUIZ_POOL[(DAY * 4) % QUIZ_POOL.length];
+
+/* ---- the daily line ---- */
+(function renderToday(){
+  const el = document.getElementById("todayCard");
+  if(!el) return;
+  const { s } = byId[todayQuote.sid];
+  const who = namedSpeaker(s);
+  let when = "";
+  try{
+    when = new Date().toLocaleDateString(undefined,{weekday:"long", day:"numeric", month:"long"});
+  }catch{}
+
+  el.innerHTML = `
+    <span class="eyebrow">Remember this${when ? `<span class="dot">·</span><span class="date">${esc(when)}</span>` : ""}</span>
+    <blockquote class="today-q">“${esc(todayQuote.text)}”</blockquote>
+    <p class="today-src">
+      Session ${sessionNo(s.id)} · ${esc(s.title)}${who ? ` · ${esc(who)}` : ""}<br>
+      <a href="#${s.id}">Go to this session &rarr;</a>
+    </p>
+    <div class="today-acts">
+      <button class="mini" type="button" data-card="quote" data-s="${s.id}" data-i="${todayQuote.qi}">${ICON_SHARE}Make a card</button>
+      <button class="mini" type="button" id="surpriseBtn">${ICON_DICE}Surprise me</button>
+    </div>`;
+})();
+
+/* ---- one question, pulled from the quizzes already written ---- */
+(function renderRecall(){
+  const el = document.getElementById("recallCard");
+  if(!el) return;
+  const { s } = byId[todayQuiz.sid];
+  const q = todayQuiz.q;
+
+  el.innerHTML = `
+    <span class="eyebrow">Can you still remember?</span>
+    <p class="sub">One question from the camp. Answering from memory — before you reread anything — is one of the best ways to make it stay.</p>
+    <div class="q" data-q="today" data-correct="${q.c}">
+      <p class="q-p"><span>${q.q}</span></p>
+      <div class="q-opts">
+        ${q.a.map((a,ai)=>`<button class="q-opt" type="button" data-i="${ai}">${a}</button>`).join("")}
+      </div>
+      <p class="q-why"><b class="verdict"></b> ${q.why}</p>
+    </div>
+    <p class="recall-after">From <a href="#${s.id}">Session ${sessionNo(s.id)} · ${esc(s.title)} &rarr;</a></p>`;
+})();
+
+/* ================================================================
+   SURPRISE ME  —  drops you somewhere you weren't heading
+   ================================================================ */
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+document.addEventListener("click", e=>{
+  if(!e.target.closest("#surpriseBtn")) return;
+  const pool = [...document.querySelectorAll(
+    "#sessions .bigidea, #sessions .quote-row, #sessions .reflect li, #sessions .quiz .q, #sessions .act"
+  )];
+  if(!pool.length) return;
+  const el = pool[Math.floor(Math.random() * pool.length)];
+
+  /* make sure it isn't still hidden behind the scroll reveal */
+  let p = el;
+  while(p && p !== document.body){
+    if(p.classList && p.classList.contains("rv")) p.classList.add("in");
+    p = p.parentElement;
+  }
+  el.scrollIntoView({block:"center", behavior: REDUCED ? "auto" : "smooth"});
+  document.querySelectorAll(".flash").forEach(n=>n.classList.remove("flash"));
+  el.classList.add("flash");
+  setTimeout(()=>el.classList.remove("flash"), 3400);
+});
+
+/* ================================================================
+   WELCOME BACK  —  only after a real gap, and only once you've been
+   ================================================================ */
+(function welcomeBack(){
+  const VKEY = "ypc2026-last-visit";
+  const bar = document.getElementById("backBar");
+  if(!bar) return;
+  let prev = 0;
+  try{ prev = Number(localStorage.getItem(VKEY)) || 0; }catch{}
+  try{ localStorage.setItem(VKEY, String(Date.now())); }catch{}
+
+  if(!prev) return;
+  const days = Math.floor((Date.now() - prev) / 86400000);
+  if(days < 3) return;
+
+  const howLong = days >= 60 ? "a couple of months"
+                : days >= 30 ? "over a month"
+                : days >= 14 ? "a couple of weeks"
+                : days + " days";
+  document.getElementById("backTxt").innerHTML =
+    `<b>Welcome back.</b> It's been ${howLong} since you were last here.`;
+  bar.removeAttribute("hidden");
+  bar.classList.add("show");
+  document.getElementById("backX").addEventListener("click", ()=>{
+    bar.classList.remove("show");
+    bar.setAttribute("hidden","");
+  });
+})();
+
+/* ================================================================
+   SHAREABLE CARDS
+   ----------------------------------------------------------------
+   Drawn in the browser on a canvas — nothing is uploaded anywhere.
+   Quotes are rendered verbatim and in quotation marks; big ideas are
+   labelled as summaries and never dressed up as something someone
+   said out loud.
+   ================================================================ */
+const SIZES = { story:{w:1080,h:1920}, square:{w:1080,h:1080}, og:{w:1200,h:630} };
+
+const sheet     = document.getElementById("sheet");
+const shot      = document.getElementById("shot");
+const saveBtn   = document.getElementById("saveBtn");
+const shareBtn  = document.getElementById("shareBtn");
+const copyBtn   = document.getElementById("copyBtn");
+const sheetNote = document.getElementById("sheetNote");
+const sheetTitle= document.getElementById("sheetTitle");
+
+let card = { kind:"quote", size:"story", text:"", label:"", src:"", who:"", blob:null };
+let lastFocus = null;
+
+/* letter-spaced text, since canvas letterSpacing is not everywhere yet */
+function tracked(x, text, cx, y, sp, align){
+  const chars = [...text];
+  const total = chars.reduce((n,c)=> n + x.measureText(c).width + sp, -sp);
+  let px = align === "center" ? cx - total/2 : cx;
+  chars.forEach(c=>{ x.fillText(c, px, y); px += x.measureText(c).width + sp; });
+  return total;
+}
+
+function wrapLines(x, text, maxW){
+  const words = text.split(" ");
+  const lines = [];
+  let line = "";
+  words.forEach(w=>{
+    const test = line ? line + " " + w : w;
+    if(x.measureText(test).width > maxW && line){ lines.push(line); line = w; }
+    else line = test;
+  });
+  if(line) lines.push(line);
+  return lines;
+}
+
+/* shrink until the wrapped block fits the space it has */
+function fitText(x, text, maxW, maxH, from, to, family, weight){
+  let size = from, lines = [];
+  while(size > to){
+    x.font = `${weight} ${size}px ${family}`;
+    lines = wrapLines(x, text, maxW);
+    if(lines.length * size * 1.34 <= maxH) break;
+    size -= 2;
+  }
+  return { size, lines, lh: size * 1.34 };
+}
+
+async function readyFonts(px){
+  try{
+    await Promise.all([
+      document.fonts.load(`400 ${px}px Fraunces`),
+      document.fonts.load(`600 ${px}px Fraunces`),
+      document.fonts.load(`500 26px "JetBrains Mono"`),
+      document.fonts.load(`400 26px Karla`)
+    ]);
+    await document.fonts.ready;
+  }catch{}
+}
+
+function logoImage(){
+  return new Promise(res=>{
+    const src = document.querySelector(".hero-logo")?.getAttribute("src");
+    if(!src) return res(null);
+    const img = new Image();
+    img.onload = ()=>res(img);
+    img.onerror = ()=>res(null);
+    img.src = src;
+  });
+}
+
+async function drawCard(){
+  const { w, h } = SIZES[card.size];
+  const c = document.createElement("canvas");
+  c.width = w; c.height = h;
+  const x = c.getContext("2d");
+  const P = Math.round(w * 0.093);
+
+  await readyFonts(Math.round(w * 0.06));
+
+  /* ground */
+  x.fillStyle = "#0B0C42";
+  x.fillRect(0,0,w,h);
+  const g1 = x.createRadialGradient(w*0.08, 0, 0, w*0.08, 0, w*1.05);
+  g1.addColorStop(0, "rgba(36,35,127,1)");
+  g1.addColorStop(1, "rgba(36,35,127,0)");
+  x.fillStyle = g1; x.fillRect(0,0,w,h);
+  const g2 = x.createRadialGradient(w*0.96, h, 0, w*0.96, h, w*0.95);
+  g2.addColorStop(0, "rgba(74,42,158,1)");
+  g2.addColorStop(1, "rgba(74,42,158,0)");
+  x.fillStyle = g2; x.fillRect(0,0,w,h);
+
+  /* violet hairline along the top, echoing the page */
+  const g3 = x.createLinearGradient(0,0,w,0);
+  g3.addColorStop(0,"rgba(170,112,250,0)");
+  g3.addColorStop(.5,"rgba(170,112,250,.85)");
+  g3.addColorStop(1,"rgba(170,112,250,0)");
+  x.fillStyle = g3; x.fillRect(0,0,w,3);
+
+  const logo = await logoImage();
+  x.textBaseline = "alphabetic";
+
+  if(card.kind === "og"){
+    /* link preview card — laid out top down so nothing collides */
+    let oy = P - 8;
+    if(logo){
+      const lw = Math.round(w * 0.235), lh = Math.round(lw * (logo.height / logo.width));
+      x.drawImage(logo, P, oy, lw, lh);
+      oy += lh;
+    }
+    x.fillStyle = "#F4F5FF";
+    const head = fitText(x, "Youth & Pensa Camp 2026", w - P*2, 150, 68, 38,
+                         "Fraunces, Georgia, serif", "700");
+    oy += Math.round(head.size * 1.05);
+    x.font = `700 ${head.size}px Fraunces, Georgia, serif`;
+    head.lines.forEach(l=>{ x.fillText(l, P, oy); oy += head.lh; });
+
+    x.fillStyle = "#BDA4FE";
+    x.font = `400 30px Karla, system-ui, sans-serif`;
+    x.fillText("Session recap & study guide", P, oy + 14);
+
+    x.fillStyle = "#8E92C4";
+    x.font = `500 20px "JetBrains Mono", monospace`;
+    tracked(x, "GOSPEL · POWER · IMPACT · REGINA, SASKATCHEWAN", P, h - P + 20, 3, "left");
+    return c;
+  }
+
+  /* quote / big-idea card */
+  let y = P;
+  if(logo){
+    const lw = Math.round(w * (card.size === "square" ? 0.34 : 0.38));
+    const lh = lw * (logo.height / logo.width);
+    x.drawImage(logo, P, y, lw, lh);
+    y += lh + Math.round(h * 0.055);
+  }
+
+  x.fillStyle = "#AA70FA";
+  x.font = `500 ${Math.round(w*0.021)}px "JetBrains Mono", monospace`;
+  tracked(x, card.label.toUpperCase(), P, y, w*0.006, "left");
+  y += Math.round(h * 0.035);
+
+  /* work out where the footer sits, so the words can be centred in
+     whatever room is left — a short line shouldn't leave a hole */
+  const footY  = h - P - (SITE_URL ? Math.round(h*0.045) : 0);
+  const ruleY  = footY - Math.round(h*0.085);
+  const bodyTop = y;
+  const bodyMax = ruleY - Math.round(h*0.035) - bodyTop;
+
+  const t = fitText(
+    x, card.text, w - P*2, bodyMax,
+    Math.round(w * (card.size === "square" ? 0.072 : 0.082)),
+    Math.round(w * 0.032),
+    "Fraunces, Georgia, serif", "400"
+  );
+  x.fillStyle = "#F4F5FF";
+  x.font = `400 ${t.size}px Fraunces, Georgia, serif`;
+  const blockH = t.lines.length * t.lh;
+  let ty = bodyTop + Math.max(0, (bodyMax - blockH) / 2) + t.size;
+  t.lines.forEach(l=>{ x.fillText(l, P, ty); ty += t.lh; });
+
+  /* rule + attribution */
+  x.fillStyle = "rgba(170,112,250,.85)";
+  x.fillRect(P, ruleY, Math.round(w*0.11), 3);
+
+  x.fillStyle = "#9DA1D0";
+  x.font = `500 ${Math.round(w*0.0215)}px "JetBrains Mono", monospace`;
+  const srcLines = wrapLines(x, card.src, w - P*2);
+  let sy = footY - Math.round(h*0.045);
+  srcLines.slice(0,2).forEach(l=>{ x.fillText(l, P, sy); sy += Math.round(w*0.033); });
+  if(card.who){
+    x.fillStyle = "#7A7FB8";
+    x.fillText(card.who, P, sy);
+  }
+  if(SITE_URL){
+    x.fillStyle = "#BDA4FE";
+    x.font = `500 ${Math.round(w*0.020)}px "JetBrains Mono", monospace`;
+    tracked(x, SITE_URL.toUpperCase(), P, h - P + Math.round(h*0.006), w*0.005, "left");
+  }
+  return c;
+}
+
+async function paintSheet(){
+  shot.removeAttribute("src");
+  const c = await drawCard();
+  /* JPEG, not PNG: a full-bleed gradient this size lands around 800 KB as a
+     PNG, which is slow to share on mobile data and over the size WhatsApp
+     will fetch for a link preview. At this resolution the difference is
+     invisible. */
+  const blob = await new Promise(res=> c.toBlob(res, "image/jpeg", 0.92));
+  card.blob = blob;
+  const url = URL.createObjectURL(blob);
+  if(shot.dataset.url) URL.revokeObjectURL(shot.dataset.url);
+  shot.dataset.url = url;
+  shot.src = url;
+  saveBtn.href = url;
+  saveBtn.download = card.kind === "og" ? "og.jpg" : "ypc2026-card.jpg";
+
+  let canShare = false;
+  try{
+    const file = new File([blob], saveBtn.download, {type:"image/jpeg"});
+    canShare = !!(navigator.canShare && navigator.canShare({files:[file]}));
+    shareBtn.onclick = ()=> navigator.share({files:[file]}).catch(()=>{});
+  }catch{ canShare = false; }
+  shareBtn.hidden = !canShare;
+}
+
+function openSheet(next){
+  Object.assign(card, next);
+  lastFocus = document.activeElement;
+  sheet.removeAttribute("hidden");
+  sheet.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.querySelectorAll(".size").forEach(b=>{
+    b.hidden = card.kind === "og";
+    b.setAttribute("aria-pressed", String(b.dataset.size === card.size));
+  });
+  sheetTitle.textContent = card.kind === "og" ? "Link preview image" : "Shareable card";
+  sheetNote.textContent = card.kind === "og"
+    ? "Save this as og.jpg beside index.html, then set the og:image tag in the <head> to its full web address."
+    : "On a phone you can also press and hold the image to save it.";
+  copyBtn.hidden = card.kind === "og";
+  paintSheet();
+}
+
+function closeSheet(){
+  sheet.classList.remove("open");
+  sheet.setAttribute("hidden","");
+  document.body.style.overflow = "";
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+document.addEventListener("click", e=>{
+  const trigger = e.target.closest("[data-card]");
+  if(trigger){
+    const s = byId[trigger.dataset.s].s;
+    const kind = trigger.dataset.card;
+    const who = namedSpeaker(s);
+    if(kind === "idea"){
+      openSheet({
+        kind:"idea", size:card.size,
+        text: plain(s.big),
+        label:"The big idea",
+        src:`Session ${sessionNo(s.id)} · ${plain(s.title)}`,
+        who:"Youth & Pensa Camp 2026"
+      });
+    }else{
+      openSheet({
+        kind:"quote", size:card.size,
+        text:`“${plain(s.quotes[Number(trigger.dataset.i)])}”`,
+        label:"Said at camp",
+        src:`Session ${sessionNo(s.id)} · ${plain(s.title)}`,
+        who: who || "Youth & Pensa Camp 2026"
+      });
+    }
+    return;
+  }
+  if(e.target.closest("[data-close]")) closeSheet();
+  const size = e.target.closest(".size");
+  if(size && !size.hidden){
+    card.size = size.dataset.size;
+    document.querySelectorAll(".size").forEach(b=>
+      b.setAttribute("aria-pressed", String(b.dataset.size === card.size)));
+    paintSheet();
+  }
+});
+
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape" && sheet.classList.contains("open")) closeSheet();
+});
+
+copyBtn.addEventListener("click", async ()=>{
+  const words = `${card.text} — ${card.src}, Youth & Pensa Camp 2026`;
+  try{
+    await navigator.clipboard.writeText(words);
+    copyBtn.textContent = "Copied";
+    setTimeout(()=>copyBtn.textContent = "Copy the words", 1800);
+  }catch{
+    sheetNote.textContent = "Copying isn't available in this browser — select the words from the page instead.";
+  }
+});
+
+/* #og in the address bar opens the link-preview generator */
+function maybeOG(){
+  if(location.hash.toLowerCase() !== "#og") return;
+  openSheet({ kind:"og", size:"og", text:"", label:"", src:"", who:"" });
+}
+window.addEventListener("hashchange", maybeOG);
+maybeOG();
+
+/* ================================================================
+   REVEAL ON SCROLL
+   ================================================================ */
+if(matchMedia("(prefers-reduced-motion: reduce)").matches){
+  document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
+}else{
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} });
+  },{rootMargin:"0px 0px -8% 0px", threshold:.05});
+  document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+}
+</script>
+
+</body>
+</html>
