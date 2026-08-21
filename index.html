@@ -385,6 +385,51 @@ a{color:var(--royal)}
 .start-list .t{font-family:var(--display); font-size:1.02rem; line-height:1.4; color:var(--ink)}
 .start-list .s{display:block; font-family:var(--body); font-size:.78rem; color:var(--ink-soft); margin-top:.22rem}
 
+/* ============================================================
+   JOURNEY  —  post-camp pacing, deliberately a sibling of
+   "Start here" rather than a competing pattern
+   ============================================================ */
+.journey{padding:0 0 clamp(2.5rem,5vw,3.6rem)}
+.journey-card{
+  border:1px solid var(--rule); border-radius:var(--r-lg);
+  background:#fff; padding:1.7rem 1.8rem;
+}
+.journey-card > .eyebrow{color:var(--violet); display:block; margin-bottom:.5rem}
+.journey-card h2{font-size:clamp(1.35rem,2.8vw,1.75rem); margin-bottom:.5rem}
+.journey-card .sub{color:var(--ink-soft); font-size:.96rem; margin:0 0 1.4rem; max-width:60ch}
+.journey-list{list-style:none; margin:0; padding:0}
+.journey-list li{border-top:1px solid var(--rule)}
+.jw{
+  display:flex; gap:1rem; align-items:flex-start;
+  padding:.9rem .3rem; text-decoration:none; color:inherit;
+  border-left:3px solid transparent;
+  transition:background .16s, padding .16s;
+}
+.jw:hover,.jw:focus-visible{background:var(--violet-tint); padding-inline:.7rem}
+.jw-n{
+  font-family:var(--mono); font-size:.72rem; color:var(--violet);
+  padding-top:.28rem; flex-shrink:0;
+}
+.jw-t{font-family:var(--display); font-size:1.02rem; line-height:1.4; color:var(--ink)}
+.jw-status{
+  display:block; font-family:var(--body); font-size:.78rem;
+  color:var(--ink-soft); margin-top:.22rem;
+}
+.jw.current{
+  background:var(--violet-tint);
+  border-left-color:var(--violet);
+  padding-inline:.7rem;
+}
+.jw.future{opacity:.5}
+.jw.future .jw-n{color:var(--ink-soft)}
+.jw-status.done{color:#1C6640; font-weight:600}
+.jw.current .jw-status{color:var(--violet); font-weight:600}
+.jw.current .jw-status.done{color:#1C6640}
+@media(max-width:520px){
+  .journey-card{padding:1.4rem 1.2rem}
+  .jw{gap:.8rem}
+}
+
 /* quiz */
 .quiz{max-width:var(--read)}
 .q{
@@ -482,6 +527,32 @@ a{color:var(--royal)}
 .act input:checked + span{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:#B9BCD4}
 
 /* ============================================================
+   JOURNAL  —  private per-session takeaway, saved on this device
+   ============================================================ */
+.journal-note{max-width:var(--read); margin:0 0 1.15rem; font-size:.93rem; color:var(--ink-soft)}
+.journal{max-width:var(--read)}
+.jf{display:block; margin-bottom:1rem}
+.jf > span{display:block; font-size:.93rem; color:var(--ink-soft); margin-bottom:.42rem}
+.jf textarea{
+  display:block; width:100%;
+  font:inherit; font-size:.96rem; line-height:1.55;
+  color:var(--ink); background:#fff;
+  padding:.65rem .85rem; border-radius:var(--r-sm);
+  border:1px solid var(--rule); resize:vertical;
+  transition:border-color .15s;
+}
+.session:nth-child(even) .jf textarea{background:#FCFCFF}
+.jf textarea::placeholder{color:#9295BC}
+.jf textarea:hover{border-color:var(--violet)}
+.jf textarea:focus{border-color:var(--violet); outline:2px solid var(--violet); outline-offset:1px}
+.journal-saved{
+  margin:0; min-height:1.1em;
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--violet-mid); opacity:0; transition:opacity .3s;
+}
+.journal-saved.show{opacity:1}
+
+/* ============================================================
    CLOSING
    ============================================================ */
 .closing{
@@ -518,6 +589,30 @@ a{color:var(--royal)}
   color:#8085BC; cursor:pointer; text-decoration:underline; padding:0;
 }
 .reset:hover{color:#BDA4FE}
+
+/* my camp — the journal, rolled up on the dark closing panel */
+.mycamp{
+  margin-top:2rem; padding-top:1.8rem; max-width:560px;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+.mycamp-lab{
+  display:block; font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.12em; text-transform:uppercase; color:#9DA1D0;
+  margin-bottom:1.1rem;
+}
+.mycamp-empty{margin:0; font-size:.9rem; color:#9DA1D0; max-width:52ch}
+.mycamp-item{margin:0 0 1.3rem}
+.mycamp-item h4{
+  font-family:var(--mono); font-size:.67rem; font-weight:500;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--violet-mid); margin:0 0 .45rem;
+}
+.mycamp-item p{margin:0 0 .45rem; font-size:.93rem; color:#C9CBEA; max-width:none}
+.mycamp-item p b{
+  display:block; font-family:var(--mono); font-weight:500;
+  font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:#8085BC; margin-bottom:.1rem;
+}
 
 footer{background:var(--navy); color:#7A7FB8; padding:0 0 3rem}
 footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font-size:.84rem}
@@ -705,6 +800,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
    ============================================================ */
 @media print{
   .bar,.media,.player,.tally,.reset,.hero::after{display:none !important}
+  .journey,.mycamp{display:none !important}
   .back,.today,.sheet,.qshare{display:none !important}
   .s-figure{color:#666}
   body{background:#fff; font-size:11pt}
@@ -815,6 +911,12 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 
 <section class="start"><div class="wrap"><div class="start-card rv" id="startCard"></div></div></section>
 
+<!-- ============================================================
+     JOURNEY — one session a week, paced from your first visit
+     (rendered by JS; never gates or hides anything)
+     ============================================================ -->
+<section class="journey"><div class="wrap"><div class="journey-card rv" id="journeyCard"></div></div></section>
+
 <main id="sessions"></main>
 
 <!-- ============================================================
@@ -849,6 +951,8 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
       <p class="tally-msg" id="tallySteps" style="margin-top:.25rem;opacity:.75">0 steps ticked</p>
       <button class="reset" id="resetBtn" type="button">Reset my progress</button>
     </div>
+
+    <div class="mycamp" id="myCampBlock"></div>
   </div>
 </section>
 
@@ -1759,6 +1863,22 @@ function sessionHTML(s, i){
       </div>
 
       ${quizHTML(s)}
+
+      <div class="block rv">
+        <h3>Before you move on</h3>
+        <p class="journal-note">Nothing here is required or shared — it&rsquo;s just for you, saved on this device.</p>
+        <div class="journal" data-jkey="${s.id}">
+          <label class="jf">
+            <span>One thing from this session I don&rsquo;t want to forget</span>
+            <textarea data-jfield="keep" rows="2" placeholder="A line, a moment, an idea&hellip;"></textarea>
+          </label>
+          <label class="jf">
+            <span>What I&rsquo;m going to do about it</span>
+            <textarea data-jfield="action" rows="2" placeholder="Be specific — a day, a person, a step&hellip;"></textarea>
+          </label>
+          <p class="journal-saved" aria-live="polite"></p>
+        </div>
+      </div>
     </div>
   </article>`;
 }
@@ -1829,6 +1949,186 @@ const store = {
   write(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch{} }
 };
 
+/* ================================================================
+   JOURNAL  ·  JOURNEY  ·  MY CAMP
+   ----------------------------------------------------------------
+   Three views of the same two local stores — the ticks above, and a
+   private takeaway journal. Nothing leaves the device, nothing is
+   required, and the journey never gates or hides a session: it is
+   pacing guidance, not access control. All of it degrades quietly
+   if storage is blocked.
+
+   Declared here, above paint(), because paint() calls the two
+   render functions on every progress change.
+   ================================================================ */
+const JKEY = "ypc2026-journal";
+const journal = {
+  read(){ try{ return JSON.parse(localStorage.getItem(JKEY)) || {}; }catch{ return {}; } },
+  write(v){ try{ localStorage.setItem(JKEY, JSON.stringify(v)); }catch{} }
+};
+
+/* journal entries are typed by the reader, so they need a real
+   escape — esc() only handles bare ampersands in authored copy */
+function escText(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+/* week 1 starts on the first visit, not the most recent one, so
+   ypc2026-last-visit can't be reused here */
+const FIRST_KEY = "ypc2026-first-visit";
+let firstVisit = 0;
+try{
+  firstVisit = Number(localStorage.getItem(FIRST_KEY)) || 0;
+  if(!firstVisit){
+    firstVisit = Date.now();
+    localStorage.setItem(FIRST_KEY, String(firstVisit));
+  }
+}catch{ firstVisit = Date.now(); }
+
+const WEEKS = SESSIONS.length;
+const daysSinceFirst = Math.max(0, Math.floor((Date.now() - firstVisit) / 86400000));
+const journeyWeek = Math.min(WEEKS, Math.floor(daysSinceFirst / 7) + 1);
+
+/* "Session 04" for the sermons, just "Panel" for the panel */
+function weekLabel(s, i){ return s.numeral || ("Session " + String(i+1).padStart(2,"0")); }
+
+/* ---- populate and save each session's two fields ---- */
+document.querySelectorAll(".journal").forEach(box=>{
+  const id     = box.dataset.jkey;
+  const flag   = box.querySelector(".journal-saved");
+  const first  = journal.read()[id] || {};
+  const fields = [...box.querySelectorAll("[data-jfield]")];
+  let debounce = 0, flash = 0, dirty = false;
+
+  const save = ()=>{
+    dirty = false;
+    const all = journal.read();
+    const entry = {};
+    fields.forEach(t=>{
+      const v = t.value.trim();
+      if(v) entry[t.dataset.jfield] = v;
+    });
+    if(Object.keys(entry).length) all[id] = entry; else delete all[id];
+    journal.write(all);
+
+    flag.textContent = "Saved";
+    flag.classList.add("show");
+    clearTimeout(flash);
+    flash = setTimeout(()=>flag.classList.remove("show"), 1500);
+
+    renderJourney();
+    renderMyCamp();
+  };
+
+  fields.forEach(t=>{
+    if(first[t.dataset.jfield]) t.value = first[t.dataset.jfield];
+    t.addEventListener("input", ()=>{
+      dirty = true;
+      clearTimeout(debounce);
+      debounce = setTimeout(()=>{ if(dirty) save(); }, 500);
+    });
+    t.addEventListener("blur", ()=>{
+      clearTimeout(debounce);
+      if(dirty) save();
+    });
+  });
+});
+
+/* ---- the journey card ---- */
+const journeyCard = document.getElementById("journeyCard");
+
+function renderJourney(){
+  if(!journeyCard) return;
+  const prog = store.read();
+  const jrn  = journal.read();
+
+  const rows = SESSIONS.map((s,i)=>{
+    const week   = i + 1;
+    const state  = week < journeyWeek ? "past" : week === journeyWeek ? "current" : "future";
+    const ticked = Object.keys(prog).some(k=> k.indexOf(s.id + "-") === 0 && prog[k]);
+    const noted  = !!(jrn[s.id] && (jrn[s.id].keep || jrn[s.id].action));
+
+    let status = "Coming up.", done = "";
+    if(state === "past"){
+      if(ticked){ status = "Done."; done = " done"; }
+      else status = "Still open — pick one step.";
+    }else if(state === "current"){
+      if(noted){ status = "Takeaway saved."; done = " done"; }
+      else status = "Jot down your takeaway →";
+    }
+
+    return `
+      <li>
+        <a class="jw ${state}" href="#${s.id}">
+          <span class="jw-n">${String(week).padStart(2,"0")}</span>
+          <span class="jw-t">${esc(s.title)}
+            <span class="jw-status${done}">${status}</span>
+          </span>
+        </a>
+      </li>`;
+  }).join("");
+
+  journeyCard.innerHTML = `
+    <span class="eyebrow">Your ${WEEKS}-week journey</span>
+    <h2>Week ${journeyWeek} of ${WEEKS}</h2>
+    <p class="sub">One session a week, in the order they were preached. Miss a week? Pick up where
+      you left off — nothing here expires, and every session stays open the whole way through.</p>
+    <ul class="journey-list">${rows}</ul>`;
+}
+
+/* ---- my camp: the journal, rolled up ---- */
+const myCampBlock = document.getElementById("myCampBlock");
+
+function renderMyCamp(){
+  if(!myCampBlock) return;
+  const jrn  = journal.read();
+  const kept = SESSIONS
+    .map((s,i)=>({s,i}))
+    .filter(({s})=> jrn[s.id] && (jrn[s.id].keep || jrn[s.id].action));
+
+  if(!kept.length){
+    myCampBlock.innerHTML = `
+      <span class="mycamp-lab">My camp</span>
+      <p class="mycamp-empty">Nothing saved yet. What you jot down under “Before you move on”
+        in each session shows up here.</p>`;
+    return;
+  }
+
+  myCampBlock.innerHTML = `
+    <span class="mycamp-lab">My camp</span>
+    ${kept.map(({s,i})=>{
+      const e = jrn[s.id];
+      return `
+      <div class="mycamp-item">
+        <h4>${esc(weekLabel(s,i))} · ${esc(s.title)}</h4>
+        ${e.keep   ? `<p><b>Worth keeping</b>${escText(e.keep)}</p>` : ""}
+        ${e.action ? `<p><b>My step</b>${escText(e.action)}</p>` : ""}
+      </div>`;
+    }).join("")}
+    <button class="reset" id="myCampCopy" type="button">Copy my takeaways</button>`;
+}
+
+document.addEventListener("click", e=>{
+  const btn = e.target.closest("#myCampCopy");
+  if(!btn) return;
+
+  const jrn = journal.read();
+  const out = ["My takeaways — Youth & Pensa Camp 2026", ""];
+  SESSIONS.forEach((s,i)=>{
+    const entry = jrn[s.id];
+    if(!entry || (!entry.keep && !entry.action)) return;
+    out.push(`${weekLabel(s,i)} · ${plain(s.title)}`);
+    if(entry.keep)   out.push(`Worth keeping: ${entry.keep}`);
+    if(entry.action) out.push(`My step: ${entry.action}`);
+    out.push("");
+  });
+
+  const revert = ()=> setTimeout(()=> btn.textContent = "Copy my takeaways", 1800);
+  navigator.clipboard.writeText(out.join("\n").trim())
+    .then(()=>{ btn.textContent = "Copied"; revert(); })
+    .catch(()=>{ btn.textContent = "Couldn't copy — select the text instead"; revert(); });
+});
+
 const barFill = document.getElementById("barFill");
 const barCount = document.getElementById("barCount");
 const tallyNum = document.getElementById("tallyNum");
@@ -1855,6 +2155,8 @@ function paint(){
   tallyNum.textContent = sess;
   tallySteps.textContent = steps === 1 ? "1 step ticked" : steps + " steps ticked";
   tallyMsg.textContent = message(sess, steps);
+  renderJourney();
+  renderMyCamp();
 }
 
 const saved = store.read();
