@@ -6,7 +6,7 @@ Context for continuing this project in Claude Code.
 
 ## 1. What this is
 
-A single-page web recap of five sessions from Youth & Pensa Camp 2026 (Church of Pentecost, Regina, Saskatchewan).
+A single-page web recap of six sessions from Youth & Pensa Camp 2026 (Church of Pentecost, Regina, Saskatchewan) — five sermons and a panel discussion.
 
 **The purpose is retention, not archiving.** Conference teaching evaporates within weeks. This page exists so attendees can revisit what they heard and actually act on it, and so people who missed the camp get the substance without watching four hours of video. Every design decision should be measured against that: does this help someone remember and apply, or is it decoration?
 
@@ -51,7 +51,7 @@ All content lives in JavaScript arrays inside a single `<script>` tag at the bot
 const SITE_URL = "";          // e.g. "youthpensacamp.ca"
 const MEDIA = {
   s1:{ youtube:"", audio:"" },
-  ...s5
+  ...s6
 };
 ```
 
@@ -61,11 +61,16 @@ Empty string → the button renders greyed out as "coming soon". This lets the p
 
 ### The content model
 
-`SESSIONS` is an array of 5 objects:
+`SESSIONS` is an array of 6 objects, in this order: **`s1, s2, s3, s6, s5, s4`**.
+
+The array order is the display order; the ids are not. `s6` (Joyful Praise) was added after the other five and displays fourth, where it happened. `s4` (the panel) sits last and is no longer numbered. **Ids never move** — progress checkboxes persist as `data-key="s5-0"` under `ypc2026-progress`, so reassigning which session owns an id silently scrambles anyone's saved progress.
+
+The display numeral comes from array position (`sessionHTML(s, i)` uses `i+1`), except that a session carrying a `numeral` field overrides it. Only the panel has one, `numeral:"Panel"`. `sessionNo()` and `sessionLabel()` honour it too, so the panel reads "Panel" rather than "Session 06" on the daily card, the recall card and the shareable cards.
 
 | Field | Type | Rendered as |
 |---|---|---|
-| `id` | `"s1"`–`"s5"` | anchor id, storage key prefix, MEDIA lookup |
+| `id` | `"s1"`–`"s6"` | anchor id, storage key prefix, MEDIA lookup |
+| `numeral` | string, optional | overrides the position-derived numeral (only the panel uses it) |
 | `day`, `title`, `speaker`, `role`, `flag` | string | session header (`flag` = red "confirm this" badge) |
 | `theme` | string | the one-word theme beside the oversized session numeral |
 | `anchor` | string | scripture reference line |
@@ -100,16 +105,16 @@ Note that `esc()` only escapes bare ampersands — it does **not** escape `<` or
 
 - Checkboxes carry `data-key="s1-0"` and `data-sess="s1"`
 - Persisted to `localStorage` under key `ypc2026-progress`, wrapped in try/catch so a blocked storage API degrades silently rather than throwing
-- **The denominator is 5 sessions, not 20 steps.** The page tells people to pick *one* action per session; showing "3/20" would contradict that instruction. Total steps display as a secondary line only. Don't "fix" this back to 20.
+- **The denominator is 6 sessions, not 24 steps.** The page tells people to pick *one* action per session; showing "3/24" would contradict that instruction. Total steps display as a secondary line only. Don't "fix" this back to 24.
 
 ### The daily layer — "Remember this" and "Can you still remember?"
 
 Between the intro and the Start-here card sits a two-card row that changes every
 day, built entirely from content that already exists further down the page.
 
-- **The daily line** is one of the 25 verbatim quotes. **The daily question** is one of the 15 quiz questions.
+- **The daily line** is one of the 33 verbatim quotes. **The daily question** is one of the 18 quiz questions.
 - Selection is **deterministic, not random**: `dayNumber()` returns days since epoch in the reader's own timezone, and the index is `(DAY * stride) % pool.length`. Everyone who opens the page on the same day sees the same line, so it can be talked about — a random pick would make that impossible.
-- The strides (7 for quotes, 4 for questions) are **coprime with the pool sizes** (25 and 15). That guarantees every item appears once before any repeats, and that consecutive days jump between sessions rather than walking through session 1 five times. **If you add or remove quotes or quiz questions, check the stride is still coprime with the new pool size**, or the rotation will start skipping items permanently.
+- The strides (7 for quotes, 5 for questions) are **coprime with the pool sizes** (33 and 18). That guarantees every item appears once before any repeats, and that consecutive days jump between sessions rather than walking through session 1 five times. **If you add or remove quotes or quiz questions, check the stride is still coprime with the new pool size**, or the rotation will start skipping items permanently.
 - The homepage question reuses the existing `.q` markup and the existing document-level quiz handler. There is no second quiz implementation — don't add one.
 
 ### Other behaviour
@@ -169,9 +174,9 @@ Alternating sessions use `--paper-alt` via `:nth-child(even)`. Cards inside thos
 ### Conventions to preserve
 
 - Section labels are mono, uppercase, letterspaced — **no emoji icons**, they'd undercut the typographic system
-- Each session opens with an oversized display numeral in `--violet-light` beside a one-word theme (`Gospel · Transformation · Power · Identity · Impact`). Those words are not decoration — they map to the event's own tagline, *Gospel · Power · Impact*, already in the hero. Don't invent new ones
+- Each session opens with an oversized display numeral in `--violet-light` beside a one-word theme (`Gospel · Transformation · Power · Praise · Impact · Identity`). `Praise` is the one that does not come from the tagline — it comes from the night's own stated theme, quoted at the top of that transcript, so it was taken from the event rather than invented. Those words are not decoration — they map to the event's own tagline, *Gospel · Power · Impact*, already in the hero. Don't invent new ones
 - The daily card and the closing section share the navy radial-gradient treatment. That's the only "loud" surface in the system; adding a third would cheapen all of them
-- Quotes get a violet left border; big ideas get a violet tinted panel; editor's notes get the red tint
+- Quotes get a violet left border; big ideas get a violet tinted panel; editor's notes get the red tint. The `note` field on a `deeper` panel is what renders one; no session currently sets it, but `deeperHTML()` and the `.deep-note` styles are intact, so adding one back is a one-line content edit
 - Body copy constrained to `--read` (68ch)
 - Mobile-first; verified no horizontal overflow at 390px
 
@@ -183,7 +188,7 @@ These are settled decisions, not open questions.
 
 1. **No photographs.** Many attendees are minors and consent wasn't obtained. Text and logo only.
 2. **No backend, no data collection.** No comments, forms, surveys, or submissions. Progress stays on-device.
-3. **Panelists are not named.** Session 4 uses "one panelist", "another panelist", "the senior minister on the panel". Sermon speakers *are* named. If names are supplied later they go in `speaker`/`role`, but the panel stays anonymised unless the client says otherwise.
+3. **Panelists are not named.** The panel (id `s4`) uses "one panelist", "another panelist", "the senior minister on the panel". Sermon speakers *are* named. If names are supplied later they go in `speaker`/`role`, but the panel stays anonymised unless the client says otherwise.
 4. **No gamification.** Badges, points, streaks and journey maps were explicitly considered and rejected — turning prayer and surrender into point-collection trivialises the content. The session tracker is the ceiling.
 5. **Quotes are verbatim.** Every quote was verified word-for-word against the source transcripts. Several were dropped or corrected during an accuracy pass. **Do not paraphrase, tighten, or "improve" a quote.** If a quote seems awkward, that's how it was said.
 
@@ -193,13 +198,27 @@ These are settled decisions, not open questions.
 
 ### Blocking publication
 
-- [ ] **Two speaker names unknown** — Session 2 (Day 2 morning) and Session 5 (Day 4 closing, called only "Bishop" in the recording). Both currently show a red `flag` badge.
-- [ ] **Confirm spelling of "Apostle George Amoah"** (Session 3) — transcribed by ear.
-- [ ] **Session 4 editorial note** — the panel included teaching on responsibility within courtship and on women's dress that was deliberately not reproduced, because it sat immediately next to an audience question about sexual harassment by a leader. The omission is surfaced in an on-page editor's note rather than hidden. **This is the client's decision to make** — do not quietly resolve it either way.
-- [ ] **Barna statistics (Session 1)** — the recording is garbled on the numbers. Only two figures were kept; the rest is marked unclear. Verify against the original June 2026 Barna article before any percentage is published.
+- [ ] **One speaker name unconfirmed** — the Day 3 evening session (`s6`, Joyful Praise). "Overseer Nana Osei Boakye" comes from the MC's introduction and has not been verified; it shows a red `flag` badge, and it also prints on that session's shareable quote cards.
+- [ ] **The panel's held-back passage** — the panel included teaching on responsibility within courtship and on women's dress that was deliberately not reproduced, because it sat immediately next to an audience question about sexual harassment by a leader. The passage is still not on the page, and as of this revision the on-page editor's note that disclosed the omission has been removed at the client's instruction, so the omission is now silent. **Whether to reinstate the note, publish the passage, or leave both as they are is the client's decision** — do not quietly resolve it either way.
+- [ ] **Barna statistics (Session 1)** — the recording is garbled on the numbers. No figures are published. Verify against the original June 2026 Barna article before any percentage goes on the page.
+
+### Editorial decisions still open, for the client's leadership
+
+These four sit together and should be settled in one sitting by the same people. Deciding them separately is how the page ends up saying two different things.
+
+- [ ] **The panel's held-back passage** on responsibility within courtship and on women's dress. The passage is not on the page and the editor's note that disclosed the omission has been removed, so nothing on the page now indicates anything was held back.
+- [ ] **Session 5's opening aside** — before he preached on Day 4 he told two stories about harassment complaints from the reported man's perspective. It is omitted from the page with no editor's note. The panel's comparable omission is now also silent, so the two are at least consistent with each other; whether silence is the right treatment for either is still open.
+- [ ] **Session 5's hair-and-makeup panel** (the full cosmetics walkthrough) and the ten-thousand-dollar giving line. Both are currently on the page as delivered.
+- [ ] **Session 3's description of how King Saul died.** The `deeper` panel says he "ended by taking his own life", which is accurate to what was said; the notes propose "ended badly", which keeps the warning and drops the method.
+- [ ] **Session 4's offering appeal** (`s6`, Joyful Praise) — the MC's appeal with a worked dollar example before the speaker was introduced. Not transcribed, not on the page.
+- [ ] **The panel's medical-check passage** — HIV and sickle-cell testing before marriage. Worth deciding whether it needs a line pointing readers to actual medical advice rather than leaving a church rule of thumb as the last word.
 
 ### Done since the last handoff
 
+- [x] **Session 2 and Session 5 speaker names** — confirmed as Pastor Dr. Frederick Appah and Pastor Emmanuel Osei Marfo. Both red flags emptied; these were the two items blocking publication.
+- [x] **Session 3 speaker spelling** — confirmed as Apostle George Z. Amon (not "Amoah"). Flag emptied.
+- [x] **Session 4 added** — Joyful Praise: The Impact of the Gospel, Day 3 evening, id `s6`, displaying fourth. The panel moved to the end of the array with `numeral:"Panel"`.
+- [x] **Verbatim quote pass** — eleven quotes corrected across five sessions, including one on the panel ("Courtship is a deliberate, controlled step towards marriage") that was a compiler's summary sitting in an array that renders as `SAID AT CAMP`.
 - [x] **Shareable quote cards** — canvas-based, client-side, two sizes, share-sheet aware.
 - [x] **Open Graph preview image** — `og.jpg` bundled. Still needs the absolute URL filled into the meta tag at publish time.
 - [x] **Daily "Remember this" line and daily retrieval question** — the page now changes every day with no maintenance.
@@ -238,17 +257,30 @@ These are settled decisions, not open questions.
 ```bash
 # open at both breakpoints, check console is clean
 # expected counts on a correct build:
-#   .session         → 5
-#   details.deep     → 5
-#   .deep-item       → 51
-#   .bigidea         → 5
-#   #sessions .q     → 15     (+1 more on the homepage, so .q → 16)
-#   .act input       → 20
-#   .start-list li   → 5
-#   .quote           → 25
-#   .qshare          → 30     (25 quotes + 5 big ideas)
-#   .s-theme         → 5
+#   .session         → 6
+#   details.deep     → 6
+#   .deep-item       → 68
+#   .bigidea         → 6
+#   #sessions .q     → 18     (+1 more on the homepage, so .q → 19)
+#   .act input       → 24
+#   .start-list li   → 6
+#   .quote           → 33
+#   .qshare          → 39     (33 quotes + 6 big ideas)
+#   .s-theme         → 6
 ```
+
+Pool sizes and strides, which must be re-checked together after any
+content edit:
+
+```
+QUOTE_POOL 33, stride 7  → gcd(7, 33) = 1
+QUIZ_POOL  18, stride 5  → gcd(5, 18) = 1
+```
+
+The quiz stride was 4 while the pool was 15. Growing the pool to 18 made
+`gcd(4, 18) = 2`, which would have hidden nine questions permanently, so
+the stride moved to 5. **28 is the trap for the quote pool** —
+`gcd(7, 28) = 7` shows only four lines, forever.
 
 Also worth checking after any change:
 
@@ -262,4 +294,4 @@ Also worth checking after any change:
 - With `localStorage` blocked entirely, the page still renders and the console
   stays clean. Verified — every storage call is guarded.
 
-Progress sanity check: ticking one box in two different sessions should show **2 / 5 sessions acted on** and "2 steps ticked".
+Progress sanity check: ticking one box in two different sessions should show **2 / 6 sessions acted on** and "2 steps ticked".
