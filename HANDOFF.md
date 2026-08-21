@@ -198,13 +198,12 @@ These are settled decisions, not open questions.
 
 ### Blocking publication
 
-- [ ] **One speaker name unconfirmed** — the Day 3 evening session (`s6`, Joyful Praise). "Overseer Nana Osei Boakye" comes from the MC's introduction and has not been verified; it shows a red `flag` badge, and it also prints on that session's shareable quote cards.
 - [ ] **The panel's held-back passage** — the panel included teaching on responsibility within courtship and on women's dress that was deliberately not reproduced, because it sat immediately next to an audience question about sexual harassment by a leader. The passage is still not on the page, and as of this revision the on-page editor's note that disclosed the omission has been removed at the client's instruction, so the omission is now silent. **Whether to reinstate the note, publish the passage, or leave both as they are is the client's decision** — do not quietly resolve it either way.
 - [ ] **Barna statistics (Session 1)** — the recording is garbled on the numbers. No figures are published. Verify against the original June 2026 Barna article before any percentage goes on the page.
 
 ### Editorial decisions still open, for the client's leadership
 
-These four sit together and should be settled in one sitting by the same people. Deciding them separately is how the page ends up saying two different things.
+These six sit together and should be settled in one sitting by the same people. Deciding them separately is how the page ends up saying two different things.
 
 - [ ] **The panel's held-back passage** on responsibility within courtship and on women's dress. The passage is not on the page and the editor's note that disclosed the omission has been removed, so nothing on the page now indicates anything was held back.
 - [ ] **Session 5's opening aside** — before he preached on Day 4 he told two stories about harassment complaints from the reported man's perspective. It is omitted from the page with no editor's note. The panel's comparable omission is now also silent, so the two are at least consistent with each other; whether silence is the right treatment for either is still open.
@@ -217,6 +216,7 @@ These four sit together and should be settled in one sitting by the same people.
 
 - [x] **Session 2 and Session 5 speaker names** — confirmed as Pastor Dr. Frederick Appah and Pastor Emmanuel Osei Marfo. Both red flags emptied; these were the two items blocking publication.
 - [x] **Session 3 speaker spelling** — confirmed as Apostle George Z. Amon (not "Amoah"). Flag emptied.
+- [x] **Session 4 speaker confirmed** — Overseer Nana Osei Boakye (`s6`), confirmed by the client. Flag emptied. **No session carries a red `flag` any more.**
 - [x] **Session 4 added** — Joyful Praise: The Impact of the Gospel, Day 3 evening, id `s6`, displaying fourth. The panel moved to the end of the array with `numeral:"Panel"`.
 - [x] **Verbatim quote pass** — eleven quotes corrected across five sessions, including one on the panel ("Courtship is a deliberate, controlled step towards marriage") that was a compiler's summary sitting in an array that renders as `SAID AT CAMP`.
 - [x] **Shareable quote cards** — canvas-based, client-side, two sizes, share-sheet aware.
