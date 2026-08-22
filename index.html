@@ -296,6 +296,49 @@ a{color:var(--royal)}
 .session:nth-child(even){background:var(--paper-alt)}
 
 .s-head{margin-bottom:2.2rem}
+
+/* ============================================================
+   SESSION RAIL  —  desktop only
+   At 1280px the 68ch column left roughly 40% of the viewport
+   empty. This puts a per-session outline in that gutter for the
+   laptop readers — small-group leaders, anyone projecting it.
+   Hidden below 1024px, where the column is the whole width.
+   ============================================================ */
+.s-rail{display:none}
+
+@media (min-width:1024px){
+  .session > .wrap{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 15rem;
+    column-gap:clamp(2rem,4vw,3.5rem);
+    align-items:start;          /* lets the rail stick inside its row */
+  }
+  .s-main{min-width:0}          /* without this the grid blows out */
+
+  .s-rail{display:block; position:sticky; top:92px}
+  .rail-lab{
+    display:block;
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-soft);
+    padding-bottom:.6rem; margin-bottom:.3rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .rail-list{list-style:none; margin:0; padding:0}
+  .rail-list a{
+    display:block; padding:.5rem .6rem; border-radius:var(--r-sm);
+    font-size:.82rem; line-height:1.35; color:var(--ink-soft);
+    text-decoration:none; border-left:2px solid transparent;
+    transition:color .16s, background .16s, border-color .16s;
+  }
+  .rail-list a:hover,.rail-list a:focus-visible{
+    color:var(--royal); background:var(--violet-tint); border-left-color:var(--violet-light);
+  }
+  /* the section the reader is actually in */
+  .rail-list a[aria-current="true"]{
+    color:var(--royal); font-weight:600; border-left-color:var(--violet);
+  }
+  @media (prefers-reduced-motion:reduce){ .rail-list a{transition:none} }
+}
 .s-num{
   font-family:var(--mono); font-size:.72rem; letter-spacing:.16em;
   color:var(--royal); display:block; margin-bottom:.7rem;
@@ -920,7 +963,8 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 @media print{
   .bar,.media,.player,.tally,.reset,.hero::after{display:none !important}
   .journey,.mycamp{display:none !important}
-  .back,.today,.sheet,.qshare,.closing-acts,.mode{display:none !important}
+  .back,.today,.sheet,.qshare,.closing-acts,.mode,.s-rail{display:none !important}
+  .session > .wrap{display:block !important}
   body.essentials [data-extra]{display:block !important}
   .s-figure{color:#666}
   body{background:#fff; font-size:11pt}
@@ -1947,11 +1991,44 @@ function quizHTML(s){
       <p class="q-why"><b class="verdict"></b> ${q.why}</p>
     </div>`).join("");
   return `
-    <div class="block rv" data-extra="quiz">
+    <div class="block rv" id="${s.id}-quiz" data-extra="quiz">
       <h3>Check what stuck</h3>
       <p class="pick-note">Not a test — answering from memory is one of the best ways to make something stay.</p>
       <div class="quiz">${qs}</div>
     </div>`;
+}
+
+/* ----------------------------------------------------------------
+   The desktop rail: a per-session outline for the empty right gutter.
+   The `extra` column is the same hook Essentials trims on, so a rail
+   item disappears exactly when the section it points at does — one
+   rule keeps the two in step instead of a second list to maintain.
+   ---------------------------------------------------------------- */
+const RAIL = [
+  { key:"big",     extra:null,      label:"The big idea" },
+  { key:"lessons", extra:"lessons", label:"Key lessons" },
+  { key:"quotes",  extra:"quotes",  label:"Lines worth keeping" },
+  { key:"refs",    extra:"refs",    label:"Scriptures opened" },
+  { key:"reflect", extra:"reflect", label:"Sit with this" },
+  { key:"acts",    extra:null,      label:"Then go do one of these" },
+  { key:"quiz",    extra:"quiz",    label:"Check what stuck" },
+  { key:"journal", extra:"journal", label:"Before you move on" }
+];
+
+function railHTML(s){
+  const items = RAIL.filter(r=>{
+    if(r.key === "big")  return !!s.big;
+    if(r.key === "quiz") return !!(s.quiz && s.quiz.length);
+    return true;
+  }).map(r=>`
+        <li${r.extra ? ` data-extra="${r.extra}"` : ""}><a href="#${s.id}-${r.key}">${r.label}</a></li>`).join("");
+
+  return `
+      <aside class="s-rail" aria-label="Sections in this session">
+        <span class="rail-lab">In this session</span>
+        <ul class="rail-list">${items}
+        </ul>
+      </aside>`;
 }
 
 function sessionHTML(s, i){
@@ -1974,6 +2051,7 @@ function sessionHTML(s, i){
   return `
   <article class="session" id="${s.id}">
     <div class="wrap">
+      <div class="s-main">
       <div class="s-head rv">
         <div class="s-mark">
           <span class="s-figure" aria-hidden="true">${n}</span>
@@ -1989,18 +2067,18 @@ function sessionHTML(s, i){
         <div class="media">${ytBtn}${audBtn}</div>
         ${player}
         <div class="s-body">${s.overview}</div>
-        ${s.big ? `<div class="bigidea"><span>The big idea</span><p>${s.big}</p>
+        ${s.big ? `<div class="bigidea" id="${s.id}-big"><span>The big idea</span><p>${s.big}</p>
           <button class="qshare" type="button" data-card="idea" data-s="${s.id}">${ICON_SHARE}Make a card</button>
         </div>` : ""}
       </div>
 
-      <div class="block rv" data-extra="lessons">
+      <div class="block rv" id="${s.id}-lessons" data-extra="lessons">
         <h3>Key lessons</h3>
         <ul class="lessons">${s.lessons.map(l=>`<li>${l}</li>`).join("")}</ul>
         ${deeperHTML(s)}
       </div>
 
-      <div class="block rv" data-extra="quotes">
+      <div class="block rv" id="${s.id}-quotes" data-extra="quotes">
         <h3>Lines worth keeping</h3>
         <div class="quotes">${s.quotes.map((q,qi)=>`
           <div class="quote-row">
@@ -2009,7 +2087,7 @@ function sessionHTML(s, i){
           </div>`).join("")}</div>
       </div>
 
-      <div class="block rv" data-extra="refs">
+      <div class="block rv" id="${s.id}-refs" data-extra="refs">
         <h3>Scriptures opened</h3>
         <div class="refs">
           ${s.refs.map(r=>`<span class="ref">${esc(r)}</span>`).join("")}
@@ -2017,13 +2095,13 @@ function sessionHTML(s, i){
         </div>
       </div>
 
-      <div class="block rv" data-extra="reflect">
+      <div class="block rv" id="${s.id}-reflect" data-extra="reflect">
         <h3>Sit with this</h3>
         <ol class="reflect">${s.reflect.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>
         <button class="qshare" type="button" data-copyqs="${s.id}">${ICON_COPY}Copy these for a group</button>
       </div>
 
-      <div class="block rv">
+      <div class="block rv" id="${s.id}-acts">
         <h3>Then go do one of these</h3>
         <p class="pick-note">Pick <strong>one</strong> to actually do. If you get to more, good — but one done beats four intended.</p>
         <ul class="acts">${s.acts.map((a,j)=>`
@@ -2038,7 +2116,7 @@ function sessionHTML(s, i){
 
       ${quizHTML(s)}
 
-      <div class="block rv" data-extra="journal">
+      <div class="block rv" id="${s.id}-journal" data-extra="journal">
         <h3>Before you move on</h3>
         <p class="journal-note">Nothing here is required or shared — it&rsquo;s just for you, saved on this device.</p>
         <div class="journal" data-jkey="${s.id}">
@@ -2055,6 +2133,7 @@ function sessionHTML(s, i){
       </div>
 
       ${sessionNavHTML(i)}
+      </div>${railHTML(s)}
     </div>
   </article>`;
 }
@@ -3066,6 +3145,56 @@ maybeOG();
       revealVisible();
     }
   });
+})();
+
+/* ================================================================
+   RAIL SCROLL-SPY
+   ----------------------------------------------------------------
+   Marks the rail item for the section crossing the top of the
+   reading area. Runs regardless of viewport — the rail is hidden by
+   CSS below 1024px, and a hidden section never intersects, so
+   Essentials needs no special case here.
+   ================================================================ */
+(function(){
+  const targets = [...document.querySelectorAll(".session .block[id], .session .bigidea[id]")];
+  if(!targets.length) return;
+
+  const links = new Map();
+  document.querySelectorAll(".rail-list a").forEach(a=> links.set(a.getAttribute("href").slice(1), a));
+  if(!links.size) return;
+
+  const LINE = 130;                 /* the reading line, just under the bar */
+
+  /* The section most recently entered — the last one whose top has passed
+     the reading line. "Topmost still on screen" is the wrong rule here: a
+     short section like the scripture chips is still on screen well after
+     the reader has moved into the next one, and the rail would lag by one.
+     Targets are in document order, so the first top past the line ends it. */
+  function activeId(){
+    let last = null;
+    for(const t of targets){
+      const r = t.getBoundingClientRect();
+      if(!r.height) continue;       /* hidden by Essentials */
+      if(r.top <= LINE) last = t.id;
+      else break;
+    }
+    return last;
+  }
+
+  function sync(){
+    const hit = activeId();
+    links.forEach((a,id)=>{
+      if(id === hit) a.setAttribute("aria-current","true");
+      else a.removeAttribute("aria-current");
+    });
+  }
+
+  /* The observer is only a trigger: with the root's top edge pulled to the
+     reading line it fires exactly when a section crosses it, which is
+     exactly when the answer changes — no scroll handler needed. */
+  const io = new IntersectionObserver(sync, {rootMargin:"-" + LINE + "px 0px 0px 0px", threshold:0});
+  targets.forEach(t=> io.observe(t));
+  addEventListener("hashchange", sync);
 })();
 
 /* ================================================================
