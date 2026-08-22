@@ -11,14 +11,17 @@
 <meta property="og:description" content="Six sessions. Key lessons, quotes, scriptures and action steps you can actually work through.">
 <meta property="og:type" content="website">
 <!-- og:image MUST be a full web address, not a relative path, or WhatsApp and
-     Facebook will ignore it. Generate the file by opening this page with #og
-     on the end of the address, saving it as og.jpg beside index.html, then
-     replacing the domain below with wherever this page is published. -->
-<meta property="og:image" content="https://REPLACE-WITH-YOUR-DOMAIN/og.jpg">
+     Facebook will ignore it. Regenerate the file by opening this page with #og
+     on the end of the address and saving it as og.jpg beside index.html. If the
+     page ever moves, the three absolute addresses here and SITE_URL in the
+     script all have to move with it. -->
+<meta property="og:url" content="https://youth-pensa-camp-2026.vercel.app/">
+<meta property="og:image" content="https://youth-pensa-camp-2026.vercel.app/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Youth &amp; Pensa Camp 2026 — session recap and study guide">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://youth-pensa-camp-2026.vercel.app/">
 
 <!-- Add to Home Screen. The manifest and its three icons are the only files
      besides og.jpg that sit next to this page; everything else is still
@@ -1193,10 +1196,12 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
              e.g.  audio/session-1.mp3
              Leave as "" until the file exists.
    ================================================================ */
-/* Your published web address, e.g. "youthpensacamp.ca".
-   Used only on the shareable cards, so people who see a card can find the page.
-   Leave as "" and the cards simply omit it. */
-const SITE_URL = "";
+/* Your published web address, no protocol.
+   Printed along the bottom of every shareable card, so someone who meets a
+   card on WhatsApp with no other context can still find the page, and used
+   as the link the "Share this page" button hands to the share sheet.
+   Leave as "" and the cards simply omit the line. */
+const SITE_URL = "youth-pensa-camp-2026.vercel.app";
 
 /* Keys are page ids, and two of them do NOT match the number the session
    displays as. s6 shows as "Session 04"; s4 is the panel and shows last.

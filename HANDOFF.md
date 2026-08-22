@@ -57,7 +57,7 @@ All content lives in JavaScript arrays inside a single `<script>` tag at the bot
 ### Top of the script — the config a non-developer edits
 
 ```js
-const SITE_URL = "";          // e.g. "youthpensacamp.ca"
+const SITE_URL = "youth-pensa-camp-2026.vercel.app";   // no protocol
 const MEDIA = {
   s1:{ youtube:"", audio:"" },
   ...s6
@@ -66,7 +66,7 @@ const MEDIA = {
 
 Empty string → the button renders greyed out as "coming soon". This lets the page ship before the media exists. Keep that behaviour.
 
-`SITE_URL` follows the same convention: fill it in and every shareable card prints the address along the bottom, so someone who sees a card on WhatsApp can find the page. Leave it empty and the cards simply omit that line.
+`SITE_URL` is now set to the live address, so every shareable card prints it along the bottom and someone who meets a card on WhatsApp with no other context can still find the page. It is also the link the "Share this page" button hands to the share sheet. Leave it empty and both fall back — the cards omit the line, and the share button uses `location.href`.
 
 ### The content model
 
@@ -152,10 +152,14 @@ short line doesn't leave a hole in the middle of the card.
 
 ### The link preview image
 
-`og.jpg` already exists in the folder. The `og:image` meta tag is deliberately left
-as `https://REPLACE-WITH-YOUR-DOMAIN/og.jpg` — **it must be an absolute URL**, or
-WhatsApp and Facebook ignore it, which is why it can't be filled in ahead of
-knowing where the page is published.
+`og.jpg` already exists in the folder. `og:image` **must be an absolute URL** or
+WhatsApp and Facebook ignore it, so it is set to
+`https://youth-pensa-camp-2026.vercel.app/og.jpg`, matching `og:url` and the
+`canonical` link beside it.
+
+**If the page ever moves**, four things have to move with it: `og:url`,
+`og:image`, `<link rel="canonical">` in the `<head>`, and `SITE_URL` in the
+script. Nothing else hard-codes the address.
 
 To regenerate it (say the title changes), open the page with `#og` on the end of
 the address. That opens the same sheet in link-preview mode at 1200×630 and offers
@@ -236,8 +240,10 @@ These six sit together and should be settled in one sitting by the same people. 
 ### Next planned features
 
 - [ ] **QR code** for announcement slides and the bulletin.
-- [ ] **Fill in `SITE_URL`** once the page has an address, so cards carry it.
-- [ ] **Replace the `og:image` placeholder domain** at publish time.
+- [x] **`SITE_URL` filled in** — `youth-pensa-camp-2026.vercel.app`, the live Vercel
+      deployment, which auto-publishes from `main`.
+- [x] **`og:image` domain replaced**, and `og:url` plus a `canonical` link
+      added alongside it.
 
 ### Nice to have
 
