@@ -1002,13 +1002,16 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
    Leave as "" and the cards simply omit it. */
 const SITE_URL = "";
 
+/* Keys are page ids, and two of them do NOT match the number the session
+   displays as. s6 shows as "Session 04"; s4 is the panel and shows last.
+   Check the comment on each line before changing a link. */
 const MEDIA = {
-  s1:{ youtube:"", audio:"" },
-  s2:{ youtube:"", audio:"" },
-  s3:{ youtube:"", audio:"" },
-  s4:{ youtube:"", audio:"" },
-  s5:{ youtube:"", audio:"" },
-  s6:{ youtube:"", audio:"" }
+  /* 01  The Message of the Gospel           */ s1:{ youtube:"https://youtu.be/yzz-OZBDWOc?t=2969", audio:"" },
+  /* 02  The Holy Spirit, His Power & Impact */ s2:{ youtube:"https://youtu.be/k2FqYX3NkRg?t=3011", audio:"" },
+  /* 03  The Holy Spirit at Work in You      */ s3:{ youtube:"https://youtu.be/QNWbY9IENfc?t=6321", audio:"" },
+  /* 04  Joyful Praise  (id s6, not s4)      */ s6:{ youtube:"https://youtu.be/YNt834LwFQg?t=3545", audio:"" },
+  /* 05  Making Godly Impact                 */ s5:{ youtube:"https://youtu.be/uD-ImoUHvjw?t=4306", audio:"" },
+  /* --  Panel: Navigating Our Identity      */ s4:{ youtube:"https://youtu.be/p6pg6pP1JiQ?t=21",   audio:"" }
 };
 
 /* ================================================================
