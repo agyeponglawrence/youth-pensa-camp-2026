@@ -23,6 +23,7 @@ camp-recap/
 ├── README.txt               ← what audio went where, and how to replace it
 ├── og.jpg                   ← 1200×630 link-preview image, 57 KB
 ├── audio/                   ← six audio summaries, ~59 MB total
+├── fonts/                   ← 3 self-hosted variable woff2, ~121 KB
 ├── manifest.webmanifest     ← Add to Home Screen
 ├── icon-192.png             ← home-screen icon, also the apple-touch-icon
 ├── icon-512.png             ← home-screen icon / splash
@@ -47,7 +48,15 @@ Related deliverables produced earlier, not part of the web app:
 
 ### External dependencies
 
-Exactly one: Google Fonts (Fraunces, Karla, JetBrains Mono) via `<link>`. Everything else is inline. The logo is embedded as a base64 data URI so the file is genuinely standalone — an earlier version referenced `logo.png` externally and broke when opened alone.
+**None.** The page makes no third-party requests at all.
+
+Fonts used to come from Google Fonts via `<link>`. They are now self-hosted in `fonts/` — one variable `woff2` per family covering every weight used, latin subset, `font-display:swap`, all three preloaded. That is **3 same-origin requests and ~121 KB**, against 11 requests and up to 243 KB from two Google origins before.
+
+The reason is not only weight. Google Fonts receives every visitor's IP address on every page load, and rule 2 below says no data collection — with an audience that includes minors, "no data collection except the font CDN" is not the same claim. Self-hosting makes the rule true as written.
+
+`unicode-range` is kept on each `@font-face` so a character outside latin (the `→`, the `✏`) falls through to the next font in the stack rather than rendering as tofu — the same behaviour the Google subsets gave. Every non-ASCII character the page actually uses was checked against that range first.
+
+The logo is embedded as a base64 data URI so the markup is standalone — an earlier version referenced `logo.png` externally and broke when opened alone.
 
 ---
 

@@ -36,11 +36,42 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0B0C42">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Fonts are self-hosted. Google Fonts sent every visitor's IP to a third
+     party on every page load, which sits badly against "no data collection"
+     when many of these attendees are minors. Each family is a single
+     variable file covering every weight the page uses: 3 requests and
+     ~124 KB, same-origin, against 11 requests and up to 243 KB before. -->
+<link rel="preload" href="fonts/karla.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
+/* ============================================================
+   FONTS  —  self-hosted, latin subset, variable
+   One file per family covers every weight used. unicode-range is
+   kept so a character outside latin (the → and the ✏) falls through
+   to the next font in the stack instead of rendering as tofu — the
+   same behaviour the Google-hosted subsets gave.
+   ============================================================ */
+@font-face{
+  font-family:"Fraunces";
+  src:url(fonts/fraunces.woff2) format("woff2");
+  font-weight:400 700; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:"Karla";
+  src:url(fonts/karla.woff2) format("woff2");
+  font-weight:400 700; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:"JetBrains Mono";
+  src:url(fonts/jetbrains-mono.woff2) format("woff2");
+  font-weight:400 500; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ============================================================
    TOKENS
    ============================================================ */
