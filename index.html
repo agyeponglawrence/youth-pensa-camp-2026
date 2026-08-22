@@ -472,6 +472,34 @@ a{color:var(--royal)}
    "Start here" rather than a competing pattern
    ============================================================ */
 .journey{padding:0 0 clamp(2.5rem,5vw,3.6rem)}
+
+/* ============================================================
+   READING MODE  —  Essentials trims each session to the big idea
+   and the step; Everything is the full page. Default is Everything,
+   so nobody loses anything by doing nothing.
+   ============================================================ */
+.mode{padding:0 0 clamp(2.5rem,5vw,3.6rem)}
+.mode-card{
+  border:1px solid var(--rule); border-radius:var(--r-lg);
+  background:#fff; padding:1.4rem 1.6rem;
+  display:flex; flex-wrap:wrap; align-items:center; gap:.7rem 1.1rem;
+}
+.mode-card > .eyebrow{color:var(--violet); flex:0 0 100%}
+.mode-pick{display:flex; gap:.4rem; flex-shrink:0}
+.mode-btn{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
+  text-transform:uppercase; cursor:pointer;
+  padding:.6rem 1rem; min-height:44px; border-radius:100px;
+  border:1px solid var(--rule); background:#fff; color:var(--ink-soft);
+  transition:.18s;
+}
+.mode-btn:hover,.mode-btn:focus-visible{border-color:var(--violet); color:var(--royal); background:var(--violet-tint)}
+.mode-btn[aria-pressed="true"]{background:var(--royal); border-color:var(--royal); color:#fff}
+.mode-btn[aria-pressed="true"]:hover,.mode-btn[aria-pressed="true"]:focus-visible{background:var(--royal-2); border-color:var(--royal-2); color:#fff}
+.mode-note{margin:0; font-size:.9rem; color:var(--ink-soft); flex:1 1 15rem; min-width:0}
+
+/* the one line that does the actual trimming */
+body.essentials [data-extra]{display:none}
 .journey-card{
   border:1px solid var(--rule); border-radius:var(--r-lg);
   background:#fff; padding:1.7rem 1.8rem;
@@ -892,7 +920,8 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 @media print{
   .bar,.media,.player,.tally,.reset,.hero::after{display:none !important}
   .journey,.mycamp{display:none !important}
-  .back,.today,.sheet,.qshare,.closing-acts{display:none !important}
+  .back,.today,.sheet,.qshare,.closing-acts,.mode{display:none !important}
+  body.essentials [data-extra]{display:block !important}
   .s-figure{color:#666}
   body{background:#fff; font-size:11pt}
   .hero,.closing{background:#fff !important; color:#000; padding:1.5rem 0}
@@ -1001,6 +1030,17 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
      (rendered by JS; never gates or hides anything)
      ============================================================ -->
 <section class="journey"><div class="wrap"><div class="journey-card rv" id="journeyCard"></div></div></section>
+
+<section class="mode"><div class="wrap">
+  <div class="mode-card">
+    <span class="eyebrow">Reading mode</span>
+    <div class="mode-pick" role="group" aria-label="How much of each session to show">
+      <button class="mode-btn" type="button" data-mode="essentials" aria-pressed="false">Essentials</button>
+      <button class="mode-btn" type="button" data-mode="everything" aria-pressed="true">Everything</button>
+    </div>
+    <p class="mode-note" id="modeNote" aria-live="polite"></p>
+  </div>
+</div></section>
 
 <main id="sessions"></main>
 
@@ -1907,7 +1947,7 @@ function quizHTML(s){
       <p class="q-why"><b class="verdict"></b> ${q.why}</p>
     </div>`).join("");
   return `
-    <div class="block rv">
+    <div class="block rv" data-extra="quiz">
       <h3>Check what stuck</h3>
       <p class="pick-note">Not a test — answering from memory is one of the best ways to make something stay.</p>
       <div class="quiz">${qs}</div>
@@ -1954,13 +1994,13 @@ function sessionHTML(s, i){
         </div>` : ""}
       </div>
 
-      <div class="block rv">
+      <div class="block rv" data-extra="lessons">
         <h3>Key lessons</h3>
         <ul class="lessons">${s.lessons.map(l=>`<li>${l}</li>`).join("")}</ul>
         ${deeperHTML(s)}
       </div>
 
-      <div class="block rv">
+      <div class="block rv" data-extra="quotes">
         <h3>Lines worth keeping</h3>
         <div class="quotes">${s.quotes.map((q,qi)=>`
           <div class="quote-row">
@@ -1969,7 +2009,7 @@ function sessionHTML(s, i){
           </div>`).join("")}</div>
       </div>
 
-      <div class="block rv">
+      <div class="block rv" data-extra="refs">
         <h3>Scriptures opened</h3>
         <div class="refs">
           ${s.refs.map(r=>`<span class="ref">${esc(r)}</span>`).join("")}
@@ -1977,7 +2017,7 @@ function sessionHTML(s, i){
         </div>
       </div>
 
-      <div class="block rv">
+      <div class="block rv" data-extra="reflect">
         <h3>Sit with this</h3>
         <ol class="reflect">${s.reflect.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>
         <button class="qshare" type="button" data-copyqs="${s.id}">${ICON_COPY}Copy these for a group</button>
@@ -1998,7 +2038,7 @@ function sessionHTML(s, i){
 
       ${quizHTML(s)}
 
-      <div class="block rv">
+      <div class="block rv" data-extra="journal">
         <h3>Before you move on</h3>
         <p class="journal-note">Nothing here is required or shared — it&rsquo;s just for you, saved on this device.</p>
         <div class="journal" data-jkey="${s.id}">
@@ -2953,6 +2993,79 @@ maybeOG();
   addEventListener("resize", ()=>{ progress(); fades(); });
   progress();
   fades();
+})();
+
+/* ================================================================
+   READING MODE
+   ----------------------------------------------------------------
+   Essentials hides every [data-extra] block, leaving the header,
+   the overview, the big idea and the action steps — the two things
+   this page exists for: know it, do one thing. Everything is the
+   default, so a reader who ignores this control loses nothing.
+
+   Ticks and journal entries are untouched either way; the inputs
+   are only hidden, never cleared, so switching is free.
+   ================================================================ */
+(function(){
+  const MKEY = "ypc2026-mode";
+  const sec  = document.querySelector(".mode");
+  if(!sec) return;
+  const note = document.getElementById("modeNote");
+  const btns = [...sec.querySelectorAll(".mode-btn")];
+
+  const NOTES = {
+    everything: "Every session in full — lessons, quotes, scriptures, questions and quiz.",
+    essentials: "The big idea and the steps only. Nothing is deleted — your ticks and notes are still there, and you can switch back any time."
+  };
+
+  /* Blocks hidden when the observer ran never got .in, so without this they
+     come back at opacity 0 and stay invisible. Must run after any scroll
+     compensation as well — that scroll brings a fresh set of them on screen. */
+  function revealVisible(){
+    document.querySelectorAll(".rv:not(.in)").forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if(r.top < innerHeight && r.bottom > 0) el.classList.add("in");
+    });
+  }
+
+  function apply(mode){
+    const lean = mode === "essentials";
+    document.body.classList.toggle("essentials", lean);
+    btns.forEach(b=> b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
+    note.textContent = NOTES[mode];
+    if(!lean) revealVisible();
+  }
+
+  let saved = null;
+  try{ saved = localStorage.getItem(MKEY); }catch{}
+  apply(saved === "essentials" ? "essentials" : "everything");
+
+  sec.addEventListener("click", e=>{
+    const b = e.target.closest(".mode-btn");
+    if(!b || b.getAttribute("aria-pressed") === "true") return;
+
+    /* The page changes length under the reader, so pin whatever they are
+       actually looking at and put it back afterwards. Anchor on the section
+       crossing the reading line rather than the first one still on screen —
+       at the seam between two sessions the outgoing one's bottom edge is
+       also "on screen", and pinning that scrolls to the wrong place. */
+    const LINE = 120;                       /* just below the sticky bar */
+    const marks = [...document.querySelectorAll(".session"), document.querySelector(".closing")].filter(Boolean);
+    const at = el => el.getBoundingClientRect();
+    const anchor = marks.find(m=>{ const r = at(m); return r.top <= LINE && r.bottom > LINE; })
+                || marks.find(m=> at(m).top > LINE)
+                || marks[marks.length - 1];
+    const before = anchor ? at(anchor).top : null;
+
+    apply(b.dataset.mode);
+    try{ localStorage.setItem(MKEY, b.dataset.mode); }catch{}
+
+    if(anchor){
+      /* html has scroll-behavior:smooth, so this must opt out of it */
+      window.scrollBy({top: at(anchor).top - before, left:0, behavior:"instant"});
+      revealVisible();
+    }
+  });
 })();
 
 /* ================================================================
