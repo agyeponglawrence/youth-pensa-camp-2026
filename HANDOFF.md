@@ -228,6 +228,35 @@ Type: **Fraunces** (display), **Karla** (body), **JetBrains Mono** (labels, scri
 
 Alternating sessions use `--paper-alt` via `:nth-child(even)`. Cards inside those rows shift to `#FCFCFF`.
 
+### Theme
+
+Two themes, one palette. Every colour is a token on `:root`; the dark theme
+redefines about thirty of them and nothing else. **Do not add a raw hex to a
+rule** — if a colour is not a token it will not follow the theme, which is how
+the sticky bar ended up stranded light on the first pass.
+
+Three roles that must stay separate, because they diverge in dark:
+
+| token | role |
+|---|---|
+| `--royal` / `--violet` | brand **fills** — stay saturated in both themes |
+| `--accent` / `--accent-2` | the same brand colours used as **text** — lighten in dark |
+| `--on-accent` | text sitting **on** a brand fill |
+| `--on-dark…` | text on the navy panels, which are dark in both themes |
+
+The navy panels brighten slightly in dark mode rather than staying put: against
+a near-black ground the original `#0B0C42` sat too close to the page and the
+panels stopped reading as panels.
+
+The control is three-way — **System / Light / Dark** — sharing the reading-mode
+card. System is the default and follows the OS; an explicit choice writes
+`data-theme` on `<html>`, which beats the `prefers-color-scheme` block. The
+saved choice is applied by a **tiny inline script in `<head>`**; deferring it to
+the main script gives anyone who picked Dark a white flash on every load. Keep
+it inline and keep it first.
+
+Verified at 0 contrast failures in both themes (WCAG AA, all visible text).
+
 ### Conventions to preserve
 
 - Section labels are mono, uppercase, letterspaced — **no emoji icons**, they'd undercut the typographic system
