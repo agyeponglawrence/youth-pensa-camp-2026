@@ -192,7 +192,9 @@ a{color:var(--royal)}
 .chip{
   display:inline-flex; align-items:center; flex-shrink:0;
   font-family:var(--mono); font-size:.7rem; letter-spacing:.05em;
-  padding:.34rem .68rem; border-radius:100px;
+  /* 40px rather than the full 44: the strip is sticky, and every pixel here
+     is taken off the reading area on every screen of a very long page */
+  padding:.5rem .8rem; min-height:40px; border-radius:100px;
   border:1px solid var(--rule); background:#fff;
   color:var(--ink-soft); text-decoration:none; white-space:nowrap;
   transition:.18s;
@@ -255,7 +257,9 @@ a{color:var(--royal)}
 .s-nav .all{
   align-self:center; border:0; background:transparent;
   font-family:var(--mono); font-size:.68rem; font-weight:400;
-  letter-spacing:.06em; color:var(--ink-soft); padding:.5rem .6rem;
+  letter-spacing:.06em; color:var(--ink-soft);
+  padding:.75rem .6rem; min-height:44px;
+  display:inline-flex; align-items:center; justify-content:center;
 }
 .s-nav .all:hover,.s-nav .all:focus-visible{background:transparent; color:var(--royal); text-decoration:underline; text-underline-offset:3px}
 .s-nav .gap{display:block}
@@ -661,6 +665,8 @@ a{color:var(--royal)}
 .tally-fill{height:100%; width:0%; border-radius:100px; background:linear-gradient(90deg,var(--violet),var(--violet-mid)); transition:width .5s cubic-bezier(.4,0,.2,1)}
 .tally-msg{margin:.9rem 0 0; font-size:.9rem; color:#9DA1D0}
 
+.closing-acts{margin:1.6rem 0 .4rem}
+
 .reset{
   margin-top:1.4rem; background:none; border:none;
   font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
@@ -743,13 +749,16 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
   font-family:var(--mono); font-size:.72rem; letter-spacing:.06em;
   color:#9DA1D0; margin:0 0 1.5rem; line-height:1.6;
 }
-.today-src a{color:#BDA4FE; text-decoration-color:rgba(189,164,254,.45); text-underline-offset:3px}
+.today-src a{
+  color:#BDA4FE; text-decoration-color:rgba(189,164,254,.45); text-underline-offset:3px;
+  display:inline-flex; align-items:center; min-height:44px; padding:.35rem 0;
+}
 .today-src a:hover{color:#fff}
 .today-acts{display:flex; flex-wrap:wrap; gap:.55rem; margin-top:auto}
 .mini{
   display:inline-flex; align-items:center; gap:.42rem;
   font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
-  padding:.52rem .85rem; border-radius:100px; cursor:pointer;
+  padding:.62rem .95rem; min-height:44px; border-radius:100px; cursor:pointer;
   border:1px solid rgba(255,255,255,.24); background:rgba(255,255,255,.06);
   color:#E7E8FA; text-decoration:none; transition:.18s;
 }
@@ -791,10 +800,12 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 .s-figure{
   font-family:var(--display); font-weight:700;
   font-size:clamp(2.5rem,6.5vw,3.9rem); line-height:.85;
-  letter-spacing:-.03em; color:var(--violet-light);
+  letter-spacing:-.03em; color:#9E5FF7;
   flex-shrink:0;
 }
-.session:nth-child(even) .s-figure{color:#C9B6FC}
+/* one violet for both row colours: #9E5FF7 clears 3:1 for large text on
+   --paper (3.65) and on --paper-alt (3.40). The old pair (--violet-light /
+   #C9B6FC) sat at 2.0 and 1.6 and vanished in daylight. */
 .s-marktxt{display:flex; flex-direction:column; gap:.25rem; min-width:0}
 .s-theme{
   font-family:var(--mono); font-size:.76rem; font-weight:500;
@@ -817,7 +828,9 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 .quote-row{display:flex; flex-direction:column; align-items:flex-start}
 .qshare{
   background:none; border:none; cursor:pointer;
-  margin:.45rem 0 0 .2rem; padding:.2rem 0;
+  /* the negative left margin keeps the label optically flush with the text
+     above it while the padding carries the hit area out to 44px */
+  margin:.15rem 0 0 -.3rem; padding:.75rem .5rem; min-height:44px;
   font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
   color:var(--ink-soft); transition:color .16s;
   display:inline-flex; align-items:center; gap:.4rem;
@@ -879,7 +892,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 @media print{
   .bar,.media,.player,.tally,.reset,.hero::after{display:none !important}
   .journey,.mycamp{display:none !important}
-  .back,.today,.sheet,.qshare{display:none !important}
+  .back,.today,.sheet,.qshare,.closing-acts{display:none !important}
   .s-figure{color:#666}
   body{background:#fff; font-size:11pt}
   .hero,.closing{background:#fff !important; color:#000; padding:1.5rem 0}
@@ -961,7 +974,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
     <aside class="howto rv">
       <h3>How to use this</h3>
       <ul>
-        <li><strong>In a hurry?</strong> Read the five big ideas below — that's the whole camp in about a minute.</li>
+        <li><strong>In a hurry?</strong> Read the six big ideas below — that's the whole camp in about a minute.</li>
         <li><strong>If you were there</strong> — revisit what hit you, and follow through on a step long before next year's camp comes around.</li>
         <li><strong>If you missed it</strong> — this won't replace the room, but it gives you the substance.</li>
         <li><strong>For small groups</strong> — the reflection questions and action steps work as a ready-made discussion guide.</li>
@@ -1012,6 +1025,10 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
       Don't let this page become another thing you read once and close.
       Pick one step — just one — and do it this week.
     </p>
+
+    <div class="closing-acts">
+      <button class="mini" type="button" id="sharePageBtn">Share this page</button>
+    </div>
 
     <div class="tally">
       <div class="tally-top">
@@ -1847,6 +1864,8 @@ const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7
 const ICON_AUDIO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 14v-4M7.5 17V7M12 20V4M16.5 17V7M21 14v-4"/></svg>';
 
 const ICON_DICE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor" stroke="none"/></svg>';
+const ICON_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>';
+const ICON_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg>';
 const ICON_SHARE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 13l2.5 3 2-2.5L16 18H8z"/><circle cx="14.5" cy="8.5" r="1.5"/></svg>';
 
 function esc(s){return String(s).replace(/&(?![a-z#]+;)/g,"&amp;")}
@@ -1961,6 +1980,7 @@ function sessionHTML(s, i){
       <div class="block rv">
         <h3>Sit with this</h3>
         <ol class="reflect">${s.reflect.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>
+        <button class="qshare" type="button" data-copyqs="${s.id}">${ICON_COPY}Copy these for a group</button>
       </div>
 
       <div class="block rv">
@@ -2280,6 +2300,59 @@ document.addEventListener("click", e=>{
     .then(()=>{ btn.textContent = "Copied"; revert(); })
     .catch(()=>{ btn.textContent = "Couldn't copy — select the text instead"; revert(); });
 });
+
+/* ---- copy one session's questions + steps, for small groups -------------
+   The intro promises the reflections and action steps work as a ready-made
+   discussion guide; this is what gets them off the phone and into a room.
+   Text is built from SESSIONS, not scraped from the DOM, so it stays plain. */
+document.addEventListener("click", e=>{
+  const btn = e.target.closest("[data-copyqs]");
+  if(!btn) return;
+  const entry = byId[btn.dataset.copyqs];
+  if(!entry) return;
+  const { s, i } = entry;
+
+  const out = [`${weekLabel(s,i)} · ${plain(s.title)}`];
+  if(s.anchor) out.push(plain(s.anchor));
+  out.push("", "Sit with this");
+  s.reflect.forEach((q,n)=> out.push(`${n+1}. ${plain(q)}`));
+  out.push("", "Then go do one of these — pick one");
+  s.acts.forEach(a=> out.push(`- ${plain(a)}`));
+  out.push("", "From the Youth & Pensa Camp 2026 session recap.");
+
+  /* keep the icon: restore innerHTML, not just the label */
+  if(!btn.dataset.orig) btn.dataset.orig = btn.innerHTML;
+  const revert = ()=> setTimeout(()=>{ btn.innerHTML = btn.dataset.orig; }, 1800);
+  navigator.clipboard.writeText(out.join("\n").trim())
+    .then(()=>{ btn.textContent = "Copied"; revert(); })
+    .catch(()=>{ btn.textContent = "Couldn't copy — select the text instead"; revert(); });
+});
+
+/* ---- share the page itself ----------------------------------------------
+   navigator.share was only ever wired to the card images; there was no way
+   to pass on the page, which is how this actually travels. */
+(function(){
+  const btn = document.getElementById("sharePageBtn");
+  if(!btn) return;
+  btn.innerHTML = ICON_LINK + "Share this page";
+  const orig = btn.innerHTML;
+  const url  = SITE_URL ? "https://" + SITE_URL.replace(/^https?:\/\//,"") : location.href;
+  const revert = ()=> setTimeout(()=>{ btn.innerHTML = orig; }, 1800);
+
+  btn.addEventListener("click", ()=>{
+    if(navigator.share){
+      navigator.share({
+        title: "Youth & Pensa Camp 2026 — Recap",
+        text: "Six sessions from camp — the lessons, the lines worth keeping, and one step to actually take.",
+        url
+      }).catch(()=>{});
+      return;
+    }
+    navigator.clipboard.writeText(url)
+      .then(()=>{ btn.textContent = "Link copied"; revert(); })
+      .catch(()=>{ btn.textContent = "Copy the address from your browser bar"; revert(); });
+  });
+})();
 
 const barFill = document.getElementById("barFill");
 const barCount = document.getElementById("barCount");
