@@ -24,6 +24,7 @@ camp-recap/
 ├── og.jpg                   ← 1200×630 link-preview image, 57 KB
 ├── audio/                   ← six audio summaries, ~59 MB total
 ├── fonts/                   ← 3 self-hosted variable woff2, ~121 KB
+├── sw.js                    ← offline shell (not the audio)
 ├── manifest.webmanifest     ← Add to Home Screen
 ├── icon-192.png             ← home-screen icon, also the apple-touch-icon
 ├── icon-512.png             ← home-screen icon / splash
@@ -227,6 +228,30 @@ Palette derived from the official camp logo and the event's "Thank You" graphic 
 Type: **Fraunces** (display), **Karla** (body), **JetBrains Mono** (labels, scripture refs, section eyebrows).
 
 Alternating sessions use `--paper-alt` via `:nth-child(even)`. Cards inside those rows shift to `#FCFCFF`.
+
+### Offline (`sw.js`)
+
+The page installs to a home screen, so tapping that icon with no signal has to
+give something better than a dinosaur. A service worker caches the shell — the
+page, the three fonts, the icons, the manifest.
+
+**The six audio summaries are deliberately not cached.** ~59 MB is not something
+to put on a teenager's phone unasked, and `/audio/` is not intercepted at all,
+so range requests and seeking behave exactly as they would with no worker.
+
+**Navigations are network-first.** This is the important one: cache-first on HTML
+is how a service worker strands every reader on a version from three weeks ago
+with no way to update. Online readers always get the live page; the cache is
+only the fallback. Everything else in the shell is cache-first.
+
+**If you change a font, an icon or the manifest, bump `VERSION` in `sw.js`.**
+Those are cache-first, so without a bump an old copy can persist. `index.html`
+needs no bump — it is network-first.
+
+**Kill switch:** delete the registration block in `index.html` (search for
+`serviceWorker.register`) and bump `VERSION`. The `activate` handler deletes any
+cache whose name is not the current `VERSION`, so a bumped-and-unregistered
+worker cleans up after itself.
 
 ### Theme
 

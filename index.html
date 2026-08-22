@@ -3461,6 +3461,19 @@ maybeOG();
 })();
 
 /* ================================================================
+   OFFLINE
+   ----------------------------------------------------------------
+   Registered late and guarded: it is a progressive enhancement, and
+   a page opened straight off the filesystem (file://) has no service
+   worker support at all — which is how this gets edited.
+   ================================================================ */
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{ /* fine without it */ });
+  });
+}
+
+/* ================================================================
    APPEARANCE
    ----------------------------------------------------------------
    Three states, not two. "System" is the default and follows the OS,
