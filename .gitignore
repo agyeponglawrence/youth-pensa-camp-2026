@@ -11,3 +11,8 @@
 # Local backups made while editing
 *.bak
 index.html.bak
+
+# The audio the page actually serves lives in audio/, named by page id.
+# "Audio files/" is the original drop folder those were copied from —
+# ignored so the same ~59 MB is never committed twice.
+Audio files/

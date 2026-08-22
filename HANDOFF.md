@@ -20,8 +20,9 @@ Audience is teenagers and university-age young adults (PENSA = Pentecost Student
 camp-recap/
 ├── index.html               ← the entire application
 ├── HANDOFF.md               ← this file
-├── README.txt               ← naming + wiring instructions for audio summaries
+├── README.txt               ← what audio went where, and how to replace it
 ├── og.jpg                   ← 1200×630 link-preview image, 57 KB
+├── audio/                   ← six audio summaries, ~59 MB total
 ├── manifest.webmanifest     ← Add to Home Screen
 ├── icon-192.png             ← home-screen icon, also the apple-touch-icon
 ├── icon-512.png             ← home-screen icon / splash
@@ -59,12 +60,14 @@ All content lives in JavaScript arrays inside a single `<script>` tag at the bot
 ```js
 const SITE_URL = "youth-pensa-camp-2026.vercel.app";   // no protocol
 const MEDIA = {
-  s1:{ youtube:"", audio:"" },
+  s1:{ youtube:"…", audio:"audio/s1-the-message-of-the-gospel.mp3" },
   ...s6
 };
 ```
 
-Empty string → the button renders greyed out as "coming soon". This lets the page ship before the media exists. Keep that behaviour.
+Empty string → the button renders greyed out as "coming soon". This lets the page ship before the media exists. **Keep that behaviour** — it is how a file gets pulled without touching anything else.
+
+Both are now filled in for all six sessions. **The audio files are named by page id, not by the number a session displays as**, because two of them disagree: Joyful Praise is `s6` but displays fourth, and the panel is `s4` but sits last as "Panel". The files supplied were named by display order, so they were matched to sessions **by title** and then each one verified by comparing the duration the browser reported against the duration of the source file. All six matched. `README.txt` has the full table and says to repeat that check on any replacement.
 
 `SITE_URL` is now set to the live address, so every shareable card prints it along the bottom and someone who meets a card on WhatsApp with no other context can still find the page. It is also the link the "Share this page" button hands to the share sheet. Leave it empty and both fall back — the cards omit the line, and the share button uses `location.href`.
 

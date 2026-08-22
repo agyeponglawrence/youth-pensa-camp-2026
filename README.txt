@@ -1,53 +1,57 @@
-AUDIO SUMMARIES — where to put your files
-=========================================
+AUDIO SUMMARIES — where they live
+=================================
 
-IMPORTANT: the audio file numbers and the page's session numbers no
-longer line up. The page ids (s1…s6) are what the wiring uses, and an
-id never moves — it is what saved progress on people's phones is keyed
-to. Go by the id column below, not by the filename.
+DONE. All six audio summaries are in place and wired up. This file is
+now a record of what went where, and what to do if they are ever
+replaced.
 
-  file             page id   displays as   session
-  ---------------------------------------------------------------
-  session-1.mp3    s1        01            The Message of the Gospel
-                                           (Day 1, opening night)
-  session-2.mp3    s2        02            The Holy Spirit, His Power
-                                           and Impact (Day 2 morning)
-  session-3.mp3    s3        03            The Holy Spirit at Work in
-                                           You (Day 2, Night of Power)
-  session-6.mp3    s6        04            Joyful Praise: The Impact of
-                                           the Gospel (Day 3 evening)
-  session-5.mp3    s5        05            Making Godly Impact (Day 4)
-  session-4.mp3    s4        Panel         Navigating Our Identity as
-                                           Christians (Day 3 panel)
+The files sit in audio/ and are named by PAGE ID, not by the number a
+session displays as. That is deliberate, and it is the whole point of
+this file.
 
-Two things to notice. The panel is id s4 but is no longer numbered —
-it sits last on the page and shows "Panel" where a numeral would be.
-And Joyful Praise is id s6 but displays fourth, because it was added
-after the other five and giving it a new id avoided moving anyone's
-saved progress. Name its file session-6.mp3 to match its id.
+  page id   file                                        displays as
+  --------------------------------------------------------------------
+  s1        audio/s1-the-message-of-the-gospel.mp3               01
+  s2        audio/s2-the-holy-spirit-his-power-and-impact.mp3    02
+  s3        audio/s3-the-holy-spirit-at-work-in-you.mp3          03
+  s6        audio/s6-joyful-praise.mp3                           04
+  s5        audio/s5-making-godly-impact.mp3                     05
+  s4        audio/s4-panel-navigating-our-identity.mp3        Panel
 
-THE YOUTUBE LINKS ARE ALREADY IN. Each one is a deep link with a
-?t= timestamp, so it opens at the moment that session starts inside a
-longer stream recording. Don't strip the ?t= part.
+THE TRAP. Two rows above do not line up, and they are the reason the
+files carry ids and titles rather than numbers:
 
-Only the audio is still to do. Open index.html in a text editor, find
-the MEDIA block near the top of the <script> section, and fill in the
-audio paths beside the links that are already there:
+  - Joyful Praise is id s6 but displays FOURTH. It was added after the
+    other five, and giving it a new id avoided moving anyone's saved
+    progress.
+  - The panel is id s4 but sits LAST and shows "Panel" where a numeral
+    would be.
 
-  const MEDIA = {
-    s1:{ youtube:"https://youtu.be/yzz-OZBDWOc?t=2969", audio:"audio/session-1.mp3" },
-    s2:{ youtube:"https://youtu.be/k2FqYX3NkRg?t=3011", audio:"audio/session-2.mp3" },
-    s3:{ youtube:"https://youtu.be/QNWbY9IENfc?t=6321", audio:"audio/session-3.mp3" },
-    s6:{ youtube:"https://youtu.be/YNt834LwFQg?t=3545", audio:"audio/session-6.mp3" },
-    s5:{ youtube:"https://youtu.be/uD-ImoUHvjw?t=4306", audio:"audio/session-5.mp3" },
-    s4:{ youtube:"https://youtu.be/p6pg6pP1JiQ?t=21",   audio:"audio/session-4.mp3" }
-  };
+An id never moves. Saved progress on people's phones is keyed to it
+(ypc2026-progress stores keys like "s5-0"), so reassigning which
+session owns an id silently scrambles what people have ticked off.
 
-Note the key order above: s6 sits fourth and s4 sits last, matching how
-the page displays them. Each line in index.html carries a comment saying
-which session it is. Go by that comment, not by the number in the key.
+The source files supplied were named by DISPLAY order — "session 04 -
+joyful praise.mp3" is page id s6, and "panel discussion.mp3" is page
+id s4. They were matched to sessions BY TITLE, not by the number in
+the filename, and each one was checked after wiring by comparing the
+duration the browser reports against the duration of the source file.
+All six matched. If you ever replace a file, do the same check.
 
-Anything left as "" simply shows a greyed-out "coming soon" button,
-so you can publish now and add media later.
+TO REPLACE A FILE
+Drop the new file into audio/ under the same name and it is picked up
+with no code change. If you use a different name, edit the matching
+line in the MEDIA block near the top of the <script> section in
+index.html. Each line carries a comment naming the session — go by
+that comment, not by the number in the key.
 
-Keep files under ~10 MB each if you can — mobile data adds up.
+Anything set back to "" shows a greyed-out "coming soon" button
+instead, so the page still works if a file has to be pulled.
+
+Keep files near or under ~10 MB each — mobile data adds up. The six
+here are 9-10 MB, 192 kbps, about six to seven minutes each.
+
+THE YOUTUBE LINKS are already in, alongside the audio on each line.
+Each is a deep link with a ?t= timestamp so it opens at the moment
+that session starts inside a longer stream recording. Don't strip the
+?t= part.
