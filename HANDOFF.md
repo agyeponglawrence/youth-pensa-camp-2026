@@ -25,6 +25,7 @@ camp-recap/
 ├── audio/                   ← six audio summaries, ~59 MB total
 ├── fonts/                   ← 3 self-hosted variable woff2, ~121 KB
 ├── sw.js                    ← offline shell (not the audio)
+├── vercel.json              ← cache headers; nothing else is configured
 ├── manifest.webmanifest     ← Add to Home Screen
 ├── icon-192.png             ← home-screen icon, also the apple-touch-icon
 ├── icon-512.png             ← home-screen icon / splash
@@ -228,6 +229,19 @@ Palette derived from the official camp logo and the event's "Thank You" graphic 
 Type: **Fraunces** (display), **Karla** (body), **JetBrains Mono** (labels, scripture refs, section eyebrows).
 
 Alternating sessions use `--paper-alt` via `:nth-child(even)`. Cards inside those rows shift to `#FCFCFF`.
+
+### Cache headers (`vercel.json`)
+
+The only deployment config. Vercel served everything with
+`max-age=0, must-revalidate`, which meant a conditional round-trip per 9 MB
+audio file before playback could start, on every visit.
+
+`/audio/` and `/fonts/` are now `immutable` for a year — both are replaced by
+name, never edited in place. Icons and `og.jpg` get a week rather than
+`immutable`, so a redraw lands without needing a rename. `index.html`, `sw.js`
+and the manifest are pinned to `must-revalidate` explicitly; that is already
+Vercel's default, and it is stated so nobody widens the rules above and
+accidentally freezes the shell.
 
 ### Offline (`sw.js`)
 

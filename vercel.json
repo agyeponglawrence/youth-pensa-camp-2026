@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "//": "The audio never changes in place — README says replace by name or edit MEDIA — so it can be cached hard. Without this every visit made a conditional round-trip per 9 MB file before playback could start.",
+      "source": "/audio/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "//": "Font files are content-stable; a new cut would arrive under a new name.",
+      "source": "/fonts/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "//": "Icons and the link-preview image might get refreshed, so a week rather than immutable — long enough to matter, short enough that a redraw lands without renaming.",
+      "source": "/(icon-.*\\.png|og\\.jpg)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    },
+    {
+      "//": "index.html, sw.js and the manifest must stay revalidated or a stale shell outlives its update. Vercel's default already does this; stated here so nobody widens the rules above by accident.",
+      "source": "/(index.html|sw.js|manifest.webmanifest)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    }
+  ]
+}
