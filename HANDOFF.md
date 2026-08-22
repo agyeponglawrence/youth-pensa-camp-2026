@@ -116,10 +116,42 @@ Note that `esc()` only escapes bare ampersands — it does **not** escape `<` or
 - Persisted to `localStorage` under key `ypc2026-progress`, wrapped in try/catch so a blocked storage API degrades silently rather than throwing
 - **The denominator is 6 sessions, not 24 steps.** The page tells people to pick *one* action per session; showing "3/24" would contradict that instruction. Total steps display as a secondary line only. Don't "fix" this back to 24.
 
+### Page order, and the `#about` route
+
+The reading page is deliberately short before the teaching starts: hero → daily
+line → daily question → *Only got five minutes?* (collapsed) → reading mode →
+the six sessions → closing. That is about **2.6 phone screens** to session 01.
+It used to be 5.9, because the purpose, the how-to-use list and the six-week
+journey all sat in front of the sessions.
+
+Those three now live on the **About page**, reached at `#about` from a link
+under the hero and another in the footer. It is a hash route inside the same
+file, not a second document — the page stays single-file, and About is still a
+real address that can be linked, shared and reached with the back button.
+
+- `body.viewing-about` hides the bar, the daily cards, the start card, the
+  reading-mode picker, the sessions and the closing. The hero and footer stay,
+  so About reads as the same publication rather than a detached page.
+- **`#og` must keep working.** It belongs to the link-preview generator. It
+  leaves the About view (hash-to-hash is a same-document navigation, so
+  arriving from `#about` would otherwise strand the reader behind the sheet)
+  but deliberately does not scroll anywhere.
+- Leaving About for any other hash — a journey-card link to `#s3`, say — has to
+  unhide the page **and then scroll it itself**, because the target was
+  `display:none` when the browser tried to jump. That scroll is synchronous
+  after a forced reflow, not deferred to `requestAnimationFrame`: a
+  backgrounded tab throttles frames and the jump is silently lost.
+- *Only got five minutes?* is a `<details>`, collapsed by default — 0.2 screens
+  closed, 1.5 open. It is in the `beforeprint` list so printouts are complete.
+
+**Camp-life content does not exist yet.** It was scoped for About and
+deliberately left out rather than invented, on the same principle as rule 5
+below: content comes from the event, not from whoever is building the page.
+
 ### The daily layer — "Remember this" and "Can you still remember?"
 
-Between the intro and the Start-here card sits a two-card row that changes every
-day, built entirely from content that already exists further down the page.
+The two-card row that changes every day, built entirely from content that
+already exists further down the page.
 
 - **The daily line** is one of the 33 verbatim quotes. **The daily question** is one of the 18 quiz questions.
 - Selection is **deterministic, not random**: `dayNumber()` returns days since epoch in the reader's own timezone, and the index is `(DAY * stride) % pool.length`. Everyone who opens the page on the same day sees the same line, so it can be talked about — a random pick would make that impossible.
