@@ -20,6 +20,19 @@
 <meta property="og:image:alt" content="Youth &amp; Pensa Camp 2026 — session recap and study guide">
 <meta name="twitter:card" content="summary_large_image">
 
+<!-- Add to Home Screen. The manifest and its three icons are the only files
+     besides og.jpg that sit next to this page; everything else is still
+     inline. Icons are the logo's swoosh on the brand navy, because the full
+     lockup is unreadable at 48px. iOS takes apple-touch-icon and ignores the
+     manifest icons, so both are declared. -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="apple-mobile-web-app-title" content="Camp 2026">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0B0C42">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,6 +61,13 @@
 
   --wrap:min(1080px, 92vw);
   --read:68ch;
+
+  /* Mono label scale, floored at 12px. Uppercase plus letterspacing
+     already costs legibility; the old .64–.73rem steps landed at
+     10.2–11.7px, which was the weakest point in the type system on a
+     phone. Two tiers replace seven near-identical ones. */
+  --mono-sm:.75rem;   /* 12px    — the smallest label anywhere */
+  --mono-md:.78rem;   /* 12.5px  — eyebrows, chips, section heads */
 
   --display:"Fraunces",Georgia,serif;
   --body:"Karla",system-ui,-apple-system,sans-serif;
@@ -83,7 +103,7 @@ a{color:var(--royal)}
 
 .eyebrow{
   font-family:var(--mono);
-  font-size:.7rem;
+  font-size:var(--mono-md);
   letter-spacing:.18em;
   text-transform:uppercase;
   font-weight:500;
@@ -169,7 +189,7 @@ a{color:var(--royal)}
 }
 
 .bar-count{
-  font-family:var(--mono); font-size:.72rem;
+  font-family:var(--mono); font-size:var(--mono-md);
   letter-spacing:.06em; color:var(--ink-soft);
   white-space:nowrap; flex-shrink:0;
 }
@@ -191,7 +211,7 @@ a{color:var(--royal)}
 
 .chip{
   display:inline-flex; align-items:center; flex-shrink:0;
-  font-family:var(--mono); font-size:.7rem; letter-spacing:.05em;
+  font-family:var(--mono); font-size:var(--mono-md); letter-spacing:.05em;
   /* 40px rather than the full 44: the strip is sticky, and every pixel here
      is taken off the reading area on every screen of a very long page */
   padding:.5rem .8rem; min-height:40px; border-radius:100px;
@@ -249,14 +269,14 @@ a{color:var(--royal)}
 }
 .s-nav a:hover,.s-nav a:focus-visible{border-color:var(--violet); background:var(--violet-tint); color:var(--royal)}
 .s-nav .dir{
-  font-family:var(--mono); font-size:.64rem; font-weight:400;
+  font-family:var(--mono); font-size:var(--mono-sm); font-weight:400;
   letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);
 }
 .s-nav a:hover .dir,.s-nav a:focus-visible .dir{color:var(--royal)}
 .s-nav .nx{text-align:right}
 .s-nav .all{
   align-self:center; border:0; background:transparent;
-  font-family:var(--mono); font-size:.68rem; font-weight:400;
+  font-family:var(--mono); font-size:var(--mono-sm); font-weight:400;
   letter-spacing:.06em; color:var(--ink-soft);
   padding:.75rem .6rem; min-height:44px;
   display:inline-flex; align-items:center; justify-content:center;
@@ -318,7 +338,7 @@ a{color:var(--royal)}
   .s-rail{display:block; position:sticky; top:92px}
   .rail-lab{
     display:block;
-    font-family:var(--mono); font-size:.68rem; letter-spacing:.16em;
+    font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.16em;
     text-transform:uppercase; color:var(--ink-soft);
     padding-bottom:.6rem; margin-bottom:.3rem;
     border-bottom:1px solid var(--rule);
@@ -340,7 +360,7 @@ a{color:var(--royal)}
   @media (prefers-reduced-motion:reduce){ .rail-list a{transition:none} }
 }
 .s-num{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.16em;
+  font-family:var(--mono); font-size:var(--mono-md); letter-spacing:.16em;
   color:var(--royal); display:block; margin-bottom:.7rem;
 }
 .s-num span{color:var(--ink-soft); opacity:.65}
@@ -387,7 +407,7 @@ a{color:var(--royal)}
 /* blocks */
 .block{margin-top:2.6rem}
 .block > h3{
-  font-family:var(--mono); font-size:.73rem; font-weight:500;
+  font-family:var(--mono); font-size:var(--mono-md); font-weight:500;
   letter-spacing:.18em; text-transform:uppercase;
   color:var(--royal);
   padding-bottom:.55rem; margin-bottom:1.15rem;
@@ -415,7 +435,7 @@ a{color:var(--royal)}
   list-style:none; cursor:pointer;
   padding:.95rem 1.2rem;
   display:flex; align-items:center; gap:.75rem;
-  font-family:var(--mono); font-size:.73rem;
+  font-family:var(--mono); font-size:var(--mono-md);
   letter-spacing:.13em; text-transform:uppercase;
   color:var(--royal);
   transition:background .18s;
@@ -442,7 +462,7 @@ a{color:var(--royal)}
 }
 .deep[open] summary{border-bottom:1px solid var(--rule)}
 @media(max-width:520px){
-  .deep summary{font-size:.68rem; letter-spacing:.1em; gap:.6rem; padding:.85rem 1rem}
+  .deep summary{font-size:var(--mono-sm); letter-spacing:.1em; gap:.6rem; padding:.85rem 1rem}
   .deep summary .hint{display:none}
   .deep-body{padding:.3rem 1.05rem 1.3rem}
 }
@@ -464,7 +484,7 @@ a{color:var(--royal)}
   background:var(--red-tint); border:1px solid #F3D2D4;
   font-size:.9rem; color:#8A2F33;
 }
-.deep-note b{display:block; font-family:var(--mono); font-size:.68rem;
+.deep-note b{display:block; font-family:var(--mono); font-size:var(--mono-sm);
   letter-spacing:.12em; text-transform:uppercase; margin-bottom:.4rem; color:var(--red)}
 
 /* big idea */
@@ -477,7 +497,7 @@ a{color:var(--royal)}
   border-left:4px solid var(--violet);
 }
 .bigidea span{
-  display:block; font-family:var(--mono); font-size:.66rem;
+  display:block; font-family:var(--mono); font-size:var(--mono-sm);
   letter-spacing:.16em; text-transform:uppercase;
   color:var(--violet); margin-bottom:.45rem;
 }
@@ -504,7 +524,7 @@ a{color:var(--royal)}
 }
 .start-list a:hover,.start-list a:focus-visible{background:var(--violet-tint); padding-inline:.7rem}
 .start-list .n{
-  font-family:var(--mono); font-size:.72rem; color:var(--violet);
+  font-family:var(--mono); font-size:var(--mono-md); color:var(--violet);
   padding-top:.28rem; flex-shrink:0;
 }
 .start-list .t{font-family:var(--display); font-size:1.02rem; line-height:1.4; color:var(--ink)}
@@ -530,7 +550,7 @@ a{color:var(--royal)}
 .mode-card > .eyebrow{color:var(--violet); flex:0 0 100%}
 .mode-pick{display:flex; gap:.4rem; flex-shrink:0}
 .mode-btn{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
+  font-family:var(--mono); font-size:var(--mono-md); letter-spacing:.08em;
   text-transform:uppercase; cursor:pointer;
   padding:.6rem 1rem; min-height:44px; border-radius:100px;
   border:1px solid var(--rule); background:#fff; color:var(--ink-soft);
@@ -560,7 +580,7 @@ body.essentials [data-extra]{display:none}
 }
 .jw:hover,.jw:focus-visible{background:var(--violet-tint); padding-inline:.7rem}
 .jw-n{
-  font-family:var(--mono); font-size:.72rem; color:var(--violet);
+  font-family:var(--mono); font-size:var(--mono-md); color:var(--violet);
   padding-top:.28rem; flex-shrink:0;
 }
 .jw-t{font-family:var(--display); font-size:1.02rem; line-height:1.4; color:var(--ink)}
@@ -591,7 +611,7 @@ body.essentials [data-extra]{display:none}
 }
 .session:nth-child(even) .q{background:#FCFCFF}
 .q-p{margin:0 0 .9rem; font-weight:600; font-size:1rem; display:flex; gap:.7rem}
-.q-p .qn{font-family:var(--mono); font-size:.72rem; color:var(--violet); font-weight:500; padding-top:.22rem; flex-shrink:0}
+.q-p .qn{font-family:var(--mono); font-size:var(--mono-md); color:var(--violet); font-weight:500; padding-top:.22rem; flex-shrink:0}
 .q-opts{display:grid; gap:.45rem}
 .q-opt{
   text-align:left; font:inherit; font-size:.95rem;
@@ -700,7 +720,7 @@ body.essentials [data-extra]{display:none}
 .jf textarea:focus{border-color:var(--violet); outline:2px solid var(--violet); outline-offset:1px}
 .journal-saved{
   margin:0; min-height:1.1em;
-  font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.14em; text-transform:uppercase;
   color:var(--violet-mid); opacity:0; transition:opacity .3s;
 }
 .journal-saved.show{opacity:1}
@@ -730,7 +750,7 @@ body.essentials [data-extra]{display:none}
   max-width:460px;
 }
 .tally-top{display:flex; justify-content:space-between; align-items:baseline; gap:1rem}
-.tally-lab{font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#9DA1D0}
+.tally-lab{font-family:var(--mono); font-size:var(--mono-md); letter-spacing:.12em; text-transform:uppercase; color:#9DA1D0}
 .tally-num{font-family:var(--display); font-size:1.7rem; color:var(--violet-mid)}
 .tally-track{height:6px; border-radius:100px; background:rgba(255,255,255,.12); margin-top:.9rem; overflow:hidden}
 .tally-fill{height:100%; width:0%; border-radius:100px; background:linear-gradient(90deg,var(--violet),var(--violet-mid)); transition:width .5s cubic-bezier(.4,0,.2,1)}
@@ -740,7 +760,7 @@ body.essentials [data-extra]{display:none}
 
 .reset{
   margin-top:1.4rem; background:none; border:none;
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
+  font-family:var(--mono); font-size:var(--mono-md); letter-spacing:.08em;
   color:#8085BC; cursor:pointer; text-decoration:underline; padding:0;
 }
 .reset:hover{color:#BDA4FE}
@@ -751,21 +771,21 @@ body.essentials [data-extra]{display:none}
   border-top:1px solid rgba(255,255,255,.16);
 }
 .mycamp-lab{
-  display:block; font-family:var(--mono); font-size:.72rem;
+  display:block; font-family:var(--mono); font-size:var(--mono-md);
   letter-spacing:.12em; text-transform:uppercase; color:#9DA1D0;
   margin-bottom:1.1rem;
 }
 .mycamp-empty{margin:0; font-size:.9rem; color:#9DA1D0; max-width:52ch}
 .mycamp-item{margin:0 0 1.3rem}
 .mycamp-item h4{
-  font-family:var(--mono); font-size:.67rem; font-weight:500;
+  font-family:var(--mono); font-size:var(--mono-sm); font-weight:500;
   letter-spacing:.12em; text-transform:uppercase;
   color:var(--violet-mid); margin:0 0 .45rem;
 }
 .mycamp-item p{margin:0 0 .45rem; font-size:.93rem; color:#C9CBEA; max-width:none}
 .mycamp-item p b{
   display:block; font-family:var(--mono); font-weight:500;
-  font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  font-size:var(--mono-sm); letter-spacing:.1em; text-transform:uppercase;
   color:#8085BC; margin-bottom:.1rem;
 }
 
@@ -785,7 +805,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 .back a{color:var(--royal); text-decoration-color:var(--violet-light); text-underline-offset:3px}
 .back .x{
   margin-left:auto; background:none; border:none; cursor:pointer; padding:.1rem .3rem;
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.1em; text-transform:uppercase;
   color:var(--ink-soft);
 }
 .back .x:hover{color:var(--royal)}
@@ -817,7 +837,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
   margin:0 0 1.15rem; color:#F4F5FF;
 }
 .today-src{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.06em;
+  font-family:var(--mono); font-size:var(--mono-md); letter-spacing:.06em;
   color:#9DA1D0; margin:0 0 1.5rem; line-height:1.6;
 }
 .today-src a{
@@ -828,7 +848,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 .today-acts{display:flex; flex-wrap:wrap; gap:.55rem; margin-top:auto}
 .mini{
   display:inline-flex; align-items:center; gap:.42rem;
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.1em; text-transform:uppercase;
   padding:.62rem .95rem; min-height:44px; border-radius:100px; cursor:pointer;
   border:1px solid rgba(255,255,255,.24); background:rgba(255,255,255,.06);
   color:#E7E8FA; text-decoration:none; transition:.18s;
@@ -883,13 +903,16 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
   letter-spacing:.24em; text-transform:uppercase; color:var(--royal);
 }
 .s-day{
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.1em;
   color:var(--ink-soft); text-transform:uppercase;
 }
 @media(max-width:520px){
   .s-mark{gap:.75rem}
-  .s-theme{font-size:.7rem; letter-spacing:.18em}
-  .s-day{font-size:.62rem}
+  /* these used to drop to .7rem/.62rem — 11.2px and 9.9px — on exactly
+     the widths most of this audience reads at. Tighten the tracking
+     instead; that buys back the room without shrinking the type. */
+  .s-theme{letter-spacing:.16em}
+  .s-day{letter-spacing:.06em}
 }
 
 /* ============================================================
@@ -902,7 +925,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
   /* the negative left margin keeps the label optically flush with the text
      above it while the padding carries the hit area out to 44px */
   margin:.15rem 0 0 -.3rem; padding:.75rem .5rem; min-height:44px;
-  font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.14em; text-transform:uppercase;
   color:var(--ink-soft); transition:color .16s;
   display:inline-flex; align-items:center; gap:.4rem;
 }
@@ -925,13 +948,13 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 .sheet-top .eyebrow{color:var(--violet)}
 .sheet-x{
   background:none; border:none; cursor:pointer; padding:.1rem .25rem;
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.1em;
   text-transform:uppercase; color:var(--ink-soft);
 }
 .sheet-x:hover{color:var(--royal)}
 .sizes{display:flex; gap:.4rem; margin-bottom:.95rem}
 .size{
-  font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
+  font-family:var(--mono); font-size:var(--mono-sm); letter-spacing:.1em; text-transform:uppercase;
   padding:.36rem .7rem; border-radius:100px; cursor:pointer;
   border:1px solid var(--rule); background:#fff; color:var(--ink-soft); transition:.16s;
 }

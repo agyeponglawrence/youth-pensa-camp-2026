@@ -18,14 +18,23 @@ Audience is teenagers and university-age young adults (PENSA = Pentecost Student
 
 ```
 camp-recap/
-├── index.html        ← the entire application, ~152 KB
-├── HANDOFF.md        ← this file
-├── README.txt        ← naming + wiring instructions for audio summaries
-└── og.jpg            ← 1200×630 link-preview image, 57 KB
+├── index.html               ← the entire application
+├── HANDOFF.md               ← this file
+├── README.txt               ← naming + wiring instructions for audio summaries
+├── og.jpg                   ← 1200×630 link-preview image, 57 KB
+├── manifest.webmanifest     ← Add to Home Screen
+├── icon-192.png             ← home-screen icon, also the apple-touch-icon
+├── icon-512.png             ← home-screen icon / splash
+└── icon-maskable-512.png    ← Android adaptive icon (safe-zone padded)
 ```
 
-`og.jpg` is the only asset the page expects beside it, and only for social
-previews — the page itself renders fine without it.
+None of these five assets is required for the page to render — it works
+opened on its own. `og.jpg` only affects social previews, and the manifest
+and icons only affect what happens when someone adds the page to their home
+screen. The icons are the logo's swoosh on the brand navy, generated from
+the logo already embedded in `index.html`; the full lockup is unreadable at
+48px. iOS uses `apple-touch-icon` and ignores the manifest icons, which is
+why both are declared in the `<head>`.
 
 That's it. **One HTML file, no build step, no package.json, no dependencies to install, no backend.** This is deliberate — the page needs to outlive whoever built it, be hostable anywhere (Netlify Drop, GitHub Pages, church website), and be editable by a non-developer with a text editor.
 
