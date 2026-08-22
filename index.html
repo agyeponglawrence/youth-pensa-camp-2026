@@ -160,15 +160,13 @@ a{color:var(--royal)}
 .bar-fill{
   height:100%; width:0%;
   background:linear-gradient(90deg,var(--violet),var(--violet-mid));
-  transition:width .45s cubic-bezier(.4,0,.2,1);
+  /* tracks reading position, so it must keep up with the scroll */
+  transition:width .12s linear;
 }
 .bar-inner{
   display:flex; align-items:center; gap:1rem;
   padding:.62rem 0;
-  overflow-x:auto;
-  scrollbar-width:none;
 }
-.bar-inner::-webkit-scrollbar{display:none}
 
 .bar-count{
   font-family:var(--mono); font-size:.72rem;
@@ -176,9 +174,23 @@ a{color:var(--royal)}
   white-space:nowrap; flex-shrink:0;
 }
 .bar-count b{color:var(--royal)}
+/* the words go first when the bar gets tight — the ratio still reads */
+@media(max-width:640px){ .bar-count-w{display:none} }
 
-.chips{display:flex; gap:.4rem; flex-shrink:0}
+/* the chips do the scrolling, so the tally stays put */
+.chips{
+  display:flex; gap:.4rem;
+  flex:1 1 auto; min-width:0;
+  overflow-x:auto; scrollbar-width:none;
+  /* --fl / --fr are set by JS to fade whichever edge has more behind it */
+  --fl:0px; --fr:0px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--fl),#000 calc(100% - var(--fr)),transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 var(--fl),#000 calc(100% - var(--fr)),transparent 100%);
+}
+.chips::-webkit-scrollbar{display:none}
+
 .chip{
+  display:inline-flex; align-items:center; flex-shrink:0;
   font-family:var(--mono); font-size:.7rem; letter-spacing:.05em;
   padding:.34rem .68rem; border-radius:100px;
   border:1px solid var(--rule); background:#fff;
@@ -186,6 +198,72 @@ a{color:var(--royal)}
   transition:.18s;
 }
 .chip:hover,.chip:focus-visible{border-color:var(--violet); color:var(--royal); background:var(--violet-tint)}
+
+/* the session you are actually inside */
+.chip[aria-current="true"]{background:var(--royal); border-color:var(--royal); color:#fff}
+.chip[aria-current="true"]:hover,.chip[aria-current="true"]:focus-visible{background:var(--royal-2); border-color:var(--royal-2); color:#fff}
+
+/* one dot per session — fills when a step from that session is ticked */
+.chip-dot{
+  width:7px; height:7px; margin-right:.45rem; flex-shrink:0;
+  border-radius:50%; border:1.5px solid var(--violet-light); background:transparent;
+  transition:background .2s, border-color .2s;
+}
+.chip-dot.on{background:var(--violet); border-color:var(--violet)}
+.chip[aria-current="true"] .chip-dot{border-color:rgba(255,255,255,.55)}
+.chip[aria-current="true"] .chip-dot.on{background:#fff; border-color:#fff}
+
+/* on a phone six full labels can't fit, so the strip collapses to
+   numerals and only the session you're in spells itself out */
+@media(max-width:640px){
+  .chip{padding:.34rem .6rem}
+  .chip-theme{display:none}
+  .chip[aria-current="true"] .chip-theme{display:inline}
+}
+
+@keyframes dotpop{0%{transform:scale(1)} 40%{transform:scale(2)} 100%{transform:scale(1)}}
+.chip-dot.pop{animation:dotpop .42s cubic-bezier(.4,0,.2,1)}
+@media(prefers-reduced-motion:reduce){ .chip-dot.pop{animation:none} }
+
+/* screen-reader-only, so the short chip label can still carry the full title */
+.vh{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
+  white-space:nowrap; border:0;
+}
+
+/* ---- end-of-session prev / next ---- */
+.s-nav{
+  max-width:var(--read); margin-top:2.8rem; padding-top:1.5rem;
+  border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:1fr auto 1fr; gap:.7rem; align-items:stretch;
+}
+.s-nav a{
+  display:flex; flex-direction:column; gap:.2rem; justify-content:center;
+  padding:.62rem .95rem; border-radius:var(--r-md);
+  border:1px solid var(--rule); background:#fff;
+  color:var(--ink); font-size:.94rem; font-weight:600;
+  text-decoration:none; transition:.18s; min-width:0;
+}
+.s-nav a:hover,.s-nav a:focus-visible{border-color:var(--violet); background:var(--violet-tint); color:var(--royal)}
+.s-nav .dir{
+  font-family:var(--mono); font-size:.64rem; font-weight:400;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);
+}
+.s-nav a:hover .dir,.s-nav a:focus-visible .dir{color:var(--royal)}
+.s-nav .nx{text-align:right}
+.s-nav .all{
+  align-self:center; border:0; background:transparent;
+  font-family:var(--mono); font-size:.68rem; font-weight:400;
+  letter-spacing:.06em; color:var(--ink-soft); padding:.5rem .6rem;
+}
+.s-nav .all:hover,.s-nav .all:focus-visible{background:transparent; color:var(--royal); text-decoration:underline; text-underline-offset:3px}
+.s-nav .gap{display:block}
+@media(max-width:640px){
+  .s-nav{grid-template-columns:1fr}
+  .s-nav .nx{text-align:left}
+  .s-nav .gap{display:none}
+}
 
 /* ============================================================
    INTRO
@@ -846,7 +924,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 <div class="back" id="backBar" hidden>
   <div class="wrap">
     <span id="backTxt"></span>
-    <a href="#today">Here's today's line &rarr;</a>
+    <a id="backLink" href="#today">Here's today's line &rarr;</a>
     <button class="x" type="button" id="backX">Dismiss</button>
   </div>
 </div>
@@ -857,15 +935,9 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
 <nav class="bar" aria-label="Session navigation">
   <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
   <div class="wrap bar-inner">
-    <div class="bar-count"><b id="barCount">0</b> / 6 sessions acted on</div>
-    <div class="chips">
-      <a class="chip" href="#s1">01 · Message of the Gospel</a>
-      <a class="chip" href="#s2">02 · The Holy Spirit, His Power and Impact</a>
-      <a class="chip" href="#s3">03 · Holy Spirit at Work</a>
-      <a class="chip" href="#s6">04 · Joyful Praise</a>
-      <a class="chip" href="#s5">05 · Making Godly Impact</a>
-      <a class="chip" href="#s4">Panel · Our Identity</a>
-    </div>
+    <div class="bar-count"><b id="barCount">0</b> / 6<span class="bar-count-w"> sessions acted on</span></div>
+    <!-- chips are built from SESSIONS so the labels can never drift -->
+    <div class="chips" id="chips"></div>
   </div>
 </nav>
 
@@ -909,7 +981,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.1); padding-top:1.6rem; font
   </div>
 </section>
 
-<section class="start"><div class="wrap"><div class="start-card rv" id="startCard"></div></div></section>
+<section class="start" id="all"><div class="wrap"><div class="start-card rv" id="startCard"></div></div></section>
 
 <!-- ============================================================
      JOURNEY — one session a week, paced from your first visit
@@ -1730,6 +1802,45 @@ const SESSIONS = [
 ];
 
 /* ================================================================
+   QUIZ ANSWER POSITIONS
+   ----------------------------------------------------------------
+   Every question was written with its correct answer first, which
+   teaches the reader to just pick the top option and stop reading.
+   This rotates each question's choices so the answer lands somewhere
+   else. SLOTS is walked in order, one entry per question. Each of the
+   four positions appears three times, so answers stay evenly spread,
+   and the order was picked so no position repeats back to back, none
+   alternates ABAB, and none climbs 1st-2nd-3rd — a plain cycle would
+   just be a slower pattern to spot. It holds in two orderings at
+   once: reading the sessions top to bottom, and the daily recall
+   card, which walks the same questions on a stride of five.
+
+   Done here, once, on the data — so both the in-session quizzes and
+   the daily recall question pick it up, and so any question added
+   later is corrected too without anyone having to remember to
+   scramble it by hand.
+
+   A rotation, not a shuffle: it keeps the distractors in the order
+   they were written and renders identically on every visit, so the
+   page stays predictable and testable.
+   ================================================================ */
+(function spreadAnswers(){
+  const SLOTS = [0,2,1,2,3,1,0,3,0,2,3,1];
+  let k = 0;
+  SESSIONS.forEach(s => (s.quiz || []).forEach(q => {
+    const n = q.a.length;
+    if(!n) return;
+    const target = SLOTS[k++ % SLOTS.length] % n;
+    const shift = (target - q.c + n) % n;
+    if(!shift) return;
+    const moved = new Array(n);
+    q.a.forEach((opt, i) => { moved[(i + shift) % n] = opt; });
+    q.a = moved;
+    q.c = target;
+  }));
+})();
+
+/* ================================================================
    RENDER
    ================================================================ */
 const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16 4 12 4 12 4s-4 0-6.8.3c-.4 0-1.2 0-2 .9-.6.6-.8 2-.8 2S2.2 8.8 2.2 10.4v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.9 1.6.1 6.6.2 6.6.2s4 0 6.8-.3c.4 0 1.2 0 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5c0-1.6-.2-3.2-.2-3.2zM9.9 14.1V8.6l5.2 2.8-5.2 2.7z"/></svg>';
@@ -1882,11 +1993,49 @@ function sessionHTML(s, i){
           <p class="journal-saved" aria-live="polite"></p>
         </div>
       </div>
+
+      ${sessionNavHTML(i)}
     </div>
   </article>`;
 }
 
+/* Short label for a session in the nav: "04 · Praise", "Panel · Identity". */
+function navLabel(s, i){
+  return (s.numeral || String(i+1).padStart(2,"0")) + " · " + s.theme;
+}
+
+/* No session should be a dead end — every one exits to its neighbours. */
+function sessionNavHTML(i){
+  const prev = SESSIONS[i-1], next = SESSIONS[i+1];
+  return `
+      <nav class="s-nav" aria-label="More sessions">
+        ${prev
+          ? `<a class="pv" href="#${prev.id}"><span class="dir">&larr; Previous</span><span>${esc(navLabel(prev, i-1))}</span></a>`
+          : `<span class="gap"></span>`}
+        <a class="all" href="#all">All sessions</a>
+        ${next
+          ? `<a class="nx" href="#${next.id}"><span class="dir">Next &rarr;</span><span>${esc(navLabel(next, i+1))}</span></a>`
+          : `<span class="gap"></span>`}
+      </nav>`;
+}
+
 document.getElementById("sessions").innerHTML = SESSIONS.map(sessionHTML).join("");
+
+/* ================================================================
+   STICKY BAR CHIPS
+   ----------------------------------------------------------------
+   Short labels (numeral + theme word) so all six fit without a
+   scroll on most phones; the full title rides along for screen
+   readers. The dot fills in once a step from that session is ticked.
+   ================================================================ */
+const chipsEl = document.getElementById("chips");
+chipsEl.innerHTML = SESSIONS.map((s,i)=>
+  `<a class="chip" href="#${s.id}" data-chip="${s.id}">`
+  + `<span class="chip-dot" data-for="${s.id}"></span>`
+  + `${esc(s.numeral || String(i+1).padStart(2,"0"))}`
+  + `<span class="chip-theme">\u00a0· ${esc(s.theme)}</span>`
+  + `<span class="vh"> — ${esc(s.title)}</span></a>`
+).join("");
 
 /* ================================================================
    START HERE — the six big ideas, doubling as a quick path in
@@ -2134,6 +2283,8 @@ document.addEventListener("click", e=>{
 
 const barFill = document.getElementById("barFill");
 const barCount = document.getElementById("barCount");
+const chipDots = [...document.querySelectorAll(".chip-dot")];
+let firstPaint = true;            /* saved ticks shouldn't pop on load */
 const tallyNum = document.getElementById("tallyNum");
 const tallyFill = document.getElementById("tallyFill");
 const tallyMsg = document.getElementById("tallyMsg");
@@ -2150,9 +2301,20 @@ function message(sess, steps){
 function paint(){
   const done = boxes.filter(b=>b.checked);
   const steps = done.length;
-  const sess = new Set(done.map(b=>b.dataset.sess)).size;
+  const acted = new Set(done.map(b=>b.dataset.sess));
+  const sess = acted.size;
   const pct = (sess/6)*100;
-  barFill.style.width = pct + "%";
+  /* barFill is reading position now — the tally lives in the chip dots */
+  chipDots.forEach(d=>{
+    const on = acted.has(d.dataset.for);
+    if(on === d.classList.contains("on")) return;
+    d.classList.toggle("on", on);
+    if(on && !firstPaint){        /* restart the pop even if it just ran */
+      d.classList.remove("pop");
+      void d.offsetWidth;
+      d.classList.add("pop");
+    }
+  });
   tallyFill.style.width = pct + "%";
   barCount.textContent = sess;
   tallyNum.textContent = sess;
@@ -2160,6 +2322,7 @@ function paint(){
   tallyMsg.textContent = message(sess, steps);
   renderJourney();
   renderMyCamp();
+  firstPaint = false;
 }
 
 const saved = store.read();
@@ -2320,6 +2483,21 @@ document.addEventListener("click", e=>{
                 : days + " days";
   document.getElementById("backTxt").innerHTML =
     `<b>Welcome back.</b> It's been ${howLong} since you were last here.`;
+
+  /* Send them back to the first session they haven't acted on yet.
+     With nothing ticked there's nothing to resume, and with all six
+     ticked there's nowhere left to go — today's line stays the offer
+     in both cases. */
+  const acted = new Set(boxes.filter(b=>b.checked).map(b=>b.dataset.sess));
+  const link = document.getElementById("backLink");
+  if(link && acted.size && acted.size < SESSIONS.length){
+    const i = SESSIONS.findIndex(s=>!acted.has(s.id));
+    if(i > -1){
+      link.href = "#" + SESSIONS[i].id;
+      link.textContent = `Pick up at ${navLabel(SESSIONS[i], i)} \u2192`;
+    }
+  }
+
   bar.removeAttribute("hidden");
   bar.classList.add("show");
   document.getElementById("backX").addEventListener("click", ()=>{
@@ -2623,6 +2801,86 @@ function maybeOG(){
 }
 window.addEventListener("hashchange", maybeOG);
 maybeOG();
+
+/* ================================================================
+   NAVIGATION FEEL
+   ----------------------------------------------------------------
+   Three small things, all of them about knowing where you are:
+   the sticky fill tracks reading position, the chip for the session
+   you're inside lights up and scrolls itself into view, and the
+   chips strip fades whichever edge still has something behind it.
+   ================================================================ */
+(function stickyNav(){
+  const sessionsEl = document.getElementById("sessions");
+  const arts = [...document.querySelectorAll("#sessions .session")];
+  if(!sessionsEl || !chipsEl || !arts.length) return;
+
+  const smooth = REDUCED ? "auto" : "smooth";
+
+  /* ---- reading position -------------------------------------- */
+  let queued = false;
+  function progress(){
+    queued = false;
+    const r = sessionsEl.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const span = r.height - vh;
+    const pct = span <= 0
+      ? (r.top <= 0 ? 100 : 0)
+      : Math.min(100, Math.max(0, (-r.top / span) * 100));
+    barFill.style.width = pct.toFixed(2) + "%";
+  }
+  function onScroll(){
+    if(queued) return;
+    queued = true;
+    requestAnimationFrame(progress);
+  }
+
+  /* ---- which chip is current --------------------------------- */
+  const chips = new Map([...chipsEl.querySelectorAll(".chip")].map(c=>[c.dataset.chip, c]));
+  let current = null;
+
+  function setActive(id){
+    if(id === current) return;
+    current = id;
+    chips.forEach((c,key)=>{
+      if(key === id) c.setAttribute("aria-current","true");
+      else c.removeAttribute("aria-current");
+    });
+    const chip = chips.get(id);
+    /* only nudge the strip when it actually has somewhere to scroll */
+    if(chip && chipsEl.scrollWidth > chipsEl.clientWidth + 4){
+      const left = chip.offsetLeft - (chipsEl.clientWidth - chip.offsetWidth) / 2;
+      chipsEl.scrollTo({left: Math.max(0, left), behavior: smooth});
+    }
+  }
+
+  const inBand = new Set();
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting) inBand.add(en.target.id);
+      else inBand.delete(en.target.id);
+    });
+    if(!inBand.size){ setActive(null); return; }
+    /* several can straddle the band — the topmost one wins */
+    for(const a of arts){
+      if(inBand.has(a.id)){ setActive(a.id); break; }
+    }
+  }, {rootMargin:"-92px 0px -55% 0px", threshold:0});
+  arts.forEach(a=>io.observe(a));
+
+  /* ---- fade the edge that still has chips behind it ----------- */
+  function fades(){
+    const max = chipsEl.scrollWidth - chipsEl.clientWidth;
+    chipsEl.style.setProperty("--fl", chipsEl.scrollLeft > 4 ? "24px" : "0px");
+    chipsEl.style.setProperty("--fr", chipsEl.scrollLeft < max - 4 ? "24px" : "0px");
+  }
+  chipsEl.addEventListener("scroll", fades, {passive:true});
+
+  addEventListener("scroll", onScroll, {passive:true});
+  addEventListener("resize", ()=>{ progress(); fades(); });
+  progress();
+  fades();
+})();
 
 /* ================================================================
    REVEAL ON SCROLL
